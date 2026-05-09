@@ -81,19 +81,29 @@ button { font-family: inherit; cursor: pointer; }
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   background: rgba(255,255,255,0);
   border-bottom: 1px solid transparent;
-  transition: background .2s, border-color .2s, color .2s;
+  transition: background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
 }
-.nav.over-hero {
-  background: rgba(20,40,90,0.18);
+/* Glass-morphism over hero (gradient background) */
+.nav.glass.over-hero {
+  background: rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 8px 24px -16px rgba(0,0,0,0.35);
   color: #fff;
 }
-.nav.scrolled {
-  background: rgba(255,255,255,0.85);
+/* Glass-morphism over light page content */
+.nav.glass.scrolled {
+  background: rgba(255,255,255,0.65);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 8px 24px -18px rgba(20,30,80,0.2);
+  color: var(--ink);
 }
+/* Legacy non-glass states (kept for back-compat) */
+.nav.over-hero:not(.glass) { background: rgba(20,40,90,0.18); color: #fff; }
+.nav.scrolled:not(.glass) { background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--line); }
 .nav-inner {
   display:flex; align-items:center; justify-content:space-between;
   height: 64px;

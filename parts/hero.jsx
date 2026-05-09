@@ -3,7 +3,7 @@ const { useState, useEffect, useRef } = React;
 
 function Logo() {
   return (
-    <a href="#" className="logo">
+    <a href="index.html" className="logo">
       <span className="logo-mark">
         <svg viewBox="0 0 16 16" fill="none">
           <path d="M5 7V5a3 3 0 0 1 6 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
@@ -16,7 +16,16 @@ function Logo() {
   );
 }
 
-function Navbar() {
+const NAV_PAGES = [
+  { href: "index.html", label: "Home", key: "home" },
+  { href: "about-us.html", label: "About Us", key: "about" },
+  { href: "affiliates-ibs.html", label: "Affiliates / IBs", key: "affiliates" },
+  { href: "marketing.html", label: "Marketing", key: "marketing" },
+  { href: "education.html", label: "Education", key: "education" },
+  { href: "contact-us.html", label: "Contact Us", key: "contact" },
+];
+
+function Navbar({ active = "home", solidStart = false }) {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
@@ -30,17 +39,23 @@ function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
   const close = () => setOpen(false);
+  // Glass nav: always glassy. `over-hero` = on top of hero gradient (white text).
+  // `scrolled` = scrolled past hero (light bg, dark text).
+  // If `solidStart`, the page lacks a hero gradient, so render scrolled-style from the start.
+  const mode = solidStart ? 'scrolled' : (scrolled ? 'scrolled' : 'over-hero');
   return (
-    <nav className={`nav ${scrolled ? 'scrolled' : 'over-hero'} ${open ? 'open' : ''}`}>
+    <nav className={`nav glass ${mode} ${open ? 'open' : ''}`}>
       <div className="container nav-inner">
         <Logo />
         <div className="nav-links">
-          <a href="#" className="active" onClick={close}>Home</a>
-          <a href="#aboutUs" onClick={close}>About Us</a>
-          <a href="#" onClick={close}>Affiliates / IBs</a>
-          <a href="#" onClick={close}>Marketing</a>
-          <a href="#" onClick={close}>Education</a>
-          <a href="#" onClick={close}>Contact Us</a>
+          {NAV_PAGES.map(p => (
+            <a
+              key={p.key}
+              href={p.href}
+              className={active === p.key ? 'active' : ''}
+              onClick={close}
+            >{p.label}</a>
+          ))}
         </div>
         <div className="nav-cta">
           <a href="#" className="btn btn-ghost">Log in</a>
