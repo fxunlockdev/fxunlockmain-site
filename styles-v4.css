@@ -668,22 +668,28 @@ body.sub-page .nav .btn-primary {
 .form-card.glass h3 { color: #fff; }
 .form-card.glass .sub { color: rgba(255,255,255,0.72); }
 .form-card.glass .field label { color: rgba(255,255,255,0.62); }
-.form-card.glass .field input,
-.form-card.glass .field select {
+.form-card.glass .field input {
   background: rgba(255,255,255,0.10);
   border-color: rgba(255,255,255,0.18);
+  color: #fff;
+}
+/* Selects need more opacity — browsers render near-transparent selects with artefacts */
+.form-card.glass .field select {
+  background-color: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.22);
+  color: #fff;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='rgba(255,255,255,0.7)' stroke-width='1.5' stroke-linecap='round'/></svg>");
+}
+.form-card.glass .field select option {
+  background: #3a4a8a;
   color: #fff;
 }
 .form-card.glass .field input::placeholder { color: rgba(255,255,255,0.38); }
 .form-card.glass .field input:focus,
 .form-card.glass .field select:focus {
-  background: rgba(255,255,255,0.16);
+  background-color: rgba(255,255,255,0.26);
   border-color: rgba(255,255,255,0.48);
   box-shadow: 0 0 0 3px rgba(255,255,255,0.09);
-}
-/* White chevron for selects on glass */
-.form-card.glass .field select {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='rgba(255,255,255,0.6)' stroke-width='1.5' stroke-linecap='round'/></svg>");
 }
 .form-card.glass .field small { color: rgba(255,255,255,0.46); }
 .form-card.glass .submit-btn {
