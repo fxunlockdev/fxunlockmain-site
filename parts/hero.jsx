@@ -45,7 +45,7 @@ function Navbar({ active = "home", solidStart = false }) {
   const mode = solidStart ? 'scrolled' : (scrolled ? 'scrolled' : 'over-hero');
   return (
     <nav className={`nav glass ${mode} ${open ? 'open' : ''}`}>
-      <div className="container nav-inner">
+      <div className="nav-inner">
         <Logo />
         <div className="nav-links">
           {NAV_PAGES.map(p => (

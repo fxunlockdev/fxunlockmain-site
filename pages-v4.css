@@ -9,9 +9,9 @@
   padding: 160px 0 80px;
   color: #fff;
   background:
-    radial-gradient(900px 600px at 90% 10%, rgba(228,66,230,0.55), transparent 60%),
-    radial-gradient(800px 600px at 0% 30%, rgba(42,208,238,0.55), transparent 60%),
-    linear-gradient(115deg, #21bbd7 0%, #2a52c8 45%, #7a26b8 75%, #bf1cc1 100%);
+    radial-gradient(900px 600px at 90% 10%, rgba(192,128,215,0.40), transparent 60%),
+    radial-gradient(800px 600px at 0% 30%, rgba(96,180,210,0.45), transparent 60%),
+    linear-gradient(115deg, #5aa6cc 0%, #5868c4 45%, #8a6ec9 75%, #b07ec9 100%);
   overflow: hidden;
 }
 .page-hero::before {
@@ -332,9 +332,9 @@
   padding: 80px 56px;
   color: #fff;
   background:
-    radial-gradient(700px 500px at 80% 20%, rgba(228,66,230,0.45), transparent 60%),
-    radial-gradient(600px 500px at 10% 80%, rgba(42,208,238,0.45), transparent 60%),
-    linear-gradient(135deg, #21bbd7 0%, #333da8 50%, #bf1cc1 100%);
+    radial-gradient(700px 500px at 80% 20%, rgba(192,128,215,0.35), transparent 60%),
+    radial-gradient(600px 500px at 10% 80%, rgba(96,180,210,0.40), transparent 60%),
+    linear-gradient(135deg, #5aa6cc 0%, #5868c4 50%, #b07ec9 100%);
   background-size: 200% 200%;
   animation: contactGrad 16s ease-in-out infinite;
   overflow: hidden;
@@ -482,9 +482,9 @@
   margin: 0 auto;
   padding: 80px 56px;
   background:
-    radial-gradient(700px 400px at 90% 10%, rgba(228,66,230,0.55), transparent 60%),
-    radial-gradient(700px 400px at 0% 60%, rgba(42,208,238,0.55), transparent 60%),
-    linear-gradient(115deg, #21bbd7 0%, #2a52c8 45%, #7a26b8 75%, #bf1cc1 100%);
+    radial-gradient(700px 400px at 90% 10%, rgba(192,128,215,0.40), transparent 60%),
+    radial-gradient(700px 400px at 0% 60%, rgba(96,180,210,0.45), transparent 60%),
+    linear-gradient(115deg, #5aa6cc 0%, #5868c4 45%, #8a6ec9 75%, #b07ec9 100%);
   color: #fff;
   text-align: center;
 }

@@ -15,15 +15,16 @@
   --ink-mute: #5b6280;
   --ink-dim: #8c93b3;
 
-  /* Brand */
-  --cyan: #21bbd7;
-  --cyan-2: #2ad0ee;
-  --indigo: #333da8;
-  --indigo-2: #4757d6;
-  --magenta: #bf1cc1;
-  --magenta-2: #e442e6;
-  --brand-grad: linear-gradient(110deg, #21bbd7 0%, #333da8 50%, #bf1cc1 100%);
-  --brand-grad-soft: linear-gradient(110deg, rgba(33,187,215,0.12) 0%, rgba(51,61,168,0.10) 50%, rgba(191,28,193,0.12) 100%);
+  /* Brand — softened palette: less saturation, more elegant */
+  --cyan: #4dc4d9;
+  --cyan-2: #6dd9ec;
+  --indigo: #5564c9;
+  --indigo-2: #6b7bd9;
+  --magenta: #b069c9;
+  --magenta-2: #c989dc;
+  --brand-grad: linear-gradient(110deg, #4dc4d9 0%, #5564c9 50%, #b069c9 100%);
+  --brand-grad-soft: linear-gradient(110deg, rgba(77,196,217,0.10) 0%, rgba(85,100,201,0.08) 50%, rgba(176,105,201,0.10) 100%);
+  --brand-grad-text: linear-gradient(110deg, #5fa8d9 0%, #6e7bce 55%, #b070cc 100%);
 
   --pos: #16a06b;
   --neg: #d83a55;
@@ -78,36 +79,83 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 760px){ .container { padding: 0 20px; } }
 
 /* ============ NAVBAR ============ */
+/* Floating, scroll-aware navbar.
+   - over-hero: full-width transparent glass on top of the gradient hero
+   - scrolled : detaches from the top edge and becomes a centred pill
+                that travels with the user. */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
+  padding: 0;
+  pointer-events: none; /* let the inner pill capture pointer */
+  transition: padding .35s cubic-bezier(.2,.7,.2,1);
+}
+.nav .nav-inner {
+  pointer-events: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  background: transparent;
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
-  background: rgba(255,255,255,0);
-  border-bottom: 1px solid transparent;
-  transition: background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
+  transition:
+    background .35s cubic-bezier(.2,.7,.2,1),
+    border-color .35s ease,
+    border-radius .35s cubic-bezier(.2,.7,.2,1),
+    box-shadow .35s ease,
+    color .25s ease,
+    transform .35s cubic-bezier(.2,.7,.2,1),
+    max-width .35s cubic-bezier(.2,.7,.2,1);
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
 }
-/* Glass-morphism over hero (gradient background) */
-.nav.glass.over-hero {
-  background: rgba(255,255,255,0.10);
-  border-bottom: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 8px 24px -16px rgba(0,0,0,0.35);
-  color: #fff;
+
+/* Over hero — sits flush against the top, transparent glass */
+.nav.over-hero { padding: 0; color: #fff; }
+.nav.over-hero .nav-inner {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-top: 0; border-left: 0; border-right: 0;
+  border-radius: 0;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 8px 24px -16px rgba(0,0,0,0.25);
 }
-/* Glass-morphism over light page content */
-.nav.glass.scrolled {
-  background: rgba(255,255,255,0.65);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 8px 24px -18px rgba(20,30,80,0.2);
-  color: var(--ink);
+
+/* Scrolled — floats away from the top, becomes a centred pill that follows you */
+.nav.scrolled { padding: 14px 24px 0; color: var(--ink); }
+.nav.scrolled .nav-inner {
+  max-width: 1180px;
+  height: 60px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(20,30,80,0.08);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 12px 32px -16px rgba(20,30,80,0.18),
+    0 24px 48px -28px rgba(20,30,80,0.18);
 }
-/* Legacy non-glass states (kept for back-compat) */
-.nav.over-hero:not(.glass) { background: rgba(20,40,90,0.18); color: #fff; }
-.nav.scrolled:not(.glass) { background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--line); }
-.nav-inner {
-  display:flex; align-items:center; justify-content:space-between;
-  height: 64px;
+
+/* Mobile reset: stay edge-to-edge, no pill */
+@media (max-width: 760px) {
+  .nav.scrolled { padding: 0; }
+  .nav.scrolled .nav-inner {
+    max-width: 100%;
+    border-radius: 0;
+    height: 64px;
+    padding: 0 20px;
+    box-shadow: 0 6px 24px -18px rgba(20,30,80,0.18);
+  }
 }
+
+/* Legacy non-glass states (kept for back-compat — no longer used) */
+.nav.over-hero:not(.glass) .nav-inner { background: rgba(20,40,90,0.18); color: #fff; }
+.nav.scrolled:not(.glass) .nav-inner { background: rgba(255,255,255,0.85); }
+/* Note: .nav-inner sizing is now controlled by `.nav .nav-inner` rules above */
 .logo {
   display:flex; align-items:center; gap:10px;
   font-family: var(--display);
@@ -179,9 +227,9 @@ button { font-family: inherit; cursor: pointer; }
   padding: 130px 0 0;
   color: #fff;
   background:
-    radial-gradient(1100px 700px at 90% 10%, rgba(228,66,230,0.55), transparent 60%),
-    radial-gradient(900px 700px at 0% 30%, rgba(42,208,238,0.55), transparent 60%),
-    linear-gradient(115deg, #21bbd7 0%, #2a52c8 45%, #7a26b8 75%, #bf1cc1 100%);
+    radial-gradient(1100px 700px at 90% 10%, rgba(192,128,215,0.40), transparent 60%),
+    radial-gradient(900px 700px at 0% 30%, rgba(96,180,210,0.45), transparent 60%),
+    linear-gradient(115deg, #5aa6cc 0%, #5868c4 45%, #8a6ec9 75%, #b07ec9 100%);
   overflow: hidden;
 }
 .hero .hero-grid { padding-bottom: 80px; }
@@ -214,23 +262,23 @@ button { font-family: inherit; cursor: pointer; }
 }
 .hero-fx .mesh-a {
   width: 640px; height: 640px;
-  background: radial-gradient(circle, #2ad0ee 0%, transparent 65%);
+  background: radial-gradient(circle, #6dd9ec 0%, transparent 65%);
   top: -160px; left: -120px;
-  opacity: 0.7;
+  opacity: 0.45;
   animation: meshDrift 22s ease-in-out infinite;
 }
 .hero-fx .mesh-b {
   width: 560px; height: 560px;
-  background: radial-gradient(circle, #ff5acb 0%, transparent 65%);
+  background: radial-gradient(circle, #d695e5 0%, transparent 65%);
   top: 20%; right: -160px;
-  opacity: 0.65;
+  opacity: 0.4;
   animation: meshDrift 26s ease-in-out infinite reverse;
 }
 .hero-fx .mesh-c {
   width: 420px; height: 420px;
-  background: radial-gradient(circle, #ffd6f5 0%, transparent 65%);
+  background: radial-gradient(circle, #f1d6ee 0%, transparent 65%);
   bottom: -140px; left: 38%;
-  opacity: 0.4;
+  opacity: 0.28;
   animation: meshDrift 30s ease-in-out infinite;
 }
 @keyframes meshDrift {
@@ -883,9 +931,9 @@ button { font-family: inherit; cursor: pointer; }
   padding: 120px 60px;
   overflow: hidden;
   background:
-    radial-gradient(900px 600px at 90% 0%, rgba(228,66,230,0.45), transparent 60%),
-    radial-gradient(700px 600px at 0% 100%, rgba(42,208,238,0.45), transparent 60%),
-    linear-gradient(115deg, #21bbd7 0%, #2a52c8 45%, #7a26b8 75%, #bf1cc1 100%);
+    radial-gradient(900px 600px at 90% 0%, rgba(214,149,229,0.35), transparent 60%),
+    radial-gradient(700px 600px at 0% 100%, rgba(109,217,236,0.35), transparent 60%),
+    linear-gradient(115deg, #5aa6cc 0%, #5868c4 45%, #8a6ec9 75%, #b07ec9 100%);
   text-align: center;
   color: #fff;
 }
@@ -940,7 +988,7 @@ button { font-family: inherit; cursor: pointer; }
 .showcase {
   position: relative;
   padding: 140px 0;
-  background: linear-gradient(180deg, #0a0e22 0%, #1a0f3d 50%, #2a1454 100%);
+  background: linear-gradient(180deg, #0a0e22 0%, #161a36 50%, #1f1f44 100%);
   color: #fff;
   overflow: hidden;
   border-top: 1px solid var(--line);
@@ -951,9 +999,9 @@ button { font-family: inherit; cursor: pointer; }
   filter: blur(120px); mix-blend-mode: screen;
   will-change: transform;
 }
-.sc-mesh-a { width: 600px; height: 600px; background: radial-gradient(circle,#7a26b8,transparent 65%); top: 10%; left: 10%; animation: meshDrift 24s ease-in-out infinite; }
-.sc-mesh-b { width: 500px; height: 500px; background: radial-gradient(circle,#bf1cc1,transparent 65%); bottom: 10%; right: 5%; animation: meshDrift 28s ease-in-out infinite reverse; }
-.sc-mesh-c { width: 400px; height: 400px; background: radial-gradient(circle,#21bbd7,transparent 65%); top: 50%; left: 45%; opacity: 0.5; animation: meshDrift 32s ease-in-out infinite; }
+.sc-mesh-a { width: 600px; height: 600px; background: radial-gradient(circle,#5868c4,transparent 65%); top: 10%; left: 10%; opacity: 0.55; animation: meshDrift 24s ease-in-out infinite; }
+.sc-mesh-b { width: 500px; height: 500px; background: radial-gradient(circle,#a06ec0,transparent 65%); bottom: 10%; right: 5%; opacity: 0.5; animation: meshDrift 28s ease-in-out infinite reverse; }
+.sc-mesh-c { width: 400px; height: 400px; background: radial-gradient(circle,#4dc4d9,transparent 65%); top: 50%; left: 45%; opacity: 0.35; animation: meshDrift 32s ease-in-out infinite; }
 
 .sc-grid {
   position: relative;
