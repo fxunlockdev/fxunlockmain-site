@@ -124,7 +124,7 @@ function Ticker({ pair, quote, basePrice, delta, up, flag }) {
 function HeroForm() {
   const [role, setRole] = useState('');
   return (
-    <div className="form-card">
+    <div className="form-card glass">
       <div className="form-card-bar"></div>
       <div className="form-card-hd">
         <span className="form-badge">✦ Free · No commitment</span>
