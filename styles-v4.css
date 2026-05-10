@@ -152,6 +152,36 @@ button { font-family: inherit; cursor: pointer; }
   }
 }
 
+/* Sub-pages: CSS-guaranteed pill nav — overrides over-hero state entirely */
+body.sub-page .nav {
+  padding: 14px 24px 0 !important;
+  color: var(--ink) !important;
+}
+body.sub-page .nav .nav-inner {
+  max-width: 1180px !important;
+  height: 60px !important;
+  padding: 0 22px !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.78) !important;
+  border: 1px solid rgba(20,30,80,0.08) !important;
+  border-top: 1px solid rgba(20,30,80,0.08) !important;
+  border-left: 1px solid rgba(20,30,80,0.08) !important;
+  border-right: 1px solid rgba(20,30,80,0.08) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 12px 32px -16px rgba(20,30,80,0.18),
+    0 24px 48px -28px rgba(20,30,80,0.18) !important;
+}
+@media (max-width: 760px) {
+  body.sub-page .nav { padding: 0 !important; }
+  body.sub-page .nav .nav-inner {
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    height: 64px !important;
+    padding: 0 20px !important;
+  }
+}
+
 /* Legacy non-glass states (kept for back-compat — no longer used) */
 .nav.over-hero:not(.glass) .nav-inner { background: rgba(20,40,90,0.18); color: #fff; }
 .nav.scrolled:not(.glass) .nav-inner { background: rgba(255,255,255,0.85); }
