@@ -125,13 +125,21 @@ function Testimonials() {
 function GetStarted() {
   return (
     <section className="cta-section" id="GetStarted">
-      <p className="num" style={{ color: 'var(--cyan)', fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 24px' }}>— 06 / Ready to grow</p>
-      <h2>Ready to <em>get started?</em></h2>
+      <p className="num" style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 24px' }}>✦ &nbsp;06 / Ready to grow</p>
+      <h2>Ready to <em>unlock growth?</em></h2>
       <p>
         We're not just growing; we're revolutionizing the affiliate / IB experience in
         the FX world. Join us as we continue to unlock possibilities and break boundaries.
       </p>
-      <a href="#" className="cta-bigbtn">Contact us <span>→</span></a>
+      <div className="cta-btn-group">
+        <a href="contact-us.html" className="cta-bigbtn">
+          Talk to our team
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+        <a href="affiliates-ibs.html" className="cta-ghostbtn">Explore partnerships →</a>
+      </div>
     </section>
   );
 }

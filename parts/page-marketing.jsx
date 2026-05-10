@@ -17,7 +17,7 @@ function MktHero() {
               At FX Unlocked, our first objective is to get our IBs and Affiliates the best possible deal with one of our partner trading platforms. Then? We partner with them to help them scale. Our in-house marketing team is built like a performance agency, dedicated to one mission: fueling your growth.
             </p>
             <div className="cta-row">
-              <a href="#" className="btn-grad">Sign up for free <span className="arrow">→</span></a>
+              <a href="contact-us.html" className="btn-grad">Get my free deal <span className="arrow">→</span></a>
             </div>
           </div>
           <div>
@@ -31,41 +31,41 @@ function MktHero() {
 
 function MarketingForm() {
   return (
-    <div className="form-card" style={{ background: 'rgba(255,255,255,0.96)' }}>
-      <h3 style={{
-        fontFamily: 'var(--display)',
-        fontSize: 22,
-        fontWeight: 500,
-        margin: '0 0 18px',
-        color: 'var(--ink)',
-        textAlign: 'center'
-      }}>Get Started Today</h3>
+    <div className="form-card">
+      <div className="form-card-bar"></div>
+      <div className="form-card-hd">
+        <span className="form-badge">✦ Free · No commitment</span>
+        <h3>Get a free marketing plan</h3>
+        <p className="sub">Share your details — our team will reach out with a tailored proposal.</p>
+      </div>
       <form>
-        <div className="form-row" style={{ display: 'grid', gap: 14 }}>
-          <div className="form-field">
-            <label>Name</label>
-            <input type="text" placeholder="Name"/>
-          </div>
-          <div className="form-field">
-            <label>Email</label>
-            <input type="email" placeholder="Email address"/>
-          </div>
-          <div className="form-field">
-            <label>Country</label>
-            <select>
-              <option>Select your country</option>
-              <option>United Kingdom</option>
-              <option>United States</option>
-              <option>United Arab Emirates</option>
-              <option>India</option>
-              <option>Singapore</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <button type="button" className="btn-grad" style={{ justifyContent: 'center', width: '100%' }}>
-            Get my free deal <span className="arrow">→</span>
-          </button>
+        <div className="field">
+          <label>Full name</label>
+          <input type="text" placeholder="Jane Doe" autoComplete="name"/>
         </div>
+        <div className="field">
+          <label>Email address</label>
+          <input type="email" placeholder="you@email.com" autoComplete="email"/>
+        </div>
+        <div className="field">
+          <label>Country</label>
+          <select defaultValue="">
+            <option value="" hidden>Select your country</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+            <option>United Arab Emirates</option>
+            <option>India</option>
+            <option>Singapore</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button type="button" className="submit-btn">
+          Get my free deal
+          <svg className="submit-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        <p className="form-note">We respond within 24 hours · Your data is safe</p>
       </form>
     </div>
   );

@@ -125,8 +125,8 @@ function AboutCTA() {
             We're not just growing; we're revolutionizing the affiliate/IB experience in the FX World. Join us on this journey as we continue to unlock possibilities and break boundaries.
           </p>
           <div className="cta-row">
-            <a href="contact-us.html" className="btn-grad">Contact Us <span className="arrow">→</span></a>
-            <a href="affiliates-ibs.html" className="btn-outline">Become a Partner</a>
+            <a href="contact-us.html" className="btn-grad">Talk to our team <span className="arrow">→</span></a>
+            <a href="affiliates-ibs.html" className="btn-outline">Become a partner</a>
           </div>
         </div>
       </div>

@@ -59,7 +59,9 @@ function Navbar({ active = "home", solidStart = false }) {
         </div>
         <div className="nav-cta">
           <a href="#" className="btn btn-ghost">Log in</a>
-          <a href="#" className="btn btn-primary">Sign up <span className="arrow">→</span></a>
+          <a href="contact-us.html" className="btn btn-primary">
+            <span className="btn-star">✦</span> Join the network
+          </a>
         </div>
         <button
           className="nav-burger"
@@ -123,21 +125,27 @@ function HeroForm() {
   const [role, setRole] = useState('');
   return (
     <div className="form-card">
-      <h3>Get started today</h3>
-      <p className="sub">Tell us a bit about you — we'll match you with the right deal.</p>
+      <div className="form-card-bar"></div>
+      <div className="form-card-hd">
+        <span className="form-badge">✦ Free · No commitment</span>
+        <h3>Get started today</h3>
+        <p className="sub">Tell us a bit about you — we'll match you with the right deal.</p>
+      </div>
+
       <div className="field">
         <label>Full name</label>
-        <input type="text" placeholder="Jane Doe" />
+        <input type="text" placeholder="Jane Doe" autoComplete="name"/>
       </div>
+
       <div className="form-row">
         <div className="field">
           <label>Email</label>
-          <input type="email" placeholder="you@email.com" />
+          <input type="email" placeholder="you@email.com" autoComplete="email"/>
         </div>
         <div className="field">
           <label>Country</label>
           <select defaultValue="">
-            <option value="" hidden>Select</option>
+            <option value="" hidden>Select country</option>
             <option>United Arab Emirates</option>
             <option>United Kingdom</option>
             <option>United States</option>
@@ -147,26 +155,32 @@ function HeroForm() {
           </select>
         </div>
       </div>
+
       <div className="form-row">
         <div className="field">
-          <label>Category</label>
+          <label>I am a...</label>
           <select value={role} onChange={e=>setRole(e.target.value)}>
             <option value="" hidden>Affiliate / IB / Platform</option>
             <option value="affiliate">Affiliate</option>
-            <option value="ib">IB</option>
+            <option value="ib">Introducing Broker</option>
             <option value="trader">Trader</option>
             <option value="platform">Platform</option>
           </select>
         </div>
         <div className="field">
           <label>Phone number</label>
-          <input type="text" placeholder="+971 50 123 4567" />
-          <small>Include country code, +971 ...</small>
+          <input type="tel" placeholder="+971 50 123 4567" autoComplete="tel"/>
+          <small>Include country code · e.g. +971</small>
         </div>
       </div>
+
       <button type="button" className="submit-btn">
-        Send Message <span>→</span>
+        Send my enquiry
+        <svg className="submit-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
       </button>
+      <p className="form-note">We respond within 24 hours · Your data is safe with us</p>
     </div>
   );
 }

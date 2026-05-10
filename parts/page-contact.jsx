@@ -38,10 +38,12 @@ function ContactBlock() {
             </div>
             <div className="ci-map">
               <iframe
-                title="FX Unlocked office"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=55.13%2C25.07%2C55.16%2C25.10&layer=mapnik&marker=25.0801,55.1394"
+                title="FX Unlocked — Media One Tower, Dubai Marina"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.484!2d55.137459!3d25.080126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b5a23c48b3b%3A0x6f0b08b88d25fb8a!2sMedia%20One%20Tower%2C%20Dubai%20Marina!5e0!3m2!1sen!2sae!4v1683000000000!5m2!1sen!2sae"
                 loading="lazy"
+                allowFullScreen=""
                 referrerPolicy="no-referrer-when-downgrade"
+                style={{ border: 0, colorScheme: 'normal' }}
               ></iframe>
             </div>
           </div>
@@ -82,7 +84,13 @@ function ContactBlock() {
                 <label>Message</label>
                 <textarea placeholder="Your Message"></textarea>
               </div>
-              <button type="button" className="btn-submit">Send Message</button>
+              <button type="button" className="btn-submit">
+                Send my message
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ marginLeft: 10 }}>
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <p style={{ textAlign:'center', fontSize:12, color:'rgba(255,255,255,0.45)', margin:'14px 0 0', fontFamily:'var(--mono)', letterSpacing:'0.06em' }}>We respond within 24 h · Your data stays private</p>
             </form>
           </div>
         </div>
