@@ -397,8 +397,10 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(100deg, #ffffff 0%, #ffd6f5 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding-top: 0.12em;
+  margin-top: -0.12em;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 .hero-sub {
   font-size: 17px; line-height: 1.55;
@@ -731,8 +733,10 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--brand-grad);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding-top: 0.12em;
+  margin-top: -0.12em;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 .section-head .lede {
   font-size: 17px;
@@ -1072,8 +1076,10 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(100deg, #ffffff 0%, #ffd6f5 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding-top: 0.12em;
+  margin-top: -0.12em;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 .cta-section p {
   font-size: 17px; line-height: 1.6;
@@ -1167,8 +1173,10 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(100deg,#9bf3ff,#ffd1f7);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding-top: 0.12em;
+  margin-top: -0.12em;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 .sc-copy .lede {
   font-size: 17px; line-height: 1.65;
@@ -1247,7 +1255,10 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(100deg,#9bf3ff,#fff,#ffd1f7);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
+  padding-top: 0.1em;
+  margin-top: -0.1em;
   padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 .sc-card p {
   font-size: 12px; line-height: 1.55;

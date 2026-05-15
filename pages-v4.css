@@ -42,8 +42,10 @@
   background: linear-gradient(100deg, #ffffff 0%, #ffd6f5 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding-top: 0.12em;
+  margin-top: -0.12em;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 .page-hero p.lead {
   font-size: 18px; line-height: 1.55;
@@ -98,8 +100,10 @@
   background: var(--brand-grad);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding-top: 0.12em;
+  margin-top: -0.12em;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
 }
 .section .lede {
   font-size: 17px; line-height: 1.6; color: var(--ink-mute);
@@ -280,6 +284,8 @@
   background: var(--brand-grad);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
+  padding-top: 0.1em;
+  margin-top: -0.1em;
   padding-bottom: 0.14em;
   margin-bottom: -0.14em;
 }
@@ -484,7 +490,10 @@
   line-height: 1.1;
   margin-bottom: 12px;
   display: inline-block;
+  padding-top: 0.1em;
+  margin-top: -0.1em;
   padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 .stat-item .stat-label {
   font-family: var(--display);
