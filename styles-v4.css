@@ -384,7 +384,7 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--display);
   font-weight: 500;
   font-size: clamp(48px, 7.4vw, 116px);
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.04em;
   margin: 24px 0 28px;
   color: #fff;
@@ -397,7 +397,8 @@ button { font-family: inherit; cursor: pointer; }
   background: linear-gradient(100deg, #ffffff 0%, #ffd6f5 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   display: inline-block;
-  padding-bottom: 0.1em;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 .hero-sub {
   font-size: 17px; line-height: 1.55;
@@ -466,7 +467,7 @@ button { font-family: inherit; cursor: pointer; }
     0 12px 30px -12px rgba(20,30,80,0.2);
   color: var(--ink);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Gradient accent bar at top of form */
@@ -711,6 +712,7 @@ button { font-family: inherit; cursor: pointer; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
   margin: 0 0 20px;
   font-weight: 500;
+  display: inline-block;
 }
 .section-head h2 {
   font-family: var(--display);
@@ -728,8 +730,9 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 400;
   background: var(--brand-grad);
   -webkit-background-clip: text; background-clip: text; color: transparent;
-  padding-bottom: 0.1em;
-  display: inline-block; /* padding-bottom only works on inline-block with background-clip */
+  display: inline-block;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 .section-head .lede {
   font-size: 17px;
@@ -906,13 +909,13 @@ button { font-family: inherit; cursor: pointer; }
 .num-stat .big {
   font-family: var(--display);
   font-size: clamp(56px, 6.4vw, 96px);
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -0.045em;
   font-weight: 500;
   margin: 0 0 16px;
   color: var(--ink);
 }
-.num-stat .big .plus { background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.num-stat .big .plus { background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block; padding-bottom: 0.14em; margin-bottom: -0.14em; }
 .num-stat .label {
   font-family: var(--display);
   font-size: 16px;
@@ -989,6 +992,8 @@ button { font-family: inherit; cursor: pointer; }
   text-transform: uppercase;
   margin-bottom: 20px;
   font-weight: 600;
+  display: inline-block;
+  padding-bottom: 0.14em;
 }
 .t-card p {
   font-size: 16px; line-height: 1.65;
@@ -1018,6 +1023,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 11px; cursor: pointer;
   margin-bottom: 16px;
   display: inline-block;
+  padding-bottom: 0.14em;
   font-family: var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -1031,7 +1037,7 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0 32px 32px;
   border-radius: var(--radius-xl);
   padding: 120px 60px;
-  overflow: hidden;
+  overflow: clip;
   background:
     radial-gradient(900px 600px at 90% 0%, rgba(214,149,229,0.35), transparent 60%),
     radial-gradient(700px 600px at 0% 100%, rgba(109,217,236,0.35), transparent 60%),
@@ -1054,7 +1060,7 @@ button { font-family: inherit; cursor: pointer; }
 .cta-section h2 {
   font-family: var(--display);
   font-size: clamp(40px, 6vw, 96px);
-  line-height: 1.06;
+  line-height: 1.1;
   letter-spacing: -0.04em;
   font-weight: 500;
   margin: 24px 0 24px;
@@ -1065,6 +1071,9 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 400;
   background: linear-gradient(100deg, #ffffff 0%, #ffd6f5 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  display: inline-block;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 .cta-section p {
   font-size: 17px; line-height: 1.6;
@@ -1120,7 +1129,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 140px 0;
   background: linear-gradient(180deg, #0a0e22 0%, #161a36 50%, #1f1f44 100%);
   color: #fff;
-  overflow: hidden;
+  overflow: clip;
   border-top: 1px solid var(--line);
 }
 .sc-bg { position: absolute; inset: 0; pointer-events: none; }
@@ -1147,7 +1156,7 @@ button { font-family: inherit; cursor: pointer; }
 .sc-copy h2 {
   font-family: var(--display);
   font-size: clamp(40px, 5vw, 76px);
-  line-height: 1.06;
+  line-height: 1.1;
   letter-spacing: -0.035em;
   font-weight: 500;
   margin: 18px 0 24px;
@@ -1157,6 +1166,9 @@ button { font-family: inherit; cursor: pointer; }
   font-style: italic; font-weight: 400;
   background: linear-gradient(100deg,#9bf3ff,#ffd1f7);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  display: inline-block;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 .sc-copy .lede {
   font-size: 17px; line-height: 1.65;
@@ -1234,6 +1246,8 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 8px;
   background: linear-gradient(100deg,#9bf3ff,#fff,#ffd1f7);
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  display: inline-block;
+  padding-bottom: 0.14em;
 }
 .sc-card p {
   font-size: 12px; line-height: 1.55;
@@ -1405,7 +1419,7 @@ button { font-family: inherit; cursor: pointer; }
   .hero .hero-grid { padding-bottom: 48px; }
   .hero h1 {
     font-size: clamp(40px, 12vw, 64px);
-    line-height: 1.0;
+    line-height: 1.1;
     margin: 18px 0 20px;
   }
   .hero-sub { font-size: 15px; max-width: 100%; margin-bottom: 24px; }
@@ -1434,7 +1448,7 @@ button { font-family: inherit; cursor: pointer; }
   .numbers-title,
   .testimonials-title {
     font-size: clamp(34px, 9vw, 48px) !important;
-    line-height: 1.05 !important;
+    line-height: 1.1 !important;
     letter-spacing: -0.02em !important;
   }
 
