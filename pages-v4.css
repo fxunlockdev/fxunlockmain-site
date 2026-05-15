@@ -6,7 +6,7 @@
 /* ------- Page hero (used on all sub-pages) ------- */
 .page-hero {
   position: relative;
-  padding: 160px 0 80px;
+  padding: 140px 0 90px; /* 68px nav + 72px breathing room */
   color: #fff;
   background:
     radial-gradient(900px 600px at 90% 10%, rgba(192,128,215,0.40), transparent 60%),

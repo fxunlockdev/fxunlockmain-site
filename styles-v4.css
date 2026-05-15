@@ -78,126 +78,62 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 760px){ .container { padding: 0 20px; } }
 
-/* ============ NAVBAR ============ */
-/* Floating, scroll-aware navbar.
-   - over-hero: full-width transparent glass on top of the gradient hero
-   - scrolled : detaches from the top edge and becomes a centred pill
-                that travels with the user. */
+/* ============ NAVBAR ============
+   Square, full-width bar.
+   over-hero → transparent glass, white text
+   scrolled  → solid black, white text                */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 0;
-  pointer-events: none; /* let the inner pill capture pointer */
-  transition: padding .35s cubic-bezier(.2,.7,.2,1);
+  pointer-events: none;
 }
 .nav .nav-inner {
   pointer-events: auto;
   display: flex; align-items: center; justify-content: space-between;
-  height: 64px;
+  height: 68px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 48px;
   border-radius: 0;
-  border: 1px solid transparent;
-  background: transparent;
+  border: none;
+  border-bottom: 1px solid transparent;
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
-  transition:
-    background .35s cubic-bezier(.2,.7,.2,1),
-    border-color .35s ease,
-    border-radius .35s cubic-bezier(.2,.7,.2,1),
-    box-shadow .35s ease,
-    color .25s ease,
-    transform .35s cubic-bezier(.2,.7,.2,1),
-    max-width .35s cubic-bezier(.2,.7,.2,1);
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
+  transition: background .32s ease, border-color .32s ease, box-shadow .32s ease, backdrop-filter .32s ease;
 }
 
-/* Over hero — glass pill floating over the hero gradient */
-.nav.over-hero { padding: 16px 24px 0; color: #fff; }
+/* Over hero — transparent glass strip, white text */
+.nav.over-hero { color: #fff; }
 .nav.over-hero .nav-inner {
-  max-width: 1180px;
-  height: 60px;
-  padding: 0 22px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.13);
-  border: 1px solid rgba(255,255,255,0.22);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.15) inset,
-    0 8px 32px -16px rgba(0,0,0,0.22);
+  background: rgba(255,255,255,0.07);
+  border-bottom-color: rgba(255,255,255,0.12);
 }
 
-/* Scrolled — floats away from the top, becomes a centred pill that follows you */
-.nav.scrolled { padding: 14px 24px 0; color: var(--ink); }
+/* Scrolled — solid black full-width bar, white text */
+.nav.scrolled { color: #fff; }
 .nav.scrolled .nav-inner {
-  max-width: 1180px;
-  height: 60px;
-  padding: 0 22px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.72);
-  border: 1px solid rgba(20,30,80,0.08);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.7) inset,
-    0 12px 32px -16px rgba(20,30,80,0.18),
-    0 24px 48px -28px rgba(20,30,80,0.18);
+  background: #000;
+  border-bottom-color: rgba(255,255,255,0.06);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.45);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
-/* Mobile reset: stay edge-to-edge, no pill */
-@media (max-width: 760px) {
-  .nav.scrolled { padding: 0; }
-  .nav.scrolled .nav-inner {
-    max-width: 100%;
-    border-radius: 0;
-    height: 64px;
-    padding: 0 20px;
-    box-shadow: 0 6px 24px -18px rgba(20,30,80,0.18);
-  }
-}
-
-/* ── Sub-pages: pill nav forced at CSS level (belt + suspenders) ────────── */
-/* Applies regardless of JS scroll state — body.sub-page is set in the HTML */
-body.sub-page .nav {
-  padding: 16px 24px 0 !important;
-  color: var(--ink) !important;
-}
-body.sub-page .nav .nav-inner {
-  max-width: 1180px !important;
-  height: 60px !important;
-  padding: 0 22px !important;
-  border-radius: 999px !important;
-  background: rgba(255,255,255,0.82) !important;
-  border: 1px solid rgba(20,30,80,0.09) !important;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.8) inset,
-    0 12px 32px -16px rgba(20,30,80,0.20),
-    0 24px 48px -28px rgba(20,30,80,0.14) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-}
-/* Keep nav links dark on sub-pages */
-body.sub-page .nav .nav-links a,
-body.sub-page .nav .logo { color: var(--ink) !important; }
-body.sub-page .nav .btn-ghost { color: var(--ink) !important; border-color: rgba(20,30,80,0.22) !important; }
-body.sub-page .nav .btn-primary {
-  background: var(--brand-grad) !important;
+/* Scrolled state: buttons adapt to black bg */
+.nav.scrolled .btn-ghost {
+  border-color: rgba(255,255,255,0.35) !important;
   color: #fff !important;
+}
+.nav.scrolled .btn-primary {
+  background: #fff !important;
+  color: #000 !important;
   border-color: transparent !important;
 }
-@media (max-width: 760px) {
-  body.sub-page .nav { padding: 0 !important; }
-  body.sub-page .nav .nav-inner {
-    max-width: 100% !important;
-    border-radius: 0 !important;
-    height: 64px !important;
-    padding: 0 20px !important;
-    box-shadow: 0 4px 16px -8px rgba(20,30,80,0.15) !important;
-  }
-}
 
-/* Legacy non-glass states (kept for back-compat — no longer used) */
-.nav.over-hero:not(.glass) .nav-inner { background: rgba(20,40,90,0.18); color: #fff; }
-.nav.scrolled:not(.glass) .nav-inner { background: rgba(255,255,255,0.85); }
-/* Note: .nav-inner sizing is now controlled by `.nav .nav-inner` rules above */
+@media (max-width: 760px) {
+  .nav .nav-inner { padding: 0 20px; height: 60px; }
+}
 .logo {
   display:flex; align-items:center; gap:10px;
   font-family: var(--display);
@@ -239,20 +175,14 @@ body.sub-page .nav .btn-primary {
 }
 .btn:hover { opacity: 1; }
 .btn-primary {
-  background: #fff;
-  color: var(--indigo);
-  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
   font-weight: 600;
   opacity: 1;
   gap: 5px;
 }
-.nav.scrolled .btn-primary {
-  background: var(--brand-grad);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 6px 20px -8px rgba(85,100,201,0.5);
-}
-.btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 10px 28px -8px rgba(85,100,201,0.45); }
+.btn-primary:hover { background: rgba(255,255,255,0.28); transform: translateY(-1px); }
 .btn-star {
   font-size: 10px;
   opacity: 0.8;
@@ -273,7 +203,7 @@ body.sub-page .nav .btn-primary {
 /* ============ HERO ============ */
 .hero {
   position: relative;
-  padding: 130px 0 0;
+  padding: 108px 0 0; /* 68px nav + 40px breathing room */
   color: #fff;
   background:
     radial-gradient(1100px 700px at 90% 10%, rgba(192,128,215,0.40), transparent 60%),
@@ -281,7 +211,7 @@ body.sub-page .nav .btn-primary {
     linear-gradient(115deg, #5aa6cc 0%, #5868c4 45%, #8a6ec9 75%, #b07ec9 100%);
   overflow: hidden;
 }
-.hero .hero-grid { padding-bottom: 80px; }
+.hero .hero-grid { padding-bottom: 100px; }
 .hero::before {
   content:"";
   position: absolute; inset: 0;
