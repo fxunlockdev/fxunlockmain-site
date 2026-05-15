@@ -276,14 +276,15 @@
 .course-info-card .btn-enroll {
   display: block; width: 100%;
   text-align: center;
-  background: var(--brand-grad);
+  background: linear-gradient(135deg, #5b6bce 0%, #8b5cf6 100%);
   color: #fff;
   padding: 13px 18px;
   border-radius: 10px;
   font-weight: 600; font-size: 14px;
   border: 0;
+  box-shadow: 0 8px 22px -8px rgba(139,92,246,0.45);
 }
-.course-info-card .btn-enroll:hover { filter: brightness(1.05); }
+.course-info-card .btn-enroll:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
 .course-content { display: grid; gap: 28px; }
 .course-section h3 {
@@ -552,13 +553,13 @@
   padding: 12px 20px;
   border-radius: 10px;
   font-weight: 600; font-size: 14px;
-  background: var(--brand-grad);
+  background: linear-gradient(135deg, #5b6bce 0%, #8b5cf6 100%);
   color: #fff !important;
   border: 0;
-  box-shadow: 0 12px 28px -10px rgba(191,28,193,0.4);
+  box-shadow: 0 12px 28px -10px rgba(139,92,246,0.45);
   transition: filter .15s, transform .15s;
 }
-.btn-grad:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.btn-grad:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 16px 36px -10px rgba(139,92,246,0.55); }
 .btn-outline {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 20px;
