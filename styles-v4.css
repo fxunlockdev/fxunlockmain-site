@@ -305,9 +305,9 @@ button { font-family: inherit; cursor: pointer; }
 .fx-chip .fc-pair { font-weight: 600; letter-spacing: 0.04em; }
 .fx-chip .fc-up { color: #c0ffe2; font-weight: 600; }
 .fx-chip .fc-dn { color: #ffd1de; font-weight: 600; }
-.fx-chip.c1 { top: 18%; left: 44%; animation-delay: 0s; }
-.fx-chip.c2 { top: 62%; left: 38%; animation-delay: 2s; }
-.fx-chip.c3 { top: 8%;  left: 28%; animation-delay: 4s; }
+.fx-chip.c1 { top: 49%; left: 54%; animation-delay: 0s; }
+.fx-chip.c2 { top: 70%; left: 46%; animation-delay: 2s; }
+.fx-chip.c3 { top: 13%; left: 42%; animation-delay: 4s; }
 @keyframes chipFloat {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
@@ -395,11 +395,14 @@ button { font-family: inherit; cursor: pointer; }
 .hero h1 .accent {
   font-style: italic;
   font-weight: 400;
-  background: linear-gradient(100deg, #ffd6f5 0%, #ff85d8 45%, #e040b8 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background: linear-gradient(105deg, #ffb3e8 0%, #ff60cc 40%, #d420a0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   display: inline-block;
-  padding-top: 0.12em; margin-top: -0.12em;
-  padding-bottom: 0.18em; margin-bottom: -0.18em;
+  padding-top: 0.15em; margin-top: -0.15em;
+  padding-bottom: 0.22em; margin-bottom: -0.22em;
+  padding-right: 0.06em; /* stop italic right edge clipping */
 }
 .hero-sub {
   font-size: 17px; line-height: 1.55;
@@ -523,6 +526,9 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 12px;
   font-weight: 500;
   color: var(--ink);
+  text-transform: none;
+  letter-spacing: normal;
+  font-variant: normal;
 }
 .field input, .field select {
   width: 100%;
