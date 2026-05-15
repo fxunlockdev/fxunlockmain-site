@@ -4,7 +4,18 @@ const { useState, useEffect, useRef } = React;
 function Logo() {
   return (
     <a href="index.html" className="logo">
-      <img src="fx-icon.png" alt="" className="logo-mark-img" />
+      <svg className="logo-mark-img" viewBox="0 0 240 240" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="fxLogoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"   stopColor="#21bbd7"/>
+            <stop offset="40%"  stopColor="#3b58c8"/>
+            <stop offset="70%"  stopColor="#8a35c3"/>
+            <stop offset="100%" stopColor="#bf1cc1"/>
+          </linearGradient>
+        </defs>
+        <path d="M 125.00 150.62 L 55.00 150.62 L 20.00 90.00 L 55.00 29.38 L 125.00 29.38 L 160.00 90.00 L 138.00 90.00 L 114.00 48.43 L 66.00 48.43 L 42.00 90.00 L 66.00 131.57 L 114.00 131.57 Z" fill="url(#fxLogoGrad)"/>
+        <path d="M 115.00 89.38 L 185.00 89.38 L 220.00 150.00 L 185.00 210.62 L 115.00 210.62 L 80.00 150.00 L 102.00 150.00 L 126.00 191.57 L 174.00 191.57 L 198.00 150.00 L 174.00 108.43 L 126.00 108.43 Z" fill="url(#fxLogoGrad)"/>
+      </svg>
       <span className="logo-text">
         <span className="lt-fx">FX</span><span className="lt-un">Unlocked</span>
       </span>
@@ -35,13 +46,10 @@ function Navbar({ active = "home", solidStart = false }) {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
   const close = () => setOpen(false);
-  // Glass nav: always glassy. `over-hero` = on top of hero gradient (white text).
-  // `scrolled` = scrolled past hero (light bg, dark text).
-  // If `solidStart`, the page lacks a hero gradient, so render scrolled-style from the start.
   const mode = solidStart ? 'scrolled' : (scrolled ? 'scrolled' : 'over-hero');
   return (
-    <nav className={`nav glass ${mode} ${open ? 'open' : ''}`}>
-      <div className="nav-inner">
+    <nav className={`nav ${mode} ${open ? 'open' : ''}`}>
+      <div className="container nav-inner">
         <Logo />
         <div className="nav-links">
           {NAV_PAGES.map(p => (
@@ -55,9 +63,7 @@ function Navbar({ active = "home", solidStart = false }) {
         </div>
         <div className="nav-cta">
           <a href="#" className="btn btn-ghost">Log in</a>
-          <a href="contact-us.html" className="btn btn-primary">
-            <span className="btn-star">✦</span> Join the network
-          </a>
+          <a href="contact-us.html" className="btn btn-primary">Sign up <span className="arrow">→</span></a>
         </div>
         <button
           className="nav-burger"
