@@ -1,54 +1,408 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>FX Unlocked — Unlocking growth for FX educators</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles-v4.css?v=17"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FX Unlocked | Off-Market CPA &amp; IB Deals for FX Educators and Affiliates</title>
+<meta name="description" content="FX Unlocked connects FX educators, content creators, and IBs with market-leading broker deals you can't access alone. Guaranteed better CPA and rebates. Free marketing support. Based in Dubai." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" href="assets/fx-icon.svg" />
+<meta name="ext-resource-dependency" content="assets/fx-icon.svg" data-resource-id="logo" />
+<link rel="stylesheet" href="css/site.css" />
+<link rel="stylesheet" href="css/pages.css" />
+<template id="__bundler_thumbnail" data-bg-color="#f4f3f9">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="tg" cx="50%" cy="45%" r="55%">
+        <stop offset="0%" stop-color="#4a57d8" stop-opacity="0.28"/>
+        <stop offset="55%" stop-color="#21bbd7" stop-opacity="0.12"/>
+        <stop offset="100%" stop-color="#bf1cc1" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="tl" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#21bbd7"/>
+        <stop offset="52%" stop-color="#333da8"/>
+        <stop offset="100%" stop-color="#bf1cc1"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="#f4f3f9"/>
+    <ellipse cx="600" cy="380" rx="430" ry="430" fill="url(#tg)"/>
+    <circle cx="600" cy="380" r="250" fill="none" stroke="#3c448c" stroke-opacity="0.18"/>
+    <ellipse cx="600" cy="380" rx="250" ry="92" fill="none" stroke="#3c448c" stroke-opacity="0.14"/>
+    <ellipse cx="600" cy="380" rx="92" ry="250" fill="none" stroke="#3c448c" stroke-opacity="0.14"/>
+    <path d="M390 470 Q600 250 810 470" fill="none" stroke="url(#tl)" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="390" cy="470" r="11" fill="#21bbd7"/>
+    <circle cx="810" cy="470" r="11" fill="#bf1cc1"/>
+    <circle cx="600" cy="290" r="9" fill="#4a57d8"/>
+    <g transform="translate(548,628)">
+      <path d="M30 4 L52 4 L62 21.4 L53 26 L47.5 15.5 L33.4 15.5 L26 27.7 L33.4 39.9 L38 39.9 L38 50 L26 50 L14 30.3 Z" fill="url(#tl)"/>
+      <path d="M74 96 L52 96 L42 78.6 L51 74 L56.5 84.5 L70.6 84.5 L78 72.3 L70.6 60.1 L66 60.1 L66 50 L78 50 L90 69.7 Z" fill="url(#tl)"/>
+    </g>
+  </svg>
+</template>
 </head>
-<body>
-<div class="app-bg"></div>
-<div id="app"></div>
+<body data-page="home">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<div class="stage-bg"></div>
+<div class="stage-orb" style="width:520px;height:520px;background:#7d8bff;top:-180px;left:-120px;"></div>
+<div class="stage-orb" style="width:460px;height:460px;background:#f06ad6;top:240px;right:-160px;opacity:0.35;"></div>
 
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel" src="parts/hero.jsx"></script>
-<script type="text/babel" src="parts/showcase.jsx"></script>
-<script type="text/babel" src="parts/sections.jsx"></script>
-<script type="text/babel" src="parts/sections-v2.jsx"></script>
-<script type="text/babel" src="parts/closing.jsx"></script>
-<script type="text/babel" src="parts/tweaks.jsx"></script>
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow" data-reveal><span class="dot"></span> The FX Industry's Growth Partner</span>
+      <h1 class="h-display" data-reveal data-reveal-delay="1">Unlock better deals. <br/><em class="accent grad-ink">Grow</em> your FX business.</h1>
+      <p class="lead" data-reveal data-reveal-delay="2">FX Unlocked connects FX educators, content creators, and introducing brokers with the world's leading trading platforms on off-market CPA and rebate deals you won't find anywhere else. Backed by free marketing support, free educational content, and a team with over a decade of industry experience.</p>
+      <div class="hero-cta wrap-row" data-reveal data-reveal-delay="3">
+        <a href="affiliates-ibs.html" class="btn btn-primary btn-lg">Apply as an Affiliate or IB <span class="ar" data-icon="arrow"></span></a>
+        <a href="affiliates-ibs.html#platforms" class="btn btn-ghost btn-lg">Are you a Trading Platform? <span class="ar" data-icon="arrowUpRight"></span></a>
+      </div>
+      <div class="ticker-bar" data-reveal data-reveal-delay="4">
+        <div class="tk" data-ticker data-base="1.08542">
+          <span class="pair">EUR / USD</span>
+          <span class="row"><span data-tk-val>1.08542</span><span class="delta pos" data-tk-d>▲ +0.18%</span></span>
+        </div>
+        <div class="tk" data-ticker data-base="1.26310">
+          <span class="pair">GBP / USD</span>
+          <span class="row"><span data-tk-val>1.26310</span><span class="delta pos" data-tk-d>▲ +0.24%</span></span>
+        </div>
+        <div class="tk" data-ticker data-base="2387.40">
+          <span class="pair">XAU / USD</span>
+          <span class="row"><span data-tk-val>2387.40</span><span class="delta pos" data-tk-d>▲ +0.62%</span></span>
+        </div>
+      </div>
+    </div>
 
-<script type="text/babel">
-function App() {
-  return (
-    <React.Fragment>
-      <Navbar active="home"/>
-      <FloatingSide/>
-      <main>
-        <Hero/>
-        <PartnersMarquee/>
-        <CrystalShowcase/>
-        <AboutV2/>
-        <MaximizeRevenueV2/>
-        <TradeWithConfidenceV2/>
-        <NumbersSection/>
-        <Testimonials/>
-        <GetStarted/>
-      </main>
-      <Footer/>
-      <FXTweaks/>
-    </React.Fragment>
-  );
-}
+    <div class="hero-canvas-wrap" data-reveal data-reveal-delay="2">
+      <div class="hero-viz" aria-hidden="true">
+        <div class="mesh mesh-a"></div>
+        <div class="mesh mesh-b"></div>
+        <div class="mesh mesh-c"></div>
+        <svg class="hero-chart" viewBox="0 0 1200 500" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="hcArea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
+              <stop offset="55%" stop-color="#ffffff" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="hcArea2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9bf3ff" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#9bf3ff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="hcLine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#9bf3ff" stop-opacity="0"/>
+              <stop offset="18%" stop-color="#9bf3ff" stop-opacity="0.95"/>
+              <stop offset="58%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#ffd1f7"/>
+            </linearGradient>
+            <filter id="hcGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="7" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
 
-ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+          <!-- faint horizontal gridlines -->
+          <g class="hc-grid" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1" stroke-dasharray="3 9">
+            <line x1="0" y1="140" x2="1200" y2="140"/>
+            <line x1="0" y1="240" x2="1200" y2="240"/>
+            <line x1="0" y1="340" x2="1200" y2="340"/>
+            <line x1="0" y1="440" x2="1200" y2="440"/>
+          </g>
+
+          <!-- volume bars -->
+          <g class="hc-vol" fill="#ffffff"></g>
+
+          <!-- secondary trend (behind) -->
+          <path class="hc-area2" d="M0,440 C140,420 240,425 380,380 C520,335 620,355 760,300 C900,245 1000,265 1140,215 L1200,200 L1200,500 L0,500 Z" fill="url(#hcArea2)"/>
+
+          <!-- main area + line -->
+          <path class="hc-area" d="M0,400 C140,380 230,392 340,344 C450,296 530,316 650,250 C770,184 850,206 970,140 C1070,96 1130,110 1200,72 L1200,500 L0,500 Z" fill="url(#hcArea)"/>
+          <path class="hc-line" d="M0,400 C140,380 230,392 340,344 C450,296 530,316 650,250 C770,184 850,206 970,140 C1070,96 1130,110 1200,72" fill="none" stroke="url(#hcLine)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#hcGlow)"/>
+
+          <!-- glowing nodes on the line -->
+          <g class="hc-nodes" filter="url(#hcGlow)">
+            <circle class="hc-node n1" cx="340" cy="344" r="4.5" fill="#fff"/>
+            <circle class="hc-node n2" cx="650" cy="250" r="4.5" fill="#fff"/>
+            <circle class="hc-node n3" cx="970" cy="140" r="4.5" fill="#fff"/>
+          </g>
+
+          <!-- leading pulse -->
+          <circle class="hc-pulse-ring" cx="1196" cy="74" r="6" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+          <circle class="hc-pulse" cx="1196" cy="74" r="6" fill="#ffffff" filter="url(#hcGlow)"/>
+        </svg>
+
+        <!-- live price tag -->
+        <div class="hc-pricetag" data-ticker data-base="1.27310">
+          <span class="hc-pt-pair">PORTFOLIO</span>
+          <span class="hc-pt-row"><span data-tk-val>1.27310</span><span class="hc-pt-d" data-tk-d>▲ +1.84%</span></span>
+        </div>
+
+        <div class="fx-chips">
+          <div class="fx-chip c1"><span class="fc-pair">EUR/USD</span><span class="fc-up">+0.42%</span></div>
+          <div class="fx-chip c2"><span class="fc-pair">XAU/USD</span><span class="fc-up">+1.07%</span></div>
+          <div class="fx-chip c3"><span class="fc-pair">GBP/JPY</span><span class="fc-dn">−0.18%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BROKER PARTNERS MARQUEE ============ -->
+<section class="brokers">
+  <div class="wrap">
+    <p class="eyebrow lbl" style="justify-content:center;display:flex">Our Broker Partners</p>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track" id="brokerTrack"></div>
+  </div>
+</section>
+
+<!-- ============ WHO WE WORK WITH ============ -->
+<section class="section" id="who">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> Who We Work With</span>
+      <h2 class="h2 mt-m">Who We Work With</h2>
+      <p class="lead text-pretty">We sit in the middle of the FX ecosystem, matching the right partners with the right regulated brokers on terms that reflect the true value of their audience.</p>
+    </div>
+    <div class="grid cols-3">
+      <div class="card hover-lift persona" data-reveal>
+        <span class="num-badge">01</span>
+        <div class="icon-tile" data-icon="creator"></div>
+        <h3 class="h3">FX Educators &amp; Content Creators</h3>
+        <p class="body">You've built an audience around trading content. We'll connect you to the right broker partners and get you a deal that actually reflects the quality of your traffic, plus marketing support to keep growing.</p>
+        <a href="affiliates-ibs.html" class="btn btn-light">Apply as an Affiliate <span class="ar" data-icon="arrow"></span></a>
+      </div>
+      <div class="card hover-lift persona" data-reveal data-reveal-delay="1">
+        <span class="num-badge">02</span>
+        <div class="icon-tile" data-icon="ib"></div>
+        <h3 class="h3">Introducing Brokers</h3>
+        <p class="body">You have an established client base of active traders. We'll place you on the best rebate structure in the market for your volume, and give you the tools to scale your book further.</p>
+        <a href="affiliates-ibs.html" class="btn btn-light">Apply as an IB <span class="ar" data-icon="arrow"></span></a>
+      </div>
+      <div class="card hover-lift persona" data-reveal data-reveal-delay="2">
+        <span class="num-badge">03</span>
+        <div class="icon-tile" data-icon="platform"></div>
+        <h3 class="h3">Trading Platforms &amp; Brokers</h3>
+        <p class="body">You need quality client acquisition from vetted, high-performing affiliates and IBs in specific markets. We'll match you with the right partners and manage the relationship.</p>
+        <a href="affiliates-ibs.html#platforms" class="btn btn-light">Partner With Us <span class="ar" data-icon="arrow"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" style="background:var(--bg-warm)">
+  <div class="wrap split">
+    <div data-reveal>
+      <span class="eyebrow"><span class="dot"></span> About FX Unlocked</span>
+      <h2 class="h2 mt-m text-balance">Built by people who know the FX industry.</h2>
+      <p class="body mt-m">FX Unlocked was built by people who've spent their careers inside the foreign exchange industry. We've seen talented educators undersell their audiences, IBs stuck on poor deals, and brokers struggle to find quality affiliate partners in the markets they want to reach.</p>
+      <p class="body mt-s">So we built the solution. We sit in the middle, connecting educators and IBs to regulated trading platforms on off-market terms, with the marketing support and educational tools to help our partners grow their businesses alongside their broker relationships.</p>
+      <ul class="about-bullets">
+        <li><span class="ic" data-icon="check"></span><span class="body" style="color:var(--ink)">Off-market terms, with the marketing support and educational tools to help partners grow alongside their broker relationships.</span></li>
+        <li><span class="ic" data-icon="pin"></span><span class="body" style="color:var(--ink)">Based in Dubai. Operating globally. Over a decade of FX expertise behind every deal we negotiate.</span></li>
+      </ul>
+      <a href="about.html" class="btn btn-dark mt-l">Our Full Story <span class="ar" data-icon="arrow"></span></a>
+    </div>
+    <div class="split-visual viz-slot" data-reveal data-reveal-delay="1">
+      <image-slot id="home-hq" style="width:100%;height:100%;min-height:440px;display:block" shape="rounded" radius="26" placeholder="Drop a photo of the Dubai Marina HQ"></image-slot>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BY THE NUMBERS ============ -->
+<section class="section stat-band tight">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat" data-reveal>
+        <div class="big"><span data-count="1500" data-suffix="+">1500+</span></div>
+        <div class="lbl">Affiliates &amp; IBs</div>
+        <div class="sup">A growing global network of professional educators and brokers.</div>
+      </div>
+      <div class="stat" data-reveal data-reveal-delay="1">
+        <div class="big"><span data-count="6">6</span></div>
+        <div class="lbl">Partner Platforms</div>
+        <div class="sup">Regulated brokers across every major trading region.</div>
+      </div>
+      <div class="stat" data-reveal data-reveal-delay="2">
+        <div class="big"><span data-count="6">6</span></div>
+        <div class="lbl">Countries with Staff</div>
+        <div class="sup">On-the-ground expertise where it matters most.</div>
+      </div>
+      <div class="stat" data-reveal data-reveal-delay="3">
+        <div class="big"><span data-count="10" data-suffix="+ Yrs">10+ Yrs</span></div>
+        <div class="lbl">Industry Experience</div>
+        <div class="sup">Relationships and leverage built over a decade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> How It Works</span>
+      <h2 class="h2 mt-m">Three steps to a better deal.</h2>
+    </div>
+    <div class="steps">
+      <div class="step" data-reveal>
+        <div class="step-n">01</div>
+        <div class="step-line"></div>
+        <h3 class="h3">Apply &amp; Speak to Us</h3>
+        <p class="body">Fill in our short form. We'll arrange a call with your regional country manager within 24 hours to understand your audience, volume, and current deal.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="1">
+        <div class="step-n">02</div>
+        <div class="step-line"></div>
+        <h3 class="h3">Get Matched &amp; Onboarded</h3>
+        <p class="body">We match you with the right broker partner for your geography and traffic type, negotiate your deal, and handle onboarding from start to finish.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="2">
+        <div class="step-n">03</div>
+        <h3 class="h3">Start Earning. Keep Growing.</h3>
+        <p class="body">Go live on your best-ever CPA or rebate structure. We stay with you through regular reviews, marketing support, and access to our full product suite.</p>
+      </div>
+    </div>
+    <div class="center mt-l" data-reveal><a href="affiliates-ibs.html" class="btn btn-primary btn-lg">Get Started <span class="ar" data-icon="arrow"></span></a></div>
+  </div>
+</section>
+
+<!-- ============ WHAT PARTNERS GET ============ -->
+<section class="section" style="background:var(--bg-warm)">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> What Partners Get</span>
+      <h2 class="h2 mt-m">Everything you need to grow.</h2>
+      <p class="lead">Tools and support built for the affiliate and IB, not the retail trader.</p>
+    </div>
+    <div class="grid cols-3">
+      <div class="benefit" data-reveal>
+        <div class="icon-tile" data-icon="deal"></div>
+        <h4 class="h4">Off-Market Broker Deals</h4>
+        <p class="body">We guarantee to beat your current CPA or rebate arrangement. Our network volume gives us leverage you can't access alone.</p>
+      </div>
+      <div class="benefit" data-reveal data-reveal-delay="1">
+        <div class="icon-tile" data-icon="megaphone"></div>
+        <h4 class="h4">Free Dedicated Marketing Manager</h4>
+        <p class="body">Every active partner gets an in-house marketing manager at no cost. Social strategy, content planning, brand building. We help you grow the audience that drives your revenue.</p>
+      </div>
+      <div class="benefit" data-reveal data-reveal-delay="2">
+        <div class="icon-tile" data-icon="education"></div>
+        <h4 class="h4">Free Educational Content for Your Audience</h4>
+        <p class="body">Give your community access to our professional trading courses free of charge to you. Use them as a lead magnet, a member benefit, or a premium upsell. The content is yours to deploy.</p>
+      </div>
+      <div class="benefit" data-reveal>
+        <div class="icon-tile" data-icon="suite"></div>
+        <h4 class="h4">Full FX Product Portfolio</h4>
+        <p class="body">Beyond broker referrals, you'll have access to our wider product suite: AI algorithmic trading tools, webinar series, and structured education, all ready to offer your audience.</p>
+      </div>
+      <div class="benefit" data-reveal data-reveal-delay="1">
+        <div class="icon-tile" data-icon="review"></div>
+        <h4 class="h4">Bi-Monthly Reviews &amp; Growth Audits</h4>
+        <p class="body">A fortnightly check-in call and a full half-yearly business audit. We review your content, traffic, conversions, and revenue, and tell you exactly what to do next.</p>
+      </div>
+      <a class="benefit" data-reveal data-reveal-delay="2" href="affiliates-ibs.html" style="display:flex;flex-direction:column;justify-content:center;background:var(--grad);color:#fff;border:none">
+        <h4 class="h4" style="color:#fff">See the full list of partner benefits</h4>
+        <span class="btn" style="align-self:flex-start;margin-top:16px;color:#fff;border:1.5px solid rgba(255,255,255,0.4)">Explore <span class="ar" data-icon="arrow"></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNER PLATFORMS ============ -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <h2 class="h3" style="font-weight:600">Trusted by the world's leading FX brokers</h2>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track" id="platformTrack"></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" style="background:var(--bg-warm)">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> What Our Partners Say</span>
+      <h2 class="h2 mt-m">What Our Partners Say</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="t-scroller" id="testimonials"></div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-banner" data-reveal>
+      <span class="eyebrow on-dark" style="color:var(--dark-mute)"><span class="dot"></span> Ready when you are</span>
+      <h2 class="h2 mt-m text-balance" style="max-width:18ch">Ready to unlock your revenue?</h2>
+      <p class="lead mt-m" style="color:var(--dark-mute);max-width:54ch">Join 200+ affiliates and IBs already earning more with FX Unlocked. Tell us about your audience and current deal  -  we'll tell you exactly what we can do better.</p>
+      <div class="wrap-row mt-l">
+        <a href="affiliates-ibs.html" class="btn btn-primary btn-lg">Apply Now <span class="ar" data-icon="arrow"></span></a>
+        <a href="contact.html" class="btn btn-on-dark btn-lg">Talk to the team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/icons.js"></script>
+<script src="js/image-slot.js"></script>
+<script src="js/site.js"></script>
+<script>
+  // hero
+  function bootHome() {
+    // volume bars under the chart
+    const vol = document.querySelector(".hc-vol");
+    if (vol) {
+      const n = 22, baseY = 470, gap = 1200 / n, bw = gap * 0.42;
+      let bars = "";
+      for (let i = 0; i < n; i++) {
+        const x = i * gap + (gap - bw) / 2;
+        const h = 24 + Math.abs(Math.sin(i * 1.7) * 70) + (i / n) * 40;
+        const op = 0.08 + (i / n) * 0.12;
+        bars += `<rect x="${x.toFixed(1)}" y="${(baseY - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill-opacity="${op.toFixed(2)}" style="animation-delay:${(0.5 + i * 0.04).toFixed(2)}s"/>`;
+      }
+      vol.innerHTML = bars;
+    }
+
+    // broker marquee (IC Markets + IC Trading first)
+    const brokers = ["IC Markets", "IC Trading", "Pepperstone", "Vantage", "FP Markets", "Eightcap", "ThinkMarkets", "Axi"];
+    const bt = document.getElementById("brokerTrack");
+    const brokerHTML = brokers.map(b => `<span class="broker-logo"><span class="bdot"></span>${b}</span>`).join("");
+    bt.innerHTML = brokerHTML + brokerHTML;
+
+    const platforms = ["IC Markets", "IC Trading", "Pepperstone", "Vantage", "FP Markets", "Eightcap"];
+    const pt = document.getElementById("platformTrack");
+    const pHTML = platforms.map(b => `<span class="broker-logo"><span class="bdot"></span>${b}</span>`).join("");
+    pt.innerHTML = pHTML + pHTML;
+
+    // testimonials
+    const T = [
+      { n: "Amber M", r: "Affiliate", t: "Being new to the affiliate model, the team at FX Unlocked guided and supported me throughout. Since working with them, I've seen growth every single month  -  they're always on hand and respond incredibly quickly. I'm excited to see where my business will be in a few months with their continued support." },
+      { n: "James M", r: "FX Educator", t: "As a content creator in the FX space with a global audience, I'd never been able to grow while simultaneously monetizing my US traffic. FX Unlocked, through their network, were able to secure me a partnership with a highly reputable US firm  -  something I couldn't have done alone." },
+      { n: "Jack L", r: "FX Educator", t: "Joining FX Unlocked has been a game-changer. I had a growing audience but struggled to find effective ways to monetize my traffic. The partnerships I've formed through FX Unlocked have not only boosted my revenue but genuinely enhanced the quality of my content." },
+      { n: "Jasmine M", r: "FX Educator", t: "FX Unlocked have been amazing to work with. I'd struggled to market myself and generate leads. Within days they helped me build a full strategy, a professional brand, website, and logo. They've literally held my hand through the whole process and I'm still growing every day." },
+    ];
+    document.getElementById("testimonials").innerHTML = T.map(x => `
+      <div class="tcard">
+        <div class="q-ic">${icon("quote")}</div>
+        <p>${x.t}</p>
+        <div class="who">
+          <div class="av">${x.n[0]}</div>
+          <div><div class="nm">${x.n}</div><div class="rl">${x.r}</div></div>
+        </div>
+      </div>`).join("");
+  }
+  if (document.readyState === "loading") window.addEventListener("DOMContentLoaded", bootHome);
+  else bootHome();
 </script>
 </body>
 </html>

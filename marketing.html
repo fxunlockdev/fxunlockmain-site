@@ -1,47 +1,94 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Marketing — FX Unlocked</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles-v4.css?v=17"/>
-<link rel="stylesheet" href="pages-v4.css?v=17"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free Marketing Support for FX Affiliates &amp; IBs | FX Unlocked</title>
+<meta name="description" content="Every FX Unlocked partner gets a dedicated marketing manager, social strategy, and bi-monthly growth reviews at no cost. We help you grow the audience that grows your revenue." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" href="assets/fx-icon.svg" />
+<link rel="stylesheet" href="css/site.css" />
+<link rel="stylesheet" href="css/pages.css" />
 </head>
-<body class="sub-page">
-<div class="app-bg"></div>
-<div id="app"></div>
+<body data-page="marketing">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<div class="stage-bg"></div>
+<div class="stage-orb" style="width:520px;height:520px;background:#52d3ec;top:-180px;left:-120px;opacity:0.4"></div>
+<div class="stage-orb" style="width:460px;height:460px;background:#f06ad6;top:340px;right:-160px;opacity:0.28;"></div>
 
-<script type="text/babel" src="parts/hero.jsx"></script>
-<script type="text/babel" src="parts/closing.jsx"></script>
-<script type="text/babel" src="parts/page-marketing.jsx"></script>
+<header class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="wrap">
+    <span class="eyebrow" data-reveal><span class="dot"></span> Marketing Support</span>
+    <h1 class="h1 text-balance" data-reveal data-reveal-delay="1">Grow your audience. <span class="grad-ink">We'll show you how.</span></h1>
+    <p class="lead" data-reveal data-reveal-delay="2">Every FX Unlocked partner gets a dedicated in-house marketing manager  -  at no cost. We help you build a bigger, better-quality audience that converts. Because a stronger audience means a stronger affiliate business.</p>
+    <div class="wrap-row mt-l" data-reveal data-reveal-delay="3" style="justify-content:center">
+      <a href="contact.html" class="btn btn-primary btn-lg">Become a Partner <span class="ar" data-icon="arrow"></span></a>
+    </div>
+  </div>
+</header>
 
-<script type="text/babel">
-function App() {
-  return (
-    <React.Fragment>
-      <Navbar active="marketing"/>
-      <FloatingSide/>
-      <main>
-        <MktHero/>
-        <MktFeatures/>
-        <MktFocus/>
-        <MktManager/>
-        <MktLongTerm/>
-        <MktNumbers/>
-        <Testimonials/>
-      </main>
-      <Footer/>
-    </React.Fragment>
-  );
-}
-ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+<!-- WHAT WE HELP WITH -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> What We Help With</span>
+      <h2 class="h2 mt-m">What Your Free Marketing Support Covers</h2>
+    </div>
+    <div class="grid cols-3" id="mGrid"></div>
+  </div>
+</section>
+
+<!-- WHY WE OFFER -->
+<section class="section" style="background:var(--bg-warm)">
+  <div class="wrap split">
+    <div data-reveal>
+      <span class="eyebrow"><span class="dot"></span> Why We Offer This</span>
+      <h2 class="h2 mt-m text-balance">Why We Offer This</h2>
+    </div>
+    <div data-reveal data-reveal-delay="1">
+      <p class="body">The marketing support isn't a gesture. It's central to how FX Unlocked works. Our broker partners need quality, consistent traffic. Our affiliate and IB partners need growing audiences to deliver that traffic. When we help you grow, everyone benefits, including us.</p>
+      <p class="body mt-s">This is why it's genuinely free, genuinely substantive, and genuinely ongoing, not a one-time call or a PDF of generic tips.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="wrap"><div class="cta-banner" data-reveal>
+    <h2 class="h2 text-balance" style="max-width:18ch">Ready to build your FX business?</h2>
+    <p class="lead mt-m" style="color:var(--dark-mute);max-width:50ch">Ready to build your FX business?</p>
+    <div class="wrap-row mt-l">
+      <a href="contact.html" class="btn btn-primary btn-lg">Become a Partner <span class="ar" data-icon="arrow"></span></a>
+      <a href="contact.html" class="btn btn-on-dark btn-lg">Contact Us</a>
+    </div>
+  </div></div>
+</section>
+
+<script src="js/icons.js"></script>
+<script src="js/site.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const items = [
+    ["megaphone","Social Strategy &amp; Content Planning","We audit your presence across Instagram, TikTok, YouTube and LinkedIn, then build a content calendar and growth strategy tailored to your niche, voice and audience stage."],
+    ["spark","Brand Building","Not yet a recognisable brand? We'll help you get there  -  from naming and logo through to tone of voice and visual identity. We've done this for multiple partners from scratch."],
+    ["review","Website &amp; Journey Review","We review your site or landing page end to end and give you a written report on improving conversion, messaging, and the journey from first click to broker sign-up."],
+    ["growth","Audience Growth Tactics","We tell you exactly what's working right now in FX education  -  the formats, hooks, topics and posting cadence that drive real follower and subscriber growth."],
+    ["clock","Bi-Monthly Strategy Calls","A call with your dedicated marketing manager every two weeks. We review what's performing, what isn't, and agree next steps  -  specific actions for your specific business."],
+    ["chart","Half-Yearly Growth Audit","Every six months, a full review of your traffic, content performance, audience growth and revenue  -  written up as a detailed action plan for the next six months."],
+  ];
+  document.getElementById("mGrid").innerHTML = items.map((m,i)=>`
+    <div class="benefit" data-reveal data-reveal-delay="${i%3}">
+      <div class="icon-tile">${icon(m[0])}</div>
+      <h4 class="h4">${m[1]}</h4>
+      <p class="body">${m[2]}</p>
+    </div>`).join("");
+  document.querySelectorAll("#mGrid [data-reveal]").forEach(e=>{
+    new IntersectionObserver((ents,o)=>ents.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");o.unobserve(en.target);}}),{threshold:0.1}).observe(e);
+  });
+});
 </script>
 </body>
 </html>

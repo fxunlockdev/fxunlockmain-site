@@ -1,47 +1,184 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Affiliates &amp; IBs — FX Unlocked</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles-v4.css?v=17"/>
-<link rel="stylesheet" href="pages-v4.css?v=17"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Affiliate &amp; IB Deals | FX Unlocked  -  Off-Market CPA and Rebates, Guaranteed</title>
+<meta name="description" content="Join 200+ affiliates and IBs earning more with FX Unlocked. We guarantee to beat your current CPA or rebate deal using our network of 12 regulated broker partners. Free marketing support included." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="icon" href="assets/fx-icon.svg" />
+<link rel="stylesheet" href="css/site.css" />
+<link rel="stylesheet" href="css/pages.css" />
 </head>
-<body class="sub-page">
-<div class="app-bg"></div>
-<div id="app"></div>
+<body data-page="affiliates">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<div class="stage-bg"></div>
+<div class="stage-orb" style="width:520px;height:520px;background:#7d8bff;top:-180px;left:-120px;"></div>
+<div class="stage-orb" style="width:460px;height:460px;background:#f06ad6;top:300px;right:-160px;opacity:0.3;"></div>
 
-<script type="text/babel" src="parts/hero.jsx"></script>
-<script type="text/babel" src="parts/closing.jsx"></script>
-<script type="text/babel" src="parts/page-affiliates.jsx"></script>
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="wrap">
+    <span class="eyebrow" data-reveal><span class="dot"></span> Affiliates &amp; IBs</span>
+    <h1 class="h1 text-balance" data-reveal data-reveal-delay="1">Market-leading CPA &amp; rebate deals. <span class="grad-ink">Guaranteed.</span></h1>
+    <p class="lead" data-reveal data-reveal-delay="2">If you're an FX educator, content creator, or introducing broker with an active client base  -  we will get you a better deal than you're currently on. That's not a sales pitch. It's what our network of 200+ partners and 12 platform relationships makes possible.</p>
+    <div class="wrap-row mt-l" data-reveal data-reveal-delay="3" style="justify-content:center">
+      <a href="contact.html" class="btn btn-primary btn-lg">Apply Now <span class="ar" data-icon="arrow"></span></a>
+    </div>
+    <div class="mt-l" data-reveal data-reveal-delay="3" style="display:flex;justify-content:center">
+      <div data-tabs>
+        <div class="tabs" style="margin-bottom:8px">
+          <button class="tab active" data-tab="aff">For Affiliates</button>
+          <button class="tab" data-tab="ib">For IBs</button>
+        </div>
+        <div data-panel="aff" class="active center small" style="max-width:60ch;margin:14px auto 0">Earn a CPA for every funded client you refer through your content, social, or website  -  on rates negotiated at network scale.</div>
+        <div data-panel="ib" class="center small" style="max-width:60ch;margin:14px auto 0">Earn pip-based rebates on your clients' trading volume, month after month  -  placed on the best structure in the market for your book.</div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<script type="text/babel">
-function App() {
-  return (
-    <React.Fragment>
-      <Navbar active="affiliates"/>
-      <FloatingSide/>
-      <main>
-        <AffHero/>
-        <AffIntro/>
-        <AffWhy/>
-        <AffSteps/>
-        <AffMonetize/>
-        <Testimonials/>
-        <AffPlatforms/>
-      </main>
-      <Footer/>
-    </React.Fragment>
-  );
-}
-ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+<!-- THE DIFFERENCE -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> The FX Unlocked Difference</span>
+      <h2 class="h2 mt-m text-balance">Why 200+ Affiliates &amp; IBs Choose FX Unlocked</h2>
+    </div>
+    <div class="grid cols-2" id="diffGrid"></div>
+  </div>
+</section>
+
+<!-- 3 STEP -->
+<section class="section" style="background:var(--bg-warm)">
+  <div class="wrap">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> Getting Started</span>
+      <h2 class="h2 mt-m">Getting started takes minutes.</h2>
+    </div>
+    <div class="steps">
+      <div class="step" data-reveal>
+        <div class="step-n">01</div><div class="step-line"></div>
+        <h3 class="h3">Apply &amp; Arrange a Call</h3>
+        <p class="body">Fill in our short form with your details, your audience size, current deal, and geographic focus. We'll arrange a call with your regional country manager within 24 hours. Face-to-face where possible, video call if not.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="1">
+        <div class="step-n">02</div><div class="step-line"></div>
+        <h3 class="h3">Get Matched &amp; Onboarded</h3>
+        <p class="body">Based on your audience, traffic quality, geography, and growth potential, we'll identify the right broker partner and negotiate your deal. We handle the compliance and onboarding process end to end.</p>
+      </div>
+      <div class="step" data-reveal data-reveal-delay="2">
+        <div class="step-n">03</div>
+        <h3 class="h3">Start Earning. Keep Growing.</h3>
+        <p class="body">Go live on your new deal and start earning. We'll be with you every step of the way, with regular reviews, marketing support, and ongoing access to our full product suite as you scale.</p>
+      </div>
+    </div>
+    <div class="center mt-l" data-reveal><a href="contact.html" class="btn btn-primary btn-lg">Apply Now <span class="ar" data-icon="arrow"></span></a></div>
+  </div>
+</section>
+
+<!-- ARE YOU A TRADING PLATFORM -->
+<section class="section" id="platforms">
+  <div class="wrap split">
+    <div data-reveal>
+      <span class="eyebrow"><span class="dot"></span> For Brokers</span>
+      <h2 class="h2 mt-m text-balance">Are you a trading platform or broker?</h2>
+      <p class="body mt-m">FX Unlocked works with regulated trading platforms looking to grow their active client base through quality affiliate and IB partnerships. We vet our partners rigorously and match them to brokers based on traffic quality, geographic focus, and audience fit  -  so the clients you acquire are the right ones.</p>
+      <a href="contact.html" class="btn btn-dark mt-l">Speak to Our Team <span class="ar" data-icon="arrow"></span></a>
+    </div>
+    <div data-reveal data-reveal-delay="1">
+      <ul class="tool-list" style="margin-top:0">
+        <li><span class="ic" data-icon="check"></span>Vetted affiliates and IBs matched to your target regions and client profile</li>
+        <li><span class="ic" data-icon="check"></span>Quality FTD acquisition from engaged, conversion-ready audiences</li>
+        <li><span class="ic" data-icon="check"></span>Flexible partnership structures  -  CPA, rebate, or hybrid</li>
+        <li><span class="ic" data-icon="check"></span>Transparent reporting and regular strategy reviews</li>
+        <li><span class="ic" data-icon="check"></span>A single point of contact managing the affiliate relationship on your behalf</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-warm)">
+  <div class="wrap" style="max-width:920px">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> Frequently Asked Questions</span>
+      <h2 class="h2 mt-m">Frequently Asked Questions</h2>
+    </div>
+    <div data-accordion data-reveal id="faq"></div>
+  </div>
+</section>
+
+<!-- PLATFORM LOGOS -->
+<section class="section tight">
+  <div class="wrap"><div class="sec-head center" data-reveal><h2 class="h3" style="font-weight:600">Our platform partners</h2></div></div>
+  <div class="marquee"><div class="marquee-track" id="platformTrack"></div></div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="wrap"><div class="cta-banner" data-reveal>
+    <h2 class="h2 text-balance" style="max-width:18ch">Show us your current deal. We'll beat it.</h2>
+    <p class="lead mt-m" style="color:var(--dark-mute);max-width:52ch">Tell us about your audience and current arrangement  -  we'll tell you exactly what we can do better.</p>
+    <div class="wrap-row mt-l"><a href="contact.html" class="btn btn-primary btn-lg">Apply Now <span class="ar" data-icon="arrow"></span></a></div>
+  </div></div>
+</section>
+
+<script src="js/icons.js"></script>
+<script src="js/site.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const diffs = [
+    ["deal","We Guarantee a Better Deal","Show us your current CPA or rebate structure. We will go to our network of 12 regulated broker partners, backed by the collective volume of our entire affiliate and IB network, and secure you a materially better arrangement. If for any reason we genuinely can't, we'll tell you honestly and explain why."],
+    ["target","Off-Market Access","The deals we negotiate are not available through broker websites or standard affiliate portals. They're structured specifically for our network based on volume, geography, and traffic quality. As our partner, you benefit from the leverage of the entire FX Unlocked network, not just your own position."],
+    ["megaphone","A Free, Dedicated Marketing Manager","Every active FX Unlocked partner gets access to our in-house marketing team at no cost. We'll review your social media presence, help you plan content, advise on audience growth strategy, and support you with campaign execution. We grow your reach because a bigger, better-quality audience means better results for you and for your broker partner."],
+    ["education","Free Educational Content for Your Community","Our professionally produced trading courses are available for you to offer to your own audience free of charge to you. Use them as a free lead magnet to grow your email list, a value-add for your community members, or a premium product to bundle into your paid offering. The content is yours to deploy however works best for your business model."],
+    ["suite","Full FX Product Portfolio","Our partner offering goes beyond broker referrals. You'll have access to our full suite of FX products, including AI-powered trading tools and educational content series, giving you more to offer your audience and more revenue streams to develop."],
+    ["review","Bi-Monthly Reviews &amp; Half-Yearly Growth Audits","We schedule a fortnightly call with every active partner to review what's working. Every six months we conduct a full growth audit: your content, your traffic, your conversion rate, and your revenue. We give you a written action plan with specific recommendations. This isn't a box-ticking exercise. It's how we make sure every partner is on an upward trajectory."],
+    ["manager","Dedicated Regional Country Managers","You'll have a named contact in your region who understands your local market, the regulatory environment, and the broker landscape where you operate. Not a helpdesk. A person."],
+  ];
+  document.getElementById("diffGrid").innerHTML = diffs.map((d,i)=>`
+    <div class="benefit" data-reveal data-reveal-delay="${i%2?1:0}">
+      <div class="icon-tile" >${icon(d[0])}</div>
+      <h4 class="h4">${d[1]}</h4>
+      <p class="body">${d[2]}</p>
+    </div>`).join("");
+
+  const faqs = [
+    ["What's the difference between an Affiliate and an IB?","An Affiliate typically promotes a broker to their audience online through social media, YouTube, a website, or a newsletter and earns a CPA (cost per acquisition) for every new funded client they refer. An Introducing Broker (IB) tends to have a more direct, ongoing relationship with their clients and earns rebates based on those clients' trading volume, month after month. FX Unlocked works effectively with both models, and the right broker match will depend on which structure best suits your business."],
+    ["What counts as a 'deal' and how does FX Unlocked improve it?","Your 'deal' is the commercial arrangement between you and your broker partner, typically a CPA rate per funded client for affiliates or a pip-based rebate per lot traded for IBs. Because FX Unlocked aggregates the volume and traffic of 200+ partners, we can negotiate at a network level that individual affiliates and IBs simply can't access alone. The result is materially higher rates for the same traffic you're already sending."],
+    ["How quickly can I get started?","Once you've applied, we aim to arrange an initial call within 24 hours. Full onboarding to a broker partner typically takes 3–7 business days, depending on the broker's compliance process and your geography."],
+    ["Can I switch broker partners if things aren't working?","Yes. We're not tied to a single broker, and we're not incentivised to keep you somewhere that isn't performing. If the match isn't right, we'll review your options and move you."],
+    ["Do I need a minimum audience size or client base?","We work with partners at different stages of growth. While a larger, higher-quality audience means access to higher CPA rates, we've successfully onboarded and grown smaller educators and IBs through our marketing support. Speak to us about where you are and we'll give you an honest view of what's possible."],
+  ];
+  document.getElementById("faq").innerHTML = faqs.map((f,i)=>`
+    <div class="acc-item ${i===0?'open':''}">
+      <button class="acc-head"><h4>${f[0]}</h4><span class="acc-icon">${icon("plus")}</span></button>
+      <div class="acc-body"><p class="body">${f[1]}</p></div>
+    </div>`).join("");
+
+  const platforms = ["IC Markets","IC Trading","Pepperstone","Vantage","FP Markets","Eightcap"];
+  const pt = document.getElementById("platformTrack");
+  const pHTML = platforms.map(b=>`<span class="broker-logo"><span class="bdot"></span>${b}</span>`).join("");
+  pt.innerHTML = pHTML + pHTML;
+
+  // re-init accordion for injected items
+  document.querySelectorAll("[data-accordion] .acc-item").forEach((item) => {
+    const head = item.querySelector(".acc-head");
+    head.addEventListener("click", () => {
+      const open = item.classList.contains("open");
+      item.closest("[data-accordion]").querySelectorAll(".acc-item").forEach((i)=>i.classList.remove("open"));
+      if (!open) item.classList.add("open");
+    });
+  });
+  // reveal injected
+  document.querySelectorAll("#diffGrid [data-reveal]").forEach(e=>{
+    new IntersectionObserver((ents,o)=>ents.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");o.unobserve(en.target);}}),{threshold:0.1}).observe(e);
+  });
+});
 </script>
 </body>
 </html>
