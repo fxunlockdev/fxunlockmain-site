@@ -126,9 +126,10 @@ img { max-width: 100%; display: block; }
 h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; margin: 0; letter-spacing: -0.03em; line-height: 1.0; color: var(--ink); }
 .h-display {
   font-size: clamp(46px, 6.4vw, 92px);
-  line-height: 1.02;
+  line-height: 1.08;
   letter-spacing: -0.04em;
   padding-top: 0.08em;
+  padding-bottom: 0.08em;
 }
 .h1 { font-size: clamp(40px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.035em; }
 .h2 { font-size: clamp(32px, 4vw, 56px); line-height: 1.0; letter-spacing: -0.03em; }
@@ -141,7 +142,9 @@ em.accent {
   display: inline-block;
   font-style: italic;
   font-weight: 400;
-  padding-bottom: 0.08em;
+  line-height: 1.08;
+  padding-bottom: 0.12em;
+  vertical-align: baseline;
 }
 .lead { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.6; color: var(--ink-mute); }
 .body { font-size: 16.5px; line-height: 1.65; color: var(--ink-mute); }
