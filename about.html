@@ -73,10 +73,10 @@
     <div class="sec-head center" data-reveal>
       <span class="eyebrow"><span class="dot"></span> Meet the Team</span>
       <h2 class="h2 mt-m">The people behind the network.</h2>
-      <p class="lead">[Insert team member cards here - name, role, short bio, photo]</p>
+      <p class="lead">Regional experts supporting partners across affiliate growth, broker relations, and market expansion.</p>
     </div>
     <div class="grid cols-4" id="teamGrid"></div>
-    <p class="small center mt-l" style="color:var(--ink-dim)" data-reveal">Placeholder cards shown until team photos, names, roles, and bios are confirmed.</p>
+    <p class="small center mt-l" style="color:var(--ink-dim)" data-reveal">Sample profiles shown below until final team details are confirmed.</p>
   </div>
 </section>
 
@@ -106,11 +106,32 @@ window.addEventListener("DOMContentLoaded", () => {
       <p class="body mt-s">${v[2]}</p>
     </div>`).join("");
 
-  const team = ["[Name] - [Role]","[Name] - [Role]","[Name] - [Role]","[Name] - [Role]"];
+  const team = [
+    {
+      name: "Daniel Mercer",
+      role: "Head of Partner Growth",
+      bio: "Works with affiliates and educators to improve deal structures, audience strategy, and long-term revenue growth."
+    },
+    {
+      name: "Sofia Rahman",
+      role: "Regional Partnerships Manager",
+      bio: "Supports broker and IB relationships across multiple regions, helping match partners to the right markets and platforms."
+    },
+    {
+      name: "Marcus Lee",
+      role: "Affiliate Success Lead",
+      bio: "Focuses on onboarding, performance reviews, and helping partners scale with stronger marketing and conversion support."
+    },
+    {
+      name: "Nina Haddad",
+      role: "Marketing Strategy Manager",
+      bio: "Advises partners on brand building, content planning, and audience growth across social and web channels."
+    }
+  ];
   document.getElementById("teamGrid").innerHTML = team.map((t,i)=>`
     <div class="team-card" data-reveal data-reveal-delay="${i}">
       <div class="team-photo">${icon("manager")}</div>
-      <div class="team-info"><div style="font-weight:600">${t}</div><div class="small">Short bio placeholder</div></div>
+      <div class="team-info"><div style="font-weight:600">${t.name}</div><div class="small" style="font-weight:600;margin-top:4px">${t.role}</div><div class="small" style="margin-top:8px">${t.bio}</div></div>
     </div>`).join("");
 
   document.querySelectorAll("#valueGrid [data-reveal], #teamGrid [data-reveal]").forEach(e=>{
