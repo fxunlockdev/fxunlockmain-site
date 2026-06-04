@@ -151,6 +151,19 @@ function HeroForm() {
   );
 }
 
+function HeroSignal({ icon, label, value, meta }) {
+  return (
+    <div className="hero-signal">
+      <div className="hero-signal-icon">{icon}</div>
+      <div>
+        <div className="hero-signal-label">{label}</div>
+        <div className="hero-signal-value">{value}</div>
+        <div className="hero-signal-meta">{meta}</div>
+      </div>
+    </div>
+  );
+}
+
 function HeroBackdrop() {
   return (
     <div className="hero-fx" aria-hidden="true">
@@ -185,6 +198,11 @@ function HeroBackdrop() {
         <div className="fx-chip c1"><span className="fc-pair">CPA DEALS</span><span className="fc-up">Guaranteed better terms</span></div>
         <div className="fx-chip c2"><span className="fc-pair">IB GROWTH</span><span className="fc-up">Marketing support included</span></div>
         <div className="fx-chip c3"><span className="fc-pair">PLATFORMS</span><span className="fc-dn">Vetted partner matching</span></div>
+      </div>
+      <div className="hero-rings" aria-hidden="true">
+        <span className="ring ring-a"></span>
+        <span className="ring ring-b"></span>
+        <span className="ring ring-c"></span>
       </div>
     </div>
   );
@@ -242,6 +260,11 @@ function Hero() {
       <HeroBackdrop/>
       <div className="container hero-grid">
         <div>
+          <div className="hero-chip-rail">
+            <span className="hero-chip strong">Off-market CPA &amp; rebate deals</span>
+            <span className="hero-chip">Dedicated country managers</span>
+            <span className="hero-chip">Free growth support</span>
+          </div>
           <span className="eyebrow">
             <span className="dot"></span> The FX Industry&apos;s Growth Partner
           </span>
@@ -256,6 +279,26 @@ function Hero() {
           <div className="hero-cta-row">
             <a href="contact-us.html" className="btn btn-cyan">Apply as an Affiliate or IB <span className="arrow">→</span></a>
             <a href="contact-us.html" className="btn btn-ghost">Are you a trading platform?</a>
+          </div>
+          <div className="hero-signals">
+            <HeroSignal
+              icon={<svg viewBox="0 0 24 24" fill="none"><path d="M5 16l4-4 3 3 7-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><path d="M15 8h4v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+              label="Better deal guarantee"
+              value="CPA / Rebates"
+              meta="Network-negotiated terms"
+            />
+            <HeroSignal
+              icon={<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="1.8"/><path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>}
+              label="Partner growth stack"
+              value="Marketing + Tools"
+              meta="Included for active partners"
+            />
+            <HeroSignal
+              icon={<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v5c0 4.3-2.8 8.2-7 9-4.2-.8-7-4.7-7-9V7l7-4z" stroke="currentColor" strokeWidth="1.8"/><path d="M9.5 12l1.7 1.7 3.8-3.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+              label="Broker-side confidence"
+              value="Vetted matching"
+              meta="Quality traffic by region"
+            />
           </div>
         </div>
         <HeroForm />

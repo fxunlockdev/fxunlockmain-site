@@ -294,6 +294,28 @@ button { font-family: inherit; cursor: pointer; }
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
 }
+.hero-rings { position: absolute; inset: 0; pointer-events: none; }
+.hero-rings .ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.hero-rings .ring-a {
+  width: 520px; height: 520px; right: 12%; top: 13%;
+  animation: ringPulse 12s ease-in-out infinite;
+}
+.hero-rings .ring-b {
+  width: 720px; height: 720px; right: 4%; top: -4%;
+  animation: ringPulse 15s ease-in-out infinite reverse;
+}
+.hero-rings .ring-c {
+  width: 960px; height: 960px; left: -18%; bottom: -35%;
+  animation: ringPulse 18s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%,100% { transform: scale(1); opacity: 0.22; }
+  50% { transform: scale(1.06); opacity: 0.45; }
+}
 @media (max-width: 1100px) { .fx-chips { display: none; } }
 
 /* market ticker strip at bottom of hero */
@@ -340,6 +362,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 1000px){
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-signals { grid-template-columns: 1fr; }
 }
 
 .eyebrow {
@@ -392,6 +415,80 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0 0 32px;
 }
 .hero-cta-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.hero-chip-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.hero-chip {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.86);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+.hero-chip.strong {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  box-shadow: 0 14px 34px -18px rgba(255,255,255,0.35);
+}
+.hero-signals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 26px;
+  max-width: 920px;
+}
+.hero-signal {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 30px 50px -35px rgba(0,0,0,0.35);
+}
+.hero-signal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.1));
+  color: #fff;
+}
+.hero-signal-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.hero-signal-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 6px;
+}
+.hero-signal-value {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.hero-signal-meta {
+  margin-top: 3px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
+}
 
 /* Hero tickers — glassy chips on gradient */
 .tickers {
