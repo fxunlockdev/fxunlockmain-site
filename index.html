@@ -211,6 +211,145 @@
   </div>
 </section>
 
+<!-- ============ WORLD MAP  ·  Based in Dubai. Operating globally. ============ -->
+<section class="section" id="map">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow"><span class="dot"></span> Global Presence</span>
+      <h2 class="h2 mt-m text-balance">Based in Dubai. <span class="grad-ink">Operating globally.</span></h2>
+      <p class="lead">A custom visual for the home About section. Dubai HQ pulsing, six staffed countries connected in the brand gradient.</p>
+    </div>
+
+    <div class="map-wrap" data-reveal data-reveal-delay="1">
+      <div class="map-head">
+        <div>
+          <span class="eyebrow on-dark"><span class="dot"></span> Global presence</span>
+          <h2 class="h2 mt-m" style="color:#fff">A network with feet on the ground.</h2>
+          <p class="body">Dubai HQ. Country managers across five more regions. Local fluency in the markets your audience actually trades from &mdash; not a global call centre.</p>
+        </div>
+        <div class="stats">
+          <div class="stat-mini"><div class="v">6</div><div class="l">Countries staffed</div></div>
+          <div class="stat-mini"><div class="v">1,500+</div><div class="l">Partners served</div></div>
+          <div class="stat-mini"><div class="v">10+ Yrs</div><div class="l">Industry tenure</div></div>
+        </div>
+      </div>
+
+      <div class="map-stage">
+        <svg id="worldMap" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#21bbd7" stop-opacity="0.9"/>
+              <stop offset="55%" stop-color="#c8d0ff" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#f06ad6" stop-opacity="0.9"/>
+            </linearGradient>
+            <linearGradient id="arcGradFade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#21bbd7" stop-opacity="0"/>
+              <stop offset="20%" stop-color="#21bbd7" stop-opacity="0.55"/>
+              <stop offset="55%" stop-color="#c8d0ff" stop-opacity="0.85"/>
+              <stop offset="80%" stop-color="#f06ad6" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#f06ad6" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="cityGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
+              <stop offset="50%" stop-color="#9aa6ff" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#9aa6ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="hqGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="30%" stop-color="#f9a6ff" stop-opacity="0.65"/>
+              <stop offset="70%" stop-color="#bf1cc1" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#bf1cc1" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="hqCore" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="100%" stop-color="#fce0ff"/>
+            </radialGradient>
+            <linearGradient id="hqRingGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#21bbd7"/>
+              <stop offset="55%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#f06ad6"/>
+            </linearGradient>
+            <linearGradient id="hqTagGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#21bbd7"/>
+              <stop offset="55%" stop-color="#333da8"/>
+              <stop offset="100%" stop-color="#bf1cc1"/>
+            </linearGradient>
+            <radialGradient id="pulseGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="55%" stop-color="#bf1cc1" stop-opacity="0"/>
+              <stop offset="78%" stop-color="#f9a6ff" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#bf1cc1" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="travelPulse" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="40%" stop-color="#c8d0ff" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#9aa6ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+              <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+            </radialGradient>
+            <radialGradient id="atmosphere" cx="50%" cy="45%" r="55%">
+              <stop offset="0%" stop-color="#3b4ad8" stop-opacity="0.18"/>
+              <stop offset="60%" stop-color="#21bbd7" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.4"/>
+            </filter>
+          </defs>
+
+          <rect x="0" y="0" width="1200" height="620" fill="url(#atmosphere)"/>
+
+          <g class="grid">
+            <path class="map-grid-line" d="M0,310 L1200,310"/>
+            <path class="map-grid-line" d="M0,234 L1200,234"/>
+            <path class="map-grid-line" d="M0,386 L1200,386"/>
+            <path class="map-grid-line" d="M0,158 L1200,158" opacity="0.6"/>
+            <path class="map-grid-line" d="M0,462 L1200,462" opacity="0.6"/>
+            <path class="map-grid-line" d="M200,0 L200,620"/>
+            <path class="map-grid-line" d="M400,0 L400,620" opacity="0.5"/>
+            <path class="map-grid-line" d="M600,0 L600,620"/>
+            <path class="map-grid-line" d="M800,0 L800,620" opacity="0.5"/>
+            <path class="map-grid-line" d="M1000,0 L1000,620"/>
+          </g>
+
+          <g id="stars"></g>
+          <g id="dotmap"></g>
+          <g id="arcPaths" style="display:none"></g>
+          <g id="arcs"></g>
+          <g id="travelers"></g>
+          <g id="cities"></g>
+          <g id="labels"></g>
+
+          <rect x="0" y="0" width="1200" height="620" fill="url(#vignette)" pointer-events="none"/>
+
+          <g class="hud">
+            <text class="hud-mono" x="24" y="28">FX UNLOCKED &middot; GLOBAL OPS</text>
+            <text class="hud-mono" x="1176" y="28" text-anchor="end">LIVE &middot; 06 OFFICES</text>
+            <g transform="translate(24 596)"><text class="hud-mono" x="0" y="0">EQUIRECTANGULAR &middot; WGS84</text></g>
+            <g transform="translate(1176 596)"><text class="hud-mono" x="0" y="0" text-anchor="end">25.2&deg;N &middot; 55.3&deg;E</text></g>
+            <g transform="translate(1140 80)" class="compass">
+              <circle r="20" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+              <path d="M0,-16 L3,0 L0,16 L-3,0 Z" fill="rgba(255,255,255,0.55)"/>
+              <path d="M-16,0 L0,3 L16,0 L0,-3 Z" fill="rgba(255,255,255,0.18)"/>
+              <text class="hud-mono" x="0" y="-26" text-anchor="middle">N</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="map-legend">
+        <div class="legend-cell"><div class="city-name"><span class="pip hq"></span>Dubai</div><div class="city-role">Headquarters</div><div class="city-meta">Marina &middot; UAE</div></div>
+        <div class="legend-cell"><div class="city-name"><span class="pip"></span>London</div><div class="city-role">EMEA office</div><div class="city-meta">United Kingdom</div></div>
+        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Limassol</div><div class="city-role">EU partners</div><div class="city-meta">Cyprus</div></div>
+        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Cape Town</div><div class="city-role">Africa lead</div><div class="city-meta">South Africa</div></div>
+        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Singapore</div><div class="city-role">APAC hub</div><div class="city-meta">Singapore</div></div>
+        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Sydney</div><div class="city-role">ANZ office</div><div class="city-meta">Australia</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ HOW IT WORKS ============ -->
 <section class="section" id="how">
   <div class="wrap">
@@ -326,6 +465,7 @@
 <script src="js/icons.js"></script>
 <script src="js/image-slot.js"></script>
 <script src="js/site.js"></script>
+<script src="js/worldmap.js" defer></script>
 <script>
   // hero
   function bootHome() {
