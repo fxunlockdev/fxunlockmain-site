@@ -25,7 +25,11 @@
   display: flex; align-items: center;
   color: #fff;
 }
-.hero .wrap { position: relative; z-index: 2; }
+/* Do NOT positioned .wrap — we want .hero-canvas-wrap (position:absolute)
+   to be contained by .hero (which IS positioned) so the video covers the
+   ENTIRE hero box including the top padding behind the fixed nav and the
+   bottom padding before the next section. */
+.hero > .wrap { position: static; }
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -59,18 +63,19 @@
 body:has(.hero) > .stage-orb { display: none; }
 
 /* hero visual — full-bleed video stage covering the entire .hero.
-   z-index 0 sits below the hero-copy (z-index 2) and the hero-tint
-   (z-index 1 inside .hero-viz). */
+   inset:0 with .hero as the positioned ancestor (since .wrap is static)
+   means the video fills .hero edge-to-edge AND from the very top of the
+   page through the bottom padding, no gaps. z-index 0 sits below the
+   hero-copy (z-index 2). */
 .hero-canvas-wrap {
   position: absolute !important;
   inset: 0;
-  width: 100vw; height: 100%;
-  left: 50%;
-  transform: translateX(-50%) !important;
+  width: auto; height: auto;
   min-height: 0;
   margin: 0; padding: 0;
   z-index: 0;
   opacity: 1 !important;
+  transform: none !important;
   pointer-events: none;
 }
 /* halo + mesh blobs no longer needed — the video is the stage now */
