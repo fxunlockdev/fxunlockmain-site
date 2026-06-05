@@ -517,7 +517,7 @@ em.accent {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   height: var(--nav-h);
   display: flex; align-items: center;
-  transition: background .3s, box-shadow .3s, border-color .3s, backdrop-filter .3s;
+  transition: background .3s, box-shadow .3s, border-color .3s, backdrop-filter .3s, color .25s;
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
@@ -526,8 +526,12 @@ em.accent {
   border-bottom: 1px solid var(--line);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-.logo { display: flex; align-items: center; gap: 11px; font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
-.logo img { width: 38px; height: 38px; filter: drop-shadow(0 4px 12px rgba(51,61,168,0.22)); }
+.logo {
+  display: flex; align-items: center; gap: 11px;
+  font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em;
+  color: var(--ink); transition: color .25s;
+}
+.logo img { width: 38px; height: 38px; filter: drop-shadow(0 4px 12px rgba(51,61,168,0.22)); transition: filter .25s; }
 .logo .un { font-weight: 400; opacity: 0.92; }
 .nav-links { display: flex; align-items: center; gap: 30px; font-size: 14.5px; font-weight: 500; }
 .nav-links a { color: var(--ink-mute); transition: color .18s; position: relative; }
@@ -535,6 +539,40 @@ em.accent {
 .nav-links a.active::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 2px;
   background: var(--grad); border-radius: 2px;
+}
+
+/* ---- NAV OVER DARK HERO (home only, unscrolled) ----
+   The full-bleed video hero makes the default light-themed nav text
+   unreadable. While the nav sits over the hero, invert colors to
+   white. As soon as the user scrolls past the hero, .scrolled hits
+   and the standard light-bg / dark-text nav takes over. */
+body[data-page="home"] .nav:not(.scrolled) {
+  background: linear-gradient(180deg, rgba(8,10,28,0.55), rgba(8,10,28,0.10) 75%, transparent);
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+}
+body[data-page="home"] .nav:not(.scrolled) .logo { color: #fff; }
+body[data-page="home"] .nav:not(.scrolled) .logo img {
+  filter: drop-shadow(0 4px 12px rgba(255,255,255,0.18));
+}
+body[data-page="home"] .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.72); }
+body[data-page="home"] .nav:not(.scrolled) .nav-links a:hover,
+body[data-page="home"] .nav:not(.scrolled) .nav-links a.active { color: #fff; }
+body[data-page="home"] .nav:not(.scrolled) .btn-ghost {
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+  border-color: rgba(255,255,255,0.22);
+  backdrop-filter: blur(12px);
+}
+body[data-page="home"] .nav:not(.scrolled) .btn-ghost:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.38);
+  color: #fff;
+}
+body[data-page="home"] .nav:not(.scrolled) .nav-toggle {
+  color: #fff;
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.18);
 }
 .nav-cta { display: flex; align-items: center; gap: 10px; }
 .nav-toggle { display: none; }

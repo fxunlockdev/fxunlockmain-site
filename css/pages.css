@@ -15,13 +15,17 @@
 .mobile-menu a { padding: 14px 0; font-family: var(--display); font-weight: 500; font-size: 18px; border-bottom: 1px solid var(--line); }
 .mobile-menu a:last-child { border-bottom: none; }
 
-/* ============ HERO  ·  Full-bleed video bg everywhere ============ */
+/* ============ HERO  ·  Full-bleed video bg, exactly 1 viewport ============ */
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--nav-h) + 88px);
-  padding-bottom: 100px;
-  min-height: min(900px, 100svh);
+  padding-top: calc(var(--nav-h) + 48px);
+  padding-bottom: 60px;
+  /* exactly one viewport — first scroll moves past the hero cleanly.
+     min-height: 640px is a floor for very short windows so nothing clips. */
+  height: 100svh;
+  min-height: 640px;
+  max-height: 100lvh;
   display: flex; align-items: center;
   color: #fff;
 }
@@ -47,15 +51,16 @@
 .hero-cta { margin-top: 38px; }
 @media (max-width: 1000px){
   .hero {
-    min-height: 720px;
-    padding-top: calc(var(--nav-h) + 36px);
-    padding-bottom: 72px;
+    /* keep height:100svh — first scroll passes the hero on every device */
+    min-height: 560px;
+    padding-top: calc(var(--nav-h) + 24px);
+    padding-bottom: 48px;
   }
 }
 @media (max-width: 640px){
-  .hero { padding-top: calc(var(--nav-h) + 24px); padding-bottom: 56px; }
-  .hero .lead { max-width: none; }
-  .hero-cta { margin-top: 28px; }
+  .hero { padding-top: calc(var(--nav-h) + 16px); padding-bottom: 40px; min-height: 540px; }
+  .hero .lead { max-width: none; margin-top: 18px; }
+  .hero-cta { margin-top: 22px; }
   .hero-cta .btn { width: 100%; justify-content: center; }
 }
 /* page bg orbs were behind the hero card — kill them inside the hero now
