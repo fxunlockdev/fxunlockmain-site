@@ -377,6 +377,45 @@ em.accent {
 }
 .btn-magnetic:hover::after { opacity: 1; }
 
+/* ============ FEATURED CTA (Content Library handoff) ============
+   Mega-specimen CTA with trust avatars + checklist. Use on the
+   highest-stakes conversion moment of a page. */
+.cta-featured {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f7fc 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl); padding: 44px 48px;
+  box-shadow: var(--sh-sm); position: relative; overflow: hidden;
+}
+.cta-featured::before {
+  content: ""; position: absolute; inset: -1px;
+  border-radius: inherit; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(420px 220px at 92% 18%, rgba(191,28,193,0.10), transparent 60%),
+    radial-gradient(420px 220px at 8% 90%, rgba(33,187,215,0.10), transparent 60%);
+}
+.cta-featured > * { position: relative; z-index: 1; }
+@media (max-width: 880px){ .cta-featured { grid-template-columns: 1fr; padding: 32px 28px; gap: 28px; } }
+.cta-featured h3 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.08; letter-spacing: -0.025em; font-weight: 500; }
+.cta-featured .trust {
+  display: flex; align-items: center; gap: 14px; margin-top: 20px;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dim);
+}
+.cta-featured .trust .ava { display: inline-flex; }
+.cta-featured .trust .ava span {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid #fff; margin-left: -8px;
+  box-shadow: 0 2px 6px rgba(20,22,46,0.10);
+}
+.cta-featured .trust .ava span:first-child { margin-left: 0; }
+.cta-featured .trust .ava span:nth-child(1){ background: linear-gradient(135deg,#ffbf6b,#ff6b6b); }
+.cta-featured .trust .ava span:nth-child(2){ background: linear-gradient(135deg,#21bbd7,#4a57d8); }
+.cta-featured .trust .ava span:nth-child(3){ background: linear-gradient(135deg,#bf1cc1,#7b5cff); }
+.cta-featured .trust .ava span:nth-child(4){ background: linear-gradient(135deg,#1c9b6e,#21bbd7); }
+.cta-featured .stack { display: flex; flex-direction: column; gap: 14px; align-items: stretch; justify-content: center; }
+.cta-featured .ck { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--ink-mute); }
+.cta-featured .ck svg { width: 16px; height: 16px; color: var(--pos); }
+
 /* ============ PILLS / TAGS / CHIPS ============ */
 .pill {
   display: inline-flex; align-items: center; gap: 8px;
