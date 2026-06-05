@@ -66,6 +66,17 @@
     target: S(`<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8" opacity=".6"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>`),
     layers: S(`<path d="m12 3.5 8.5 4.5L12 12.5 3.5 8z"/><path d="m3.5 12 8.5 4.5L20.5 12M3.5 16l8.5 4.5L20.5 16" opacity=".55"/>`),
     network: S(`<circle cx="12" cy="5" r="2.3"/><circle cx="5" cy="18" r="2.3"/><circle cx="19" cy="18" r="2.3"/><path d="M10.4 6.7 6.6 16M13.6 6.7 17.4 16M7.3 18h9.4"/>`),
+
+    /* ---- arrows & controls (from Content Library handoff) ---- */
+    arrowLeft: S(`<path d="M19 12H5M11 6l-6 6 6 6"/>`),
+    arrowUpRight: S(`<path d="M7 17 17 7M9 7h8v8"/>`),
+    close: S(`<path d="M6 6l12 12M18 6 6 18"/>`),
+    minus: S(`<path d="M5 12h14"/>`),
+    external: S(`<path d="M14 5h5v5"/><path d="M19 5 10 14"/><path d="M19 13v5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 18V6a1.5 1.5 0 0 1 1.5-1.5H11"/>`),
+
+    /* ---- actions ---- */
+    download: S(`<path d="M12 3v13M7 11l5 5 5-5"/><path d="M4.5 20.5h15"/>`),
+    play: S(`<path d="M7 5v14l12-7z" fill="currentColor" stroke="none"/>`),
   };
 
   window.ICONS = I;
