@@ -51,17 +51,84 @@
   .hero-cta .btn { width: 100%; justify-content: center; }
 }
 
-/* hero visual — original gradient + animated chart line + FX chips */
+/* hero visual — brand-gradient card hosting the looping motion graphic */
 .hero-canvas-wrap { position: relative; min-height: clamp(460px, 48vw, 700px); }
+
+/* outer halo — soft brand-tinted bleed so the card feels like it's emerging
+   from the page rather than sitting on top of it. Sits BEHIND the card. */
+.hero-halo {
+  position: absolute;
+  inset: -120px -110px -130px -100px;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  background:
+    radial-gradient(closest-side at 30% 40%, rgba(33,187,215,0.34), transparent 70%),
+    radial-gradient(closest-side at 75% 60%, rgba(74,87,216,0.30), transparent 70%),
+    radial-gradient(closest-side at 55% 85%, rgba(191,28,193,0.22), transparent 72%);
+  animation: heroHaloDrift 22s ease-in-out infinite alternate;
+}
+@keyframes heroHaloDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(2%, -2%) scale(1.04); }
+}
+
 .hero-viz {
   position: absolute; inset: 0; border-radius: var(--r-xl); overflow: hidden;
   background: var(--grad);
   box-shadow: var(--sh-lg), 0 30px 80px -30px rgba(51,61,168,0.5);
+  z-index: 1;
+  isolation: isolate;
 }
+
+/* mesh blobs — softened so they become depth halos under the video */
 .hero-viz .mesh { position: absolute; border-radius: 50%; filter: blur(70px); mix-blend-mode: screen; will-change: transform; }
-.hero-viz .mesh-a { width: 60%; height: 60%; background: radial-gradient(circle,#2ad0ee 0%,transparent 65%); top: -12%; left: -8%; opacity: 0.8; animation: meshDrift 22s ease-in-out infinite; }
-.hero-viz .mesh-b { width: 55%; height: 55%; background: radial-gradient(circle,#ff5acb 0%,transparent 65%); top: 18%; right: -12%; opacity: 0.7; animation: meshDrift 26s ease-in-out infinite reverse; }
-.hero-viz .mesh-c { width: 45%; height: 45%; background: radial-gradient(circle,#ffd6f5 0%,transparent 65%); bottom: -10%; left: 34%; opacity: 0.5; animation: meshDrift 30s ease-in-out infinite; }
+.hero-viz .mesh-a { width: 60%; height: 60%; background: radial-gradient(circle,#2ad0ee 0%,transparent 65%); top: -12%; left: -8%; opacity: 0.32; animation: meshDrift 22s ease-in-out infinite; }
+.hero-viz .mesh-b { width: 55%; height: 55%; background: radial-gradient(circle,#ff5acb 0%,transparent 65%); top: 18%; right: -12%; opacity: 0.28; animation: meshDrift 26s ease-in-out infinite reverse; }
+.hero-viz .mesh-c { width: 45%; height: 45%; background: radial-gradient(circle,#ffd6f5 0%,transparent 65%); bottom: -10%; left: 34%; opacity: 0.22; animation: meshDrift 30s ease-in-out infinite; }
+
+/* looping motion graphic */
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  z-index: 1;
+  /* feather the outer ~6% so video edges dissolve into the brand gradient
+     instead of sitting as a hard rectangle inside the card */
+  -webkit-mask-image: radial-gradient(ellipse 96% 96% at 50% 50%, #000 72%, transparent 100%);
+          mask-image: radial-gradient(ellipse 96% 96% at 50% 50%, #000 72%, transparent 100%);
+  opacity: 0;
+  animation: heroVideoFadeIn 1.6s ease-out 0.3s forwards;
+  pointer-events: none;
+  will-change: opacity;
+}
+@keyframes heroVideoFadeIn { to { opacity: 1; } }
+
+/* brand-tint overlay — locks video colors into the FX Unlocked palette so we
+   never get a clash with the page bg or section accents */
+.hero-tint {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(33,187,215,0.28), transparent 65%),
+    radial-gradient(ellipse at 80% 75%, rgba(191,28,193,0.22), transparent 68%),
+    linear-gradient(108deg, rgba(33,187,215,0.10) 0%, rgba(51,61,168,0.06) 52%, rgba(191,28,193,0.10) 100%);
+  mix-blend-mode: overlay;
+}
+
+/* vignette — protects price tag + chips from bright video frames */
+.hero-vignette {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(11,14,34,0.32) 100%);
+}
+
+/* reduced-motion: poster only, no animation, dimmer halo */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { animation: none; opacity: 1; }
+  .hero-halo { animation: none; opacity: 0.4; }
+  .hero-viz .mesh { animation: none; }
+}
 @keyframes meshDrift { 0%,100% { transform: translate(0,0) scale(1);} 33% { transform: translate(14%,-10%) scale(1.12);} 66% { transform: translate(-10%,12%) scale(0.94);} }
 .hero-chart { position: absolute; inset: 0; width: 100%; height: 100%; }
 @media (prefers-reduced-motion: no-preference) {
@@ -75,7 +142,7 @@
 .hc-pulse-ring { animation: hcRing 1.8s ease-out infinite; transform-origin: 1180px 68px; }
 @keyframes hcPulse { 0%,100%{ r:4;} 50%{ r:6;} }
 @keyframes hcRing { 0%{ transform: scale(1); opacity: .9;} 100%{ transform: scale(4); opacity: 0;} }
-.hero-viz .fx-chips { position: absolute; inset: 0; pointer-events: none; }
+.hero-viz .fx-chips { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
 .fx-chip {
   position: absolute; display: inline-flex; align-items: center; gap: 10px;
   padding: 10px 14px; border-radius: var(--r-pill);
@@ -97,7 +164,7 @@
 .viz-slot { padding: 0; overflow: hidden; }
 .viz-slot image-slot { border-radius: var(--r-xl); width: 100%; height: 100%; }
 .hc-pricetag {
-  position: absolute; top: 13%; right: 7%; z-index: 3;
+  position: absolute; top: 13%; right: 7%; z-index: 4;
   display: flex; flex-direction: column; gap: 3px;
   padding: 11px 16px; border-radius: 14px;
   background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.32);

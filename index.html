@@ -76,62 +76,30 @@
     </div>
 
     <div class="hero-canvas-wrap" data-reveal data-reveal-delay="2">
+      <!-- soft brand halo bleeding into the page bg behind the card -->
+      <div class="hero-halo" aria-hidden="true"></div>
+
       <div class="hero-viz" aria-hidden="true">
+        <!-- softened mesh blobs (depth halos under the video) -->
         <div class="mesh mesh-a"></div>
         <div class="mesh mesh-b"></div>
         <div class="mesh mesh-c"></div>
-        <svg class="hero-chart" viewBox="0 0 1200 500" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="hcArea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
-              <stop offset="55%" stop-color="#ffffff" stop-opacity="0.08"/>
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="hcArea2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#9bf3ff" stop-opacity="0.18"/>
-              <stop offset="100%" stop-color="#9bf3ff" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="hcLine" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#9bf3ff" stop-opacity="0"/>
-              <stop offset="18%" stop-color="#9bf3ff" stop-opacity="0.95"/>
-              <stop offset="58%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#ffd1f7"/>
-            </linearGradient>
-            <filter id="hcGlow" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="7" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
 
-          <!-- faint horizontal gridlines -->
-          <g class="hc-grid" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1" stroke-dasharray="3 9">
-            <line x1="0" y1="140" x2="1200" y2="140"/>
-            <line x1="0" y1="240" x2="1200" y2="240"/>
-            <line x1="0" y1="340" x2="1200" y2="340"/>
-            <line x1="0" y1="440" x2="1200" y2="440"/>
-          </g>
+        <!-- looping motion graphic; reduced-motion users see the poster -->
+        <video class="hero-video"
+               autoplay muted loop playsinline
+               preload="metadata"
+               poster="assets/hero-poster.jpg"
+               aria-hidden="true"
+               disablepictureinpicture>
+          <source src="assets/hero.mp4" type="video/mp4"
+                  media="(prefers-reduced-motion: no-preference)">
+        </video>
 
-          <!-- volume bars -->
-          <g class="hc-vol" fill="#ffffff"></g>
-
-          <!-- secondary trend (behind) -->
-          <path class="hc-area2" d="M0,440 C140,420 240,425 380,380 C520,335 620,355 760,300 C900,245 1000,265 1140,215 L1200,200 L1200,500 L0,500 Z" fill="url(#hcArea2)"/>
-
-          <!-- main area + line -->
-          <path class="hc-area" d="M0,400 C140,380 230,392 340,344 C450,296 530,316 650,250 C770,184 850,206 970,140 C1070,96 1130,110 1200,72 L1200,500 L0,500 Z" fill="url(#hcArea)"/>
-          <path class="hc-line" d="M0,400 C140,380 230,392 340,344 C450,296 530,316 650,250 C770,184 850,206 970,140 C1070,96 1130,110 1200,72" fill="none" stroke="url(#hcLine)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#hcGlow)"/>
-
-          <!-- glowing nodes on the line -->
-          <g class="hc-nodes" filter="url(#hcGlow)">
-            <circle class="hc-node n1" cx="340" cy="344" r="4.5" fill="#fff"/>
-            <circle class="hc-node n2" cx="650" cy="250" r="4.5" fill="#fff"/>
-            <circle class="hc-node n3" cx="970" cy="140" r="4.5" fill="#fff"/>
-          </g>
-
-          <!-- leading pulse -->
-          <circle class="hc-pulse-ring" cx="1196" cy="74" r="6" fill="none" stroke="#ffffff" stroke-width="1.5"/>
-          <circle class="hc-pulse" cx="1196" cy="74" r="6" fill="#ffffff" filter="url(#hcGlow)"/>
-        </svg>
+        <!-- brand-tint overlay locks video colors into FX Unlocked palette -->
+        <div class="hero-tint" aria-hidden="true"></div>
+        <!-- corner vignette so chips + price tag stay legible -->
+        <div class="hero-vignette" aria-hidden="true"></div>
 
         <!-- live price tag -->
         <div class="hc-pricetag" data-ticker data-base="1.27310">
