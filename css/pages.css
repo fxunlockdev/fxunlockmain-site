@@ -54,14 +54,28 @@
     /* keep height:100svh — first scroll passes the hero on every device */
     min-height: 560px;
     padding-top: calc(var(--nav-h) + 24px);
-    padding-bottom: 48px;
+    padding-bottom: 32px;
+    align-items: flex-start;            /* top-align so tall content doesn't clip */
   }
+  .hero h1, .hero .h-display {
+    font-size: clamp(36px, 9vw, 56px);  /* shrink headline so 4 lines fit */
+    line-height: 1.04;
+  }
+  .hero .lead { margin-top: 16px; font-size: 15px; line-height: 1.55; }
+  .hero-cta { margin-top: 20px; }
+  .hero .ticker-bar { margin-top: 22px; }
 }
 @media (max-width: 640px){
-  .hero { padding-top: calc(var(--nav-h) + 16px); padding-bottom: 40px; min-height: 540px; }
-  .hero .lead { max-width: none; margin-top: 18px; }
-  .hero-cta { margin-top: 22px; }
+  .hero {
+    padding-top: calc(var(--nav-h) + 12px);
+    padding-bottom: 28px;
+    min-height: 540px;
+  }
+  .hero .lead { max-width: none; }
   .hero-cta .btn { width: 100%; justify-content: center; }
+  /* on very small screens the ticker is the lowest-priority element and
+     pushing it out of the hero is cleaner than clipping the headline */
+  .hero .ticker-bar { display: none; }
 }
 /* page bg orbs were behind the hero card — kill them inside the hero now
    that the video is the full-bleed stage */
