@@ -195,6 +195,120 @@
   .hero-halo { animation: none; opacity: 0.4; }
   .hero-viz .mesh { animation: none; }
 }
+
+/* ============================================================
+   MOBILE HERO  ·  Full-bleed video bg with brand-tint overlay
+   Stripe/Linear/Apple-style cinematic mobile, contained desktop.
+   Triggers at the same 1000px breakpoint as the existing stack.
+   ============================================================ */
+@media (max-width: 1000px){
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 740px;
+    padding-top: calc(var(--nav-h) + 56px);
+    padding-bottom: 72px;
+    color: #fff;
+  }
+  /* the ambient brand wash on the right half conflicts with full-bleed video */
+  .hero::before { display: none; }
+
+  /* canvas-wrap becomes the full-bleed background */
+  .hero-canvas-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    min-height: 0;
+    margin: 0; padding: 0;
+    z-index: 0;
+    opacity: 1 !important;
+    transform: none !important;
+    order: 0;
+  }
+  /* hide outer halo + mesh blobs — video itself is the stage now */
+  .hero-canvas-wrap::before { display: none; }
+  .hero-halo { display: none; }
+  .hero-viz .mesh { display: none; }
+  /* the card becomes the full-bleed stage; no rounding, no shadow */
+  .hero-viz {
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--dark);
+  }
+  /* video covers full hero with no edge feather (no card to land inside) */
+  .hero-video {
+    -webkit-mask-image: none;
+            mask-image: none;
+    opacity: 1;
+    animation: none;
+  }
+  /* brand-tint becomes a strong, dark-anchored veil so text stays legible.
+     Top is darkest where the headline lives; bottom keeps some warmth so
+     the ticker chips still feel "live". */
+  .hero-tint {
+    background:
+      linear-gradient(180deg,
+        rgba(8,10,28,0.88) 0%,
+        rgba(11,14,34,0.74) 28%,
+        rgba(11,14,34,0.56) 60%,
+        rgba(11,14,34,0.78) 100%),
+      radial-gradient(ellipse at 28% 25%, rgba(33,187,215,0.32), transparent 65%),
+      radial-gradient(ellipse at 72% 80%, rgba(191,28,193,0.26), transparent 70%);
+    mix-blend-mode: normal;
+  }
+  .hero-vignette { display: none; }
+  /* card overlays don't belong on the full-bleed mobile bg */
+  .hero-viz .hc-pricetag,
+  .hero-viz .fx-chips { display: none !important; }
+
+  /* hero content sits on top of the video bg */
+  .hero .wrap.hero-grid {
+    position: relative;
+    z-index: 2;
+  }
+  .hero-copy { position: relative; z-index: 2; }
+  /* the canvas-wrap is now the bg, so re-order doesn't matter; hero-copy first */
+  .hero-grid > * { order: 1; }
+  .hero-canvas-wrap { order: 0; }
+
+  /* text becomes light on the dark video bg */
+  .hero h1, .hero .h-display { color: #fff; }
+  .hero .lead {
+    color: rgba(255,255,255,0.84);
+    text-shadow: 0 1px 16px rgba(0,0,0,0.35);
+  }
+  .hero .eyebrow {
+    color: rgba(255,255,255,0.78);
+  }
+  .hero .eyebrow .dot {
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.12);
+  }
+  /* ghost button needs to invert on the dark bg */
+  .hero .btn-ghost {
+    background: rgba(255,255,255,0.10);
+    color: #fff;
+    border-color: rgba(255,255,255,0.22);
+    backdrop-filter: blur(12px);
+  }
+  .hero .btn-ghost:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.38);
+    color: #fff;
+  }
+  /* ticker row on dark bg */
+  .hero .ticker-bar {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(14px);
+    border-radius: var(--r-l);
+    overflow: hidden;
+  }
+  .hero .tk { border-color: rgba(255,255,255,0.12); color: #fff; }
+  .hero .tk .pair { color: rgba(255,255,255,0.62); }
+  .hero .tk [data-tk-val] { color: #fff; }
+  .hero .tk .delta.pos { color: #6ef0b8; }
+  .hero .tk .delta.neg { color: #ff9bb0; }
+}
 @keyframes meshDrift { 0%,100% { transform: translate(0,0) scale(1);} 33% { transform: translate(14%,-10%) scale(1.12);} 66% { transform: translate(-10%,12%) scale(0.94);} }
 .hero-chart { position: absolute; inset: 0; width: 100%; height: 100%; }
 @media (prefers-reduced-motion: no-preference) {
