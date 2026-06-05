@@ -316,6 +316,63 @@ body:has(.hero) > .stage-orb { display: none; }
 .stat .lbl { font-family: var(--display); font-weight: 600; font-size: 17px; margin-top: 14px; color: #fff; }
 .stat .sup { color: var(--dark-mute); font-size: 14px; margin-top: 8px; line-height: 1.5; }
 
+/* ============ INLINE MAP (about-section split visual) ============
+   The map sits inside the right column of the About split. A brand
+   halo bleeds outside the card into the cream section bg so the dark
+   stage feels like it's emerging from a brand-lit environment rather
+   than sitting on top of paper. */
+.map-inline {
+  position: relative;
+  border-radius: var(--r-xl);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible !important;
+  isolation: isolate;
+  min-height: clamp(420px, 36vw, 540px);
+  display: flex; align-items: stretch;
+}
+.map-inline-halo {
+  position: absolute;
+  inset: -90px -120px -120px -100px;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.85;
+  background:
+    radial-gradient(closest-side at 30% 35%, rgba(33,187,215,0.42) 0%, transparent 72%),
+    radial-gradient(closest-side at 75% 65%, rgba(74,87,216,0.40) 0%, transparent 75%),
+    radial-gradient(closest-side at 55% 92%, rgba(191,28,193,0.32) 0%, transparent 78%);
+  mix-blend-mode: multiply;
+  animation: mapInlineHaloDrift 24s ease-in-out infinite alternate;
+}
+@keyframes mapInlineHaloDrift {
+  0%   { transform: translate(-1%, 1%) scale(1); }
+  100% { transform: translate(2%, -2%) scale(1.05); }
+}
+.map-inline-stage {
+  position: relative; z-index: 1;
+  width: 100%;
+  aspect-ratio: 1200 / 620;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 600px at 50% 30%, rgba(33,187,215,0.10), transparent 60%),
+    linear-gradient(180deg, #0e1230 0%, #0a0d24 100%);
+  border: 1px solid var(--dark-line);
+  box-shadow:
+    0 30px 80px -30px rgba(11,14,34,0.55),
+    0 -30px 90px -30px rgba(33,187,215,0.22),
+    0 60px 120px -20px rgba(191,28,193,0.20);
+  align-self: center;
+}
+.map-inline-stage svg { display: block; width: 100%; height: 100%; }
+@media (max-width: 900px){
+  .map-inline { min-height: 0; }
+  .map-inline-halo { inset: -40px -60px -60px -50px; filter: blur(70px); }
+}
+
 /* ============ WORLD MAP SECTION ============ */
 .map-wrap {
   background: var(--dark); border-radius: var(--r-xl);

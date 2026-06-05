@@ -177,64 +177,9 @@
       </ul>
       <a href="about.html" class="btn btn-dark mt-l">Our Full Story <span class="ar" data-icon="arrow"></span></a>
     </div>
-    <div class="split-visual viz-slot" data-reveal data-reveal-delay="1">
-      <image-slot id="home-hq" style="width:100%;height:100%;min-height:440px;display:block" shape="rounded" radius="26" placeholder="Drop a photo of the Dubai Marina HQ"></image-slot>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BY THE NUMBERS ============ -->
-<section class="section stat-band tight">
-  <div class="wrap">
-    <div class="stat-grid">
-      <div class="stat" data-reveal>
-        <div class="big"><span data-count="1500" data-suffix="+">1500+</span></div>
-        <div class="lbl">Affiliates &amp; IBs</div>
-        <div class="sup">A growing global network of professional educators and brokers.</div>
-      </div>
-      <div class="stat" data-reveal data-reveal-delay="1">
-        <div class="big"><span data-count="6">6</span></div>
-        <div class="lbl">Partner Platforms</div>
-        <div class="sup">Regulated brokers across every major trading region.</div>
-      </div>
-      <div class="stat" data-reveal data-reveal-delay="2">
-        <div class="big"><span data-count="6">6</span></div>
-        <div class="lbl">Countries with Staff</div>
-        <div class="sup">On-the-ground expertise where it matters most.</div>
-      </div>
-      <div class="stat" data-reveal data-reveal-delay="3">
-        <div class="big"><span data-count="10" data-suffix="+ Yrs">10+ Yrs</span></div>
-        <div class="lbl">Industry Experience</div>
-        <div class="sup">Relationships and leverage built over a decade.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WORLD MAP  ·  Based in Dubai. Operating globally. ============ -->
-<section class="section" id="map">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot"></span> Global Presence</span>
-      <h2 class="h2 mt-m text-balance">Based in Dubai. <span class="grad-ink">Operating globally.</span></h2>
-      <p class="lead">A custom visual for the home About section. Dubai HQ pulsing, six staffed countries connected in the brand gradient.</p>
-    </div>
-
-    <div class="map-wrap" data-reveal data-reveal-delay="1">
-      <div class="map-head">
-        <div>
-          <span class="eyebrow on-dark"><span class="dot"></span> Global presence</span>
-          <h2 class="h2 mt-m" style="color:#fff">A network with feet on the ground.</h2>
-          <p class="body">Dubai HQ. Country managers across five more regions. Local fluency in the markets your audience actually trades from &mdash; not a global call centre.</p>
-        </div>
-        <div class="stats">
-          <div class="stat-mini"><div class="v">6</div><div class="l">Countries staffed</div></div>
-          <div class="stat-mini"><div class="v">1,500+</div><div class="l">Partners served</div></div>
-          <div class="stat-mini"><div class="v">10+ Yrs</div><div class="l">Industry tenure</div></div>
-        </div>
-      </div>
-
-      <div class="map-stage">
+    <div class="split-visual map-inline" data-reveal data-reveal-delay="1">
+      <div class="map-inline-halo" aria-hidden="true"></div>
+      <div class="map-inline-stage">
         <svg id="worldMap" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <defs>
             <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="0">
@@ -293,13 +238,8 @@
               <stop offset="60%" stop-color="#21bbd7" stop-opacity="0.05"/>
               <stop offset="100%" stop-color="#000" stop-opacity="0"/>
             </radialGradient>
-            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2.4"/>
-            </filter>
           </defs>
-
           <rect x="0" y="0" width="1200" height="620" fill="url(#atmosphere)"/>
-
           <g class="grid">
             <path class="map-grid-line" d="M0,310 L1200,310"/>
             <path class="map-grid-line" d="M0,234 L1200,234"/>
@@ -312,7 +252,6 @@
             <path class="map-grid-line" d="M800,0 L800,620" opacity="0.5"/>
             <path class="map-grid-line" d="M1000,0 L1000,620"/>
           </g>
-
           <g id="stars"></g>
           <g id="dotmap"></g>
           <g id="arcPaths" style="display:none"></g>
@@ -320,35 +259,46 @@
           <g id="travelers"></g>
           <g id="cities"></g>
           <g id="labels"></g>
-
           <rect x="0" y="0" width="1200" height="620" fill="url(#vignette)" pointer-events="none"/>
-
           <g class="hud">
             <text class="hud-mono" x="24" y="28">FX UNLOCKED &middot; GLOBAL OPS</text>
             <text class="hud-mono" x="1176" y="28" text-anchor="end">LIVE &middot; 06 OFFICES</text>
-            <g transform="translate(24 596)"><text class="hud-mono" x="0" y="0">EQUIRECTANGULAR &middot; WGS84</text></g>
-            <g transform="translate(1176 596)"><text class="hud-mono" x="0" y="0" text-anchor="end">25.2&deg;N &middot; 55.3&deg;E</text></g>
-            <g transform="translate(1140 80)" class="compass">
-              <circle r="20" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
-              <path d="M0,-16 L3,0 L0,16 L-3,0 Z" fill="rgba(255,255,255,0.55)"/>
-              <path d="M-16,0 L0,3 L16,0 L0,-3 Z" fill="rgba(255,255,255,0.18)"/>
-              <text class="hud-mono" x="0" y="-26" text-anchor="middle">N</text>
-            </g>
+            <g transform="translate(24 596)"><text class="hud-mono" x="0" y="0">25.2&deg;N &middot; 55.3&deg;E &middot; DUBAI HQ</text></g>
           </g>
         </svg>
-      </div>
-
-      <div class="map-legend">
-        <div class="legend-cell"><div class="city-name"><span class="pip hq"></span>Dubai</div><div class="city-role">Headquarters</div><div class="city-meta">Marina &middot; UAE</div></div>
-        <div class="legend-cell"><div class="city-name"><span class="pip"></span>London</div><div class="city-role">EMEA office</div><div class="city-meta">United Kingdom</div></div>
-        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Limassol</div><div class="city-role">EU partners</div><div class="city-meta">Cyprus</div></div>
-        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Cape Town</div><div class="city-role">Africa lead</div><div class="city-meta">South Africa</div></div>
-        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Singapore</div><div class="city-role">APAC hub</div><div class="city-meta">Singapore</div></div>
-        <div class="legend-cell"><div class="city-name"><span class="pip"></span>Sydney</div><div class="city-role">ANZ office</div><div class="city-meta">Australia</div></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ============ BY THE NUMBERS ============ -->
+<section class="section stat-band tight">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat" data-reveal>
+        <div class="big"><span data-count="1500" data-suffix="+">1500+</span></div>
+        <div class="lbl">Affiliates &amp; IBs</div>
+        <div class="sup">A growing global network of professional educators and brokers.</div>
+      </div>
+      <div class="stat" data-reveal data-reveal-delay="1">
+        <div class="big"><span data-count="6">6</span></div>
+        <div class="lbl">Partner Platforms</div>
+        <div class="sup">Regulated brokers across every major trading region.</div>
+      </div>
+      <div class="stat" data-reveal data-reveal-delay="2">
+        <div class="big"><span data-count="6">6</span></div>
+        <div class="lbl">Countries with Staff</div>
+        <div class="sup">On-the-ground expertise where it matters most.</div>
+      </div>
+      <div class="stat" data-reveal data-reveal-delay="3">
+        <div class="big"><span data-count="10" data-suffix="+ Yrs">10+ Yrs</span></div>
+        <div class="lbl">Industry Experience</div>
+        <div class="sup">Relationships and leverage built over a decade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ============ HOW IT WORKS ============ -->
 <section class="section" id="how">
