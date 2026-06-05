@@ -216,13 +216,46 @@
     });
   }
 
+  /* ---- Icon injection + two-arrow slot for buttons ---- */
+  function mountIcons() {
+    if (!window.icon) return;
+    // Arrow icons sitting inside a .btn (with .arr or .ar class) become a
+    // two-arrow micro-interaction slot — arrow A glides out, arrow B
+    // slides in on hover. Used for Linear/Vercel-style kinetic CTAs.
+    const ARROW_NAMES = new Set(["arrow", "arrowLeft", "arrowUpRight"]);
+    document.querySelectorAll("[data-icon]").forEach((el) => {
+      const name = el.dataset.icon;
+      const inBtn = el.closest(".btn");
+      const isArrowSlot = inBtn && ARROW_NAMES.has(name) && (el.classList.contains("arr") || el.classList.contains("ar"));
+      if (isArrowSlot) {
+        if (name === "arrowUpRight") el.classList.add("up");
+        const svg = window.icon(name);
+        el.innerHTML = `<span class="arr-a">${svg}</span><span class="arr-b">${svg}</span>`;
+      } else {
+        el.innerHTML = window.icon(name);
+      }
+    });
+  }
+
+  /* ---- Magnetic-cursor glow on .btn-magnetic ---- */
+  function mountMagneticButtons() {
+    document.querySelectorAll(".btn-magnetic").forEach((b) => {
+      b.addEventListener("mousemove", (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
+        b.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
+      });
+      b.addEventListener("mouseleave", () => {
+        b.style.setProperty("--mx", "50%"); b.style.setProperty("--my", "50%");
+      });
+    });
+  }
+
   function boot() {
     mountNav();
     mountFooter();
-    // inject any icon placeholders: <i data-icon="name"></i>
-    document.querySelectorAll("[data-icon]").forEach((el) => {
-      el.innerHTML = window.icon ? icon(el.dataset.icon) : "";
-    });
+    mountIcons();
+    mountMagneticButtons();
     scrollReveal();
     startTicker();
     animateCounters();
