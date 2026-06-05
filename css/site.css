@@ -450,15 +450,43 @@ em.accent {
   box-shadow: var(--sh-md);
 }
 
-/* ============ ICON TILE ============ */
-.icon-tile {
-  width: 56px; height: 56px; border-radius: var(--r-s);
-  display: grid; place-items: center;
-  background: var(--grad-soft); border: 1px solid var(--line);
-  color: var(--indigo);
+/* ============ ICON TILE  ·  base + treatment system ============
+   Use .icon-tile (legacy) or .tile (new) — both render a 56x56
+   placeholder for an icon. The treatment classes (.soft / .solid /
+   .grad / .ring / .round and the status variants) compose on top:
+
+     <span class="tile soft" data-icon="deal"></span>     softest, default
+     <span class="tile solid" data-icon="rocket"></span>  emphasis
+     <span class="tile grad" data-icon="star"></span>     hero feature - ONE PER SECTION
+     <span class="tile ring" data-icon="compass"></span>  editorial quiet
+     <span class="tile soft round" data-icon="manager"></span>  avatar feel
+*/
+.icon-tile, .tile {
+  width: 56px; height: 56px; border-radius: 14px;
+  display: grid; place-items: center; flex: none;
+  /* SOFT is the default */
+  background: linear-gradient(135deg, rgba(33,187,215,0.14), rgba(191,28,193,0.12));
+  color: var(--indigo); border: 1px solid var(--line);
 }
-.icon-tile svg { width: 28px; height: 28px; }
-.icon-tile.round { border-radius: 50%; }
+.icon-tile svg, .tile svg { width: 28px; height: 28px; }
+.icon-tile.round, .tile.round { border-radius: 50%; }
+.icon-tile.lg, .tile.lg { width: 72px; height: 72px; border-radius: 18px; }
+.tile.lg svg, .icon-tile.lg svg { width: 36px; height: 36px; }
+.tile.sm, .icon-tile.sm { width: 40px; height: 40px; border-radius: 10px; }
+.tile.sm svg, .icon-tile.sm svg { width: 20px; height: 20px; }
+
+/* TREATMENTS — explicit modifiers override the default soft.
+   Both .tile and the legacy .icon-tile pick these up. */
+.tile.soft,  .icon-tile.soft  { background: linear-gradient(135deg, rgba(33,187,215,0.14), rgba(191,28,193,0.12)); color: var(--indigo); border: 1px solid var(--line); }
+.tile.solid, .icon-tile.solid { background: var(--ink); color: #fff; border-color: transparent; }
+.tile.grad,  .icon-tile.grad  { background: var(--grad); color: #fff; border-color: transparent; box-shadow: 0 4px 14px -6px rgba(51,61,168,0.45); }
+.tile.ring,  .icon-tile.ring  { background: #fff; color: var(--ink); border: 1.5px solid var(--ink); }
+
+/* STATUS — tint by semantic role */
+.tile.success, .icon-tile.success { background: rgba(28,155,110,0.12); color: var(--pos); border-color: rgba(28,155,110,0.18); }
+.tile.alert,   .icon-tile.alert   { background: rgba(241,179,64,0.14); color: #b8821f; border-color: rgba(241,179,64,0.24); }
+.tile.danger,  .icon-tile.danger  { background: rgba(216,58,85,0.10); color: var(--neg); border-color: rgba(216,58,85,0.20); }
+
 .icon-line svg { width: 100%; height: 100%; display: block; }
 .icon-line { color: var(--ink); }
 
