@@ -38,8 +38,91 @@
       <p class="body mt-s">FX Unlocked exists to fix all three of those problems at once. We sit at the centre of the FX ecosystem, connecting the right affiliates and IBs to the right broker partners, on terms that reflect the true value of the traffic and client relationships being brought to the table.</p>
       <p class="body mt-s">We're headquartered on the 38th floor of Media One Tower in Dubai Marina, one of the world's premier financial hubs, with team members across five countries and active broker relationships on every major trading continent.</p>
     </div>
-    <div class="split-visual" data-reveal data-reveal-delay="1">
-      <div class="ph"><div><span data-icon="pin"></span><br/>Floor 38, Media One Tower<br/>Dubai Marina</div></div>
+    <div class="split-visual map-inline" data-reveal data-reveal-delay="1">
+      <div class="map-inline-halo" aria-hidden="true"></div>
+      <div class="map-inline-stage">
+        <svg id="worldMap" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="arcGradFade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#21bbd7" stop-opacity="0"/>
+              <stop offset="20%" stop-color="#21bbd7" stop-opacity="0.55"/>
+              <stop offset="55%" stop-color="#c8d0ff" stop-opacity="0.85"/>
+              <stop offset="80%" stop-color="#f06ad6" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#f06ad6" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="cityGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
+              <stop offset="50%" stop-color="#9aa6ff" stop-opacity="0.32"/>
+              <stop offset="100%" stop-color="#9aa6ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="hqGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="30%" stop-color="#f9a6ff" stop-opacity="0.65"/>
+              <stop offset="70%" stop-color="#bf1cc1" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#bf1cc1" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="hqCore" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="100%" stop-color="#fce0ff"/>
+            </radialGradient>
+            <linearGradient id="hqRingGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#21bbd7"/>
+              <stop offset="55%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#f06ad6"/>
+            </linearGradient>
+            <linearGradient id="hqTagGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#21bbd7"/>
+              <stop offset="55%" stop-color="#333da8"/>
+              <stop offset="100%" stop-color="#bf1cc1"/>
+            </linearGradient>
+            <radialGradient id="pulseGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="55%" stop-color="#bf1cc1" stop-opacity="0"/>
+              <stop offset="78%" stop-color="#f9a6ff" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#bf1cc1" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="travelPulse" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="40%" stop-color="#c8d0ff" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#9aa6ff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+              <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+            </radialGradient>
+            <radialGradient id="atmosphere" cx="50%" cy="45%" r="55%">
+              <stop offset="0%" stop-color="#3b4ad8" stop-opacity="0.18"/>
+              <stop offset="60%" stop-color="#21bbd7" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="1200" height="620" fill="url(#atmosphere)"/>
+          <g class="grid">
+            <path class="map-grid-line" d="M0,310 L1200,310"/>
+            <path class="map-grid-line" d="M0,234 L1200,234"/>
+            <path class="map-grid-line" d="M0,386 L1200,386"/>
+            <path class="map-grid-line" d="M0,158 L1200,158" opacity="0.6"/>
+            <path class="map-grid-line" d="M0,462 L1200,462" opacity="0.6"/>
+            <path class="map-grid-line" d="M200,0 L200,620"/>
+            <path class="map-grid-line" d="M400,0 L400,620" opacity="0.5"/>
+            <path class="map-grid-line" d="M600,0 L600,620"/>
+            <path class="map-grid-line" d="M800,0 L800,620" opacity="0.5"/>
+            <path class="map-grid-line" d="M1000,0 L1000,620"/>
+          </g>
+          <g id="stars"></g>
+          <g id="dotmap"></g>
+          <g id="arcPaths" style="display:none"></g>
+          <g id="arcs"></g>
+          <g id="travelers"></g>
+          <g id="cities"></g>
+          <g id="labels"></g>
+          <rect x="0" y="0" width="1200" height="620" fill="url(#vignette)" pointer-events="none"/>
+          <g class="hud">
+            <text class="hud-mono" x="24" y="28">FLOOR 38 &middot; MEDIA ONE TOWER</text>
+            <text class="hud-mono" x="1176" y="28" text-anchor="end">LIVE &middot; 06 OFFICES</text>
+            <g transform="translate(24 596)"><text class="hud-mono" x="0" y="0">25.2&deg;N &middot; 55.3&deg;E &middot; DUBAI MARINA</text></g>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
@@ -91,6 +174,7 @@
 
 <script src="js/icons.js"></script>
 <script src="js/site.js"></script>
+<script src="js/worldmap.js" defer></script>
 <script>
 window.addEventListener("DOMContentLoaded", () => {
   const values = [
