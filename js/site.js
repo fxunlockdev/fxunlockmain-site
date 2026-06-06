@@ -4,8 +4,9 @@
    Each page: <body data-page="home"> … </body>
    ============================================================ */
 (function () {
-  // Logo: blob URL when bundled standalone, relative path otherwise.
-  const LOGO = (window.__resources && window.__resources.logo) || "assets/fx-icon.svg";
+  // Full FXUnlocked wordmark logo (icon + wordmark in one image).
+  // Falls back to bundled blob URL when the site is shipped as a standalone bundle.
+  const LOGO = (window.__resources && window.__resources.logo) || "assets/fx-logo-full.png";
   const NAV = [
     { label: "Home", href: "index.html", key: "home" },
     { label: "About Us", href: "about.html", key: "about" },
@@ -24,9 +25,8 @@
     nav.className = "nav";
     nav.innerHTML = `
       <div class="wrap nav-inner">
-        <a href="index.html" class="logo">
+        <a href="index.html" class="logo" aria-label="FX Unlocked home">
           <img src="${LOGO}" alt="FX Unlocked" />
-          <span>FX <span class="un">Unlocked</span></span>
         </a>
         <div class="nav-links">${links}</div>
         <div class="nav-cta">
@@ -64,9 +64,8 @@
       <div class="wrap">
         <div class="foot-grid">
           <div class="foot-col">
-            <a href="index.html" class="logo">
+            <a href="index.html" class="logo footer-logo" aria-label="FX Unlocked home">
               <img src="${LOGO}" alt="FX Unlocked" />
-              <span>FX <span class="un">Unlocked</span></span>
             </a>
             <p class="small" style="color:var(--dark-mute);max-width:34ch;margin:0 0 22px">The FX industry's growth partner. Off-market deals, free marketing support, and tools built for affiliates and IBs.</p>
             <p class="mono" style="font-size:12px;color:var(--dark-dim)">Floor 38, Media One Tower<br/>Dubai Marina, UAE</p>

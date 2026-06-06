@@ -526,13 +526,19 @@ em.accent {
   border-bottom: 1px solid var(--line);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+/* Logo wrapper — the full FXUnlocked image (icon + wordmark) is one
+   asset so we just size by height and let aspect-ratio handle width. */
 .logo {
-  display: flex; align-items: center; gap: 11px;
-  font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em;
-  color: var(--ink); transition: color .25s;
+  display: inline-flex; align-items: center;
+  line-height: 0;
+  transition: filter .25s, transform .25s;
 }
-.logo img { width: 38px; height: 38px; filter: drop-shadow(0 4px 12px rgba(51,61,168,0.22)); transition: filter .25s; }
-.logo .un { font-weight: 400; opacity: 0.92; }
+.logo img {
+  height: 38px; width: auto;
+  display: block;
+  transition: filter .25s;
+}
+.logo:hover { transform: translateY(-1px); }
 .nav-links { display: flex; align-items: center; gap: 30px; font-size: 14.5px; font-weight: 500; }
 .nav-links a { color: var(--ink-mute); transition: color .18s; position: relative; }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
@@ -551,9 +557,12 @@ body[data-page="home"] .nav:not(.scrolled) {
   backdrop-filter: blur(8px) saturate(1.2);
   -webkit-backdrop-filter: blur(8px) saturate(1.2);
 }
-body[data-page="home"] .nav:not(.scrolled) .logo { color: #fff; }
 body[data-page="home"] .nav:not(.scrolled) .logo img {
-  filter: drop-shadow(0 4px 12px rgba(255,255,255,0.18));
+  /* The wordmark in the logo asset is dark; over the dark hero we
+     flatten the whole logo to pure white so both the icon and
+     wordmark stay legible. brightness(0) clears all color first,
+     then invert(1) lights it up white. */
+  filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(255,255,255,0.18));
 }
 body[data-page="home"] .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.72); }
 body[data-page="home"] .nav:not(.scrolled) .nav-links a:hover,
@@ -599,7 +608,13 @@ body[data-page="home"] .nav:not(.scrolled) .nav-toggle {
 .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid var(--dark-line); }
 @media (max-width: 880px){ .foot-grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
 @media (max-width: 520px){ .foot-grid { grid-template-columns: 1fr; } }
-.footer .logo { color: #fff; margin-bottom: 18px; }
+.footer .logo { margin-bottom: 18px; }
+.footer .logo img {
+  /* Same brightness(0) + invert(1) trick to flip the dark-text logo
+     white against the dark footer. */
+  filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(255,255,255,0.16));
+  height: 44px;
+}
 .foot-col h5 { font-family: var(--display); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark-dim); margin: 0 0 18px; font-weight: 600; }
 .foot-col a { display: block; color: var(--dark-mute); padding: 7px 0; font-size: 14.5px; transition: color .18s; }
 .foot-col a:hover { color: #fff; }
