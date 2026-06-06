@@ -12,6 +12,7 @@
 <meta name="ext-resource-dependency" content="assets/fx-icon.svg" data-resource-id="logo" />
 <link rel="stylesheet" href="css/site.css" />
 <link rel="stylesheet" href="css/pages.css" />
+<link rel="stylesheet" href="css/hero-dark.css" />
 <template id="__bundler_thumbnail" data-bg-color="#f4f3f9">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -48,72 +49,158 @@
 <div class="stage-orb" style="width:520px;height:520px;background:#7d8bff;top:-180px;left:-120px;"></div>
 <div class="stage-orb" style="width:460px;height:460px;background:#f06ad6;top:240px;right:-160px;opacity:0.35;"></div>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO (dark aurora) ============ -->
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow" data-reveal><span class="dot"></span> The FX Industry's Growth Partner</span>
-      <h1 class="h-display" data-reveal data-reveal-delay="1">Unlock better deals. <br/><span class="hero-accent grad-ink">Grow</span> your FX business.</h1>
-      <p class="lead" data-reveal data-reveal-delay="2">FX Unlocked connects FX educators, content creators, and introducing brokers with the world's leading trading platforms on off-market CPA and rebate deals you won't find anywhere else. Backed by free marketing support, free educational content, and a team with over a decade of industry experience.</p>
-      <div class="hero-cta wrap-row" data-reveal data-reveal-delay="3">
-        <a href="affiliates-ibs.html" class="btn btn-primary btn-lg">Apply as an Affiliate or IB <span class="ar" data-icon="arrow"></span></a>
-        <a href="affiliates-ibs.html#platforms" class="btn btn-ghost btn-lg">Are you a Trading Platform? <span class="ar" data-icon="arrowUpRight"></span></a>
-      </div>
-      <div class="ticker-bar" data-reveal data-reveal-delay="4">
-        <div class="tk" data-ticker data-base="1.08542">
-          <span class="pair">EUR / USD</span>
-          <span class="row"><span data-tk-val>1.08542</span><span class="delta pos" data-tk-d>▲ +0.18%</span></span>
-        </div>
-        <div class="tk" data-ticker data-base="1.26310">
-          <span class="pair">GBP / USD</span>
-          <span class="row"><span data-tk-val>1.26310</span><span class="delta pos" data-tk-d>▲ +0.24%</span></span>
-        </div>
-        <div class="tk" data-ticker data-base="2387.40">
-          <span class="pair">XAU / USD</span>
-          <span class="row"><span data-tk-val>2387.40</span><span class="delta pos" data-tk-d>▲ +0.62%</span></span>
-        </div>
-      </div>
-    </div>
+  <div class="hero-bg"></div>
+  <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+  <div class="grain" aria-hidden="true"></div>
 
-    <div class="hero-canvas-wrap" data-reveal data-reveal-delay="2">
-      <!-- soft brand halo bleeding into the page bg behind the card -->
-      <div class="hero-halo" aria-hidden="true"></div>
+  <div class="hero-main">
+    <div class="wrap">
+      <div class="hero-grid">
 
-      <div class="hero-viz" aria-hidden="true">
-        <!-- softened mesh blobs (depth halos under the video) -->
-        <div class="mesh mesh-a"></div>
-        <div class="mesh mesh-b"></div>
-        <div class="mesh mesh-c"></div>
-
-        <!-- looping motion graphic; reduced-motion users see the poster -->
-        <video class="hero-video"
-               autoplay muted loop playsinline
-               preload="metadata"
-               poster="assets/hero-poster.jpg"
-               aria-hidden="true"
-               disablepictureinpicture>
-          <source src="assets/hero.webm" type="video/webm"
-                  media="(prefers-reduced-motion: no-preference)">
-          <source src="assets/hero.mp4"  type="video/mp4"
-                  media="(prefers-reduced-motion: no-preference)">
-        </video>
-
-        <!-- brand-tint overlay locks video colors into FX Unlocked palette -->
-        <div class="hero-tint" aria-hidden="true"></div>
-        <!-- corner vignette so chips + price tag stay legible -->
-        <div class="hero-vignette" aria-hidden="true"></div>
-
-        <!-- live price tag -->
-        <div class="hc-pricetag" data-ticker data-base="1.27310">
-          <span class="hc-pt-pair">PORTFOLIO</span>
-          <span class="hc-pt-row"><span data-tk-val>1.27310</span><span class="hc-pt-d" data-tk-d>▲ +1.84%</span></span>
+        <!-- COPY -->
+        <div class="hero-copy">
+          <span class="eyebrow" data-reveal="1"><span class="dot"></span> The FX industry's growth partner</span>
+          <h1 class="title" data-reveal="2">Unlock better deals.<br/><span class="grad">Grow</span> your FX business.</h1>
+          <p class="subtitle" data-reveal="3">FX Unlocked connects educators, content creators, and introducing brokers with the world's leading platforms, on off-market CPA and rebate deals you won't find anywhere else.</p>
+          <div class="hero-cta" data-reveal="4">
+            <a href="affiliates-ibs.html" class="btn btn-primary btn-lg">Apply as an Affiliate or IB <span class="arr" data-icon="arrow"></span></a>
+            <a href="affiliates-ibs.html#platforms" class="btn btn-ghost btn-lg">Are you a Trading Platform? <span class="arr up" data-icon="arrowUpRight"></span></a>
+          </div>
         </div>
 
-        <div class="fx-chips">
-          <div class="fx-chip c1"><span class="fc-pair">EUR/USD</span><span class="fc-up">+0.42%</span></div>
-          <div class="fx-chip c2"><span class="fc-pair">XAU/USD</span><span class="fc-up">+1.07%</span></div>
-          <div class="fx-chip c3"><span class="fc-pair">GBP/JPY</span><span class="fc-dn">−0.18%</span></div>
+        <!-- VISUAL -->
+        <div class="hero-visual" data-reveal="3">
+          <svg class="flow plx" data-depth="16" viewBox="0 0 720 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <linearGradient id="ribbonGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"  stop-color="#2bc6e0" stop-opacity="0.0"/>
+                <stop offset="20%" stop-color="#2bc6e0" stop-opacity="0.85"/>
+                <stop offset="58%" stop-color="#7b6ef0"/>
+                <stop offset="92%" stop-color="#f08bff" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#f08bff" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="ribbonGrad2" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"  stop-color="#54e0a6" stop-opacity="0"/>
+                <stop offset="45%" stop-color="#54e0a6" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#2bc6e0" stop-opacity="0.0"/>
+              </linearGradient>
+              <linearGradient id="lineGrad" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%"  stop-color="#2bc6e0"/>
+                <stop offset="55%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f08bff"/>
+              </linearGradient>
+              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#7b6ef0" stop-opacity="0.28"/>
+                <stop offset="100%" stop-color="#7b6ef0" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="arrowFill" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%"  stop-color="#7fe8ff"/>
+                <stop offset="50%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#f6a6ff"/>
+              </linearGradient>
+              <radialGradient id="leadGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%"   stop-color="#fff"/>
+                <stop offset="100%" stop-color="#cf3fd6" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="heroSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs>
+
+            <!-- flowing ribbons (paths morphed each frame by JS) -->
+            <g class="ribbon r3"><path id="rb3" fill="none" stroke="url(#ribbonGrad2)" stroke-width="2"   stroke-linecap="round"/></g>
+            <g class="ribbon r2"><path id="rb2" fill="none" stroke="url(#ribbonGrad)"  stroke-width="2.5" stroke-linecap="round" opacity="0.7"/></g>
+            <g class="ribbon r1"><path id="rb1" fill="none" stroke="url(#ribbonGrad)"  stroke-width="3"   stroke-linecap="round" opacity="0.85"/></g>
+
+            <!-- reference path for the travelling pulse -->
+            <path id="linePath" d="M30 470 C150 450 220 430 320 360 C420 290 470 300 540 220 C600 152 640 150 690 96" fill="none" stroke="none"/>
+
+            <!-- soft area fill under the hero line -->
+            <path d="M30 470 C150 450 220 430 320 360 C420 290 470 300 540 220 C600 152 640 150 690 96 L690 470 Z"
+                  fill="url(#areaGrad)" opacity="0.9"/>
+
+            <!-- ascending hero line -->
+            <g class="line-main">
+              <path class="line-draw"
+                    d="M30 470 C150 450 220 430 320 360 C420 290 470 300 540 220 C600 152 640 150 690 96"
+                    fill="none" stroke="url(#lineGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <!-- travelling pulse riding up the line -->
+            <g class="travel-pulse">
+              <circle r="6" fill="url(#leadGlow)">
+                <animateMotion dur="3.6s" begin="2.6s" repeatCount="indefinite" rotate="auto"
+                               keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.45 0 0.2 1">
+                  <mpath href="#linePath"/>
+                </animateMotion>
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.82;1"
+                         dur="3.6s" begin="2.6s" repeatCount="indefinite"/>
+              </circle>
+              <circle r="2.6" fill="#fff">
+                <animateMotion dur="3.6s" begin="2.6s" repeatCount="indefinite" rotate="auto"
+                               keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.45 0 0.2 1">
+                  <mpath href="#linePath"/>
+                </animateMotion>
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.82;1"
+                         dur="3.6s" begin="2.6s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+
+            <!-- node markers along the line -->
+            <g fill="#fff" opacity="0.9">
+              <circle cx="320" cy="360" r="3.2"/>
+              <circle cx="540" cy="220" r="3.2"/>
+            </g>
+
+            <!-- radar-ping pulse at the tip -->
+            <g>
+              <circle class="lead-ring"   cx="690" cy="96" r="6" fill="none" stroke="#fff" stroke-width="1.4"/>
+              <circle class="lead-ring b" cx="690" cy="96" r="6" fill="none" stroke="#fff" stroke-width="1.4"/>
+            </g>
+
+            <!-- sleek arrowhead at the glowing tip -->
+            <g class="arrow-glyph">
+              <circle cx="690" cy="96" r="15" fill="url(#leadGlow)" opacity="0.85"/>
+              <g transform="translate(690 96) rotate(-47)">
+                <path d="M17 0 L-11 -12.5 L-3 0 L-11 12.5 Z" fill="url(#arrowFill)" filter="url(#heroSoft)" opacity="0.65"/>
+                <path d="M17 0 L-11 -12.5 L-3 0 L-11 12.5 Z" fill="url(#arrowFill)"/>
+                <path d="M17 0 L-11 -12.5 L-3 0 L-11 12.5 Z" fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" opacity="0.9"/>
+              </g>
+            </g>
+          </svg>
+
+          <!-- floating currency chips -->
+          <div class="viz-chips plx" data-depth="40">
+            <div class="vchip" data-ticker data-base="1.08944" data-trend="up">
+              <div class="vc-top"><span class="vc-pair">EUR / USD</span><span class="vc-live"></span></div>
+              <div class="vc-mid">
+                <span class="vc-val" data-tk-val>1.08944</span>
+                <svg class="vc-spark" viewBox="0 0 64 24" preserveAspectRatio="none"><path data-spark fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="vc-bot"><span class="vc-d pos" data-tk-d>+0.37%</span><span class="vc-lbl">24h</span></div>
+            </div>
+            <div class="vchip" data-ticker data-base="1.26302" data-trend="down">
+              <div class="vc-top"><span class="vc-pair">GBP / USD</span><span class="vc-live"></span></div>
+              <div class="vc-mid">
+                <span class="vc-val" data-tk-val>1.26302</span>
+                <svg class="vc-spark" viewBox="0 0 64 24" preserveAspectRatio="none"><path data-spark fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="vc-bot"><span class="vc-d neg" data-tk-d>&minus;0.01%</span><span class="vc-lbl">24h</span></div>
+            </div>
+            <div class="vchip" data-ticker data-base="2392.36" data-trend="up">
+              <div class="vc-top"><span class="vc-pair">XAU / USD</span><span class="vc-live"></span></div>
+              <div class="vc-mid">
+                <span class="vc-val" data-tk-val>2,392.36</span>
+                <svg class="vc-spark" viewBox="0 0 64 24" preserveAspectRatio="none"><path data-spark fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="vc-bot"><span class="vc-d pos" data-tk-d>+0.21%</span><span class="vc-lbl">24h</span></div>
+            </div>
+          </div>
+
+          <!-- particles -->
+          <div id="heroParticles" class="plx" data-depth="34" style="position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden;"></div>
         </div>
+
       </div>
     </div>
   </div>
@@ -416,6 +503,7 @@
 <script src="js/image-slot.js"></script>
 <script src="js/site.js"></script>
 <script src="js/worldmap.js" defer></script>
+<script src="js/hero-dark.js" defer></script>
 <script>
   // hero
   function bootHome() {
