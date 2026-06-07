@@ -412,15 +412,24 @@ body:has(.hero) > .stage-orb { display: none; }
   .ic-partners .wrap { gap: 36px; }
 }
 @media (max-width: 640px){
+  /* Stack vertically on phones — side-by-side at 52px was getting
+     crushed by the viewport gutter (each cell ended at ~150px wide,
+     scaling the 380px-aspect wordmark down to ~38px tall and
+     wasting half the breathing room). One per row, larger, reads
+     much stronger. */
   .ic-partners { padding: 42px 0; }
-  .ic-logo { height: 52px; }
+  .ic-partners-logos {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    max-width: 320px;
+  }
+  .ic-logo { height: 56px; }
   .ic-partners-lbl { font-size: 12px; letter-spacing: 0.20em; }
   .ic-partners .wrap { gap: 28px; }
-  .ic-partners-logos { gap: 24px; }
 }
 @media (max-width: 380px){
-  .ic-partners-logos { grid-template-columns: 1fr; gap: 18px; }
-  .ic-logo { height: 44px; }
+  .ic-partners-logos { gap: 20px; }
+  .ic-logo { height: 48px; }
 }
 .brokers .lbl { text-align: center; margin-bottom: 26px; }
 .broker-logo { font-family: var(--display); font-weight: 600; font-size: 23px; letter-spacing: -0.02em; color: var(--ink); opacity: 0.42; transition: opacity .2s; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
