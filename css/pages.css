@@ -387,49 +387,46 @@ body:has(.hero) > .stage-orb { display: none; }
   gap: clamp(48px, 8vw, 120px);
   width: 100%;
   max-width: 920px;
-  /* Single grey ink tone for both wordmarks. The SVGs use currentColor
-     so every fill resolves to this single value — no green accents,
-     no black backgrounds, just one unified grey. */
-  color: var(--ink-mute);
-  opacity: 0.78;
-  transition: color .25s, opacity .25s;
+  opacity: 0.85;
+  transition: opacity .25s;
 }
-.ic-partners-logos:hover { opacity: 1; color: var(--ink); }
+.ic-partners-logos:hover { opacity: 1; }
 
-/* Big partner wordmarks (SVG; height-bound, width auto). Both share
-   the same physical HEIGHT so they sit on a common baseline. */
+/* ORIGINAL brand PNGs from IC Markets / IC Trading. CSS-only
+   monochrome treatment: grayscale(1) flattens the green accent and
+   leaves both as the same black-card-with-white-letters silhouette.
+   The brand assets themselves are NOT modified. */
 .ic-logo {
   display: block;
   width: auto;
-  height: 80px;
+  height: 100px;
   max-width: 100%;
   object-fit: contain;
+  border-radius: 14px;
+  filter: grayscale(1) contrast(1.05);
 }
 @media (max-width: 1080px){
   .ic-partners { padding: 56px 0; }
-  .ic-logo { height: 64px; }
+  .ic-logo { height: 84px; }
   .ic-partners-logos { gap: clamp(32px, 6vw, 72px); }
   .ic-partners .wrap { gap: 36px; }
 }
 @media (max-width: 640px){
-  /* Stack vertically on phones — side-by-side at 52px was getting
-     crushed by the viewport gutter (each cell ended at ~150px wide,
-     scaling the 380px-aspect wordmark down to ~38px tall and
-     wasting half the breathing room). One per row, larger, reads
-     much stronger. */
+  /* Stack vertically on phones — the 2:1 IC Trading card needs the
+     full row width to read at a useful size. */
   .ic-partners { padding: 42px 0; }
   .ic-partners-logos {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 22px;
     max-width: 320px;
   }
-  .ic-logo { height: 56px; }
+  .ic-logo { height: 72px; }
   .ic-partners-lbl { font-size: 12px; letter-spacing: 0.20em; }
   .ic-partners .wrap { gap: 28px; }
 }
 @media (max-width: 380px){
-  .ic-partners-logos { gap: 20px; }
-  .ic-logo { height: 48px; }
+  .ic-partners-logos { gap: 18px; }
+  .ic-logo { height: 64px; }
 }
 .brokers .lbl { text-align: center; margin-bottom: 26px; }
 .broker-logo { font-family: var(--display); font-weight: 600; font-size: 23px; letter-spacing: -0.02em; color: var(--ink); opacity: 0.42; transition: opacity .2s; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
