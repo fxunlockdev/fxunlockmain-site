@@ -527,14 +527,17 @@ em.accent {
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 /* Logo wrapper — the full FXUnlocked image (icon + wordmark) is one
-   asset so we just size by height and let aspect-ratio handle width. */
+   asset so we just size by height and let aspect-ratio handle width.
+   flex-shrink: 0 is crucial so the parent .nav-inner (flex row) can
+   never crush the logo horizontally when nav-cta gets full. */
 .logo {
   display: inline-flex; align-items: center;
-  line-height: 0;
+  line-height: 0; flex-shrink: 0;
   transition: filter .25s, transform .25s;
 }
 .logo img {
   height: 38px; width: auto;
+  max-width: none; flex-shrink: 0;
   display: block;
   transition: filter .25s;
 }
@@ -587,30 +590,32 @@ body[data-page="home"] .nav:not(.scrolled) .nav-toggle {
 .nav-toggle { display: none; }
 
 /* ============ WHATSAPP NAV CHIP ============
-   Round icon chip in WhatsApp green; opens wa.me with a pre-filled
-   text on click. Always visible — even when the ghost "Log in" button
-   is hidden on mobile, so users can reach the team in one tap. */
+   Round icon chip in the brand gradient (not WhatsApp green — the
+   green looked off against the brand on the dark hero). Opens wa.me
+   with a pre-filled text on click. Hidden on mobile per design
+   feedback; the menu toggle covers reach on small screens. */
 .btn.btn-wa {
   --btn-h: 44px;
   width: 44px; padding: 0;
-  background: #25d366;
+  background: var(--grad);
   color: #fff;
   border: 1px solid rgba(255,255,255,0.18);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.25),
-    0 6px 16px -8px rgba(37,211,102,0.55);
+    0 6px 16px -8px rgba(51,61,168,0.45);
 }
 .btn.btn-wa svg { width: 20px; height: 20px; }
 .btn.btn-wa:hover {
   transform: translateY(-1.5px);
-  background: #1ebc5c;
+  filter: brightness(1.08);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.30),
-    0 10px 24px -8px rgba(37,211,102,0.65);
+    0 10px 24px -8px rgba(191,28,193,0.5);
 }
-@media (max-width: 640px){
-  .btn.btn-wa { --btn-h: 40px; width: 40px; }
-  .btn.btn-wa svg { width: 18px; height: 18px; }
+/* Hide WhatsApp chip on mobile (≤1080) — the nav-cta is already busy
+   with Apply now + hamburger, and the badge looks awkward squeezed in. */
+@media (max-width: 1080px){
+  .btn.btn-wa { display: none !important; }
 }
 @media (max-width: 1080px){
   .nav-links { display: none; }
