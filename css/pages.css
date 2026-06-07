@@ -387,17 +387,39 @@ body:has(.hero) > .stage-orb { display: none; }
   text-transform: uppercase;
   color: var(--ink-dim);
 }
+/* Both partner logos use the brand-supplied PNG. IC Markets is 1:1,
+   IC Trading is 2:1 — to make them feel like uniform partner cards
+   instead of two random images, we size them so the WORDMARK heights
+   match. The square IC Markets gets a bit more vertical (40px) and
+   the wide IC Trading gets a bit less (28px) so the "IC" letters in
+   both lines up visually. Both share the same greyscale + opacity
+   treatment so they read as a paired set. */
 .ic-logo {
-  height: 34px; width: auto;
   display: inline-block;
   vertical-align: middle;
-  filter: grayscale(1);       /* belt-and-braces in case SVG is ever swapped for a colour raster */
+  width: auto;
+  height: 40px;
+  filter: grayscale(1);
+  border-radius: 7px;
+  object-fit: contain;
+}
+.ic-logo--wide { height: 28px; border-radius: 5px; }   /* 2:1 brand card; match the IC letter height of the square mark */
+@media (max-width: 820px){
+  .ic-logo { height: 36px; }
+  .ic-logo--wide { height: 26px; }
 }
 @media (max-width: 640px){
   .ic-partners { padding: 24px 0 16px; }
   .ic-partners-row { gap: 14px; }
-  .ic-logo { height: 28px; }
+  .ic-partners-logos { gap: 14px; }
+  .ic-logo { height: 32px; }
+  .ic-logo--wide { height: 22px; }
   .ic-partners-lbl, .ic-partners-and { font-size: 11.5px; letter-spacing: 0.14em; }
+}
+@media (max-width: 380px){
+  .ic-partners-row { flex-direction: column; gap: 10px; }
+  .ic-logo { height: 30px; }
+  .ic-logo--wide { height: 20px; }
 }
 .brokers .lbl { text-align: center; margin-bottom: 26px; }
 .broker-logo { font-family: var(--display); font-weight: 600; font-size: 23px; letter-spacing: -0.02em; color: var(--ink); opacity: 0.42; transition: opacity .2s; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
