@@ -753,19 +753,37 @@ body:has(.hero) > .stage-orb { display: none; }
 .tool-row.flip .tool-visual { order: 2; }
 @media (max-width: 920px){ .tool-row, .tool-row.flip { grid-template-columns: 1fr; gap: 32px; } .tool-row.flip .tool-visual { order: 0; } }
 .tool-visual { position: relative; border-radius: var(--r-l); overflow: hidden; min-height: clamp(340px, 34vw, 420px); background: linear-gradient(160deg, #fff, var(--bg-soft)); border: 1px solid var(--line); box-shadow: var(--sh-md); padding: 28px; }
-/* Real product screenshots — fill the .tool-visual frame, preserve
-   aspect ratio, soft shadow that picks up the page palette. */
-.tool-visual:has(.tool-screenshot) { padding: 18px; }
+
+/* === Real product screenshots ===
+   When a .tool-visual contains a real screenshot (not the hand-rolled
+   .mock UI), collapse the parent tool-row to a SINGLE column so the
+   image can span the full container width. The product screenshots
+   are 2.6:1 (wide) — putting them in a 50/50 grid leaves them tiny
+   next to tall text columns. */
+.tool-row:has(.tool-screenshot) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.tool-row:has(.tool-screenshot) .tool-visual { order: 2; }  /* image always BELOW the text */
+.tool-row.flip:has(.tool-screenshot) .tool-visual { order: 2; }
+
+.tool-visual:has(.tool-screenshot) {
+  min-height: 0;
+  padding: 16px;
+  background: var(--dark);
+  border: 1px solid var(--dark-line);
+  box-shadow:
+    0 30px 80px -28px rgba(20,22,46,0.45),
+    0 60px 140px -60px rgba(191,28,193,0.18);
+}
 .tool-screenshot {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   border-radius: calc(var(--r-l) - 6px);
-  background: var(--ink);     /* dark plate matches the screenshots from the product */
+  background: var(--dark);
 }
 @media (max-width: 640px){
-  .tool-visual:has(.tool-screenshot) { padding: 12px; min-height: clamp(220px, 56vw, 360px); }
+  .tool-visual:has(.tool-screenshot) { padding: 10px; }
 }
 .tool-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 13px; }
 .tool-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink-mute); }
