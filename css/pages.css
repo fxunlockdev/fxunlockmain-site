@@ -398,19 +398,16 @@ body:has(.hero) > .stage-orb { display: none; }
    accent is flattened to grey via grayscale, and brightness drops the
    pure-white wordmarks to a single mid-grey tone so both logos read
    as flat grey marks. No card, no border, no background.
-   image-rendering: crisp-edges keeps the wordmarks pin-sharp at any
-   scale (the source PNGs are 512px so they don't need browser smoothing). */
+   Default image-rendering — crisp-edges was making them pixelated.
+   No hover filter change — user feedback that it read as a 'glare'. */
 .ic-logo {
   display: block;
   width: auto;
-  height: 180px;             /* desktop showcase scale (was 140) */
+  height: 180px;
   max-width: 100%;
   object-fit: contain;
   filter: grayscale(1) brightness(0.55) contrast(1.05);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
-.ic-partners-logos:hover .ic-logo { filter: grayscale(1) brightness(0.35) contrast(1.05); }
 @media (max-width: 1080px){
   .ic-partners { padding: 56px 0; }
   .ic-logo { height: 148px; }
@@ -755,18 +752,17 @@ body:has(.hero) > .stage-orb { display: none; }
 .tool-visual { position: relative; border-radius: var(--r-l); overflow: hidden; min-height: clamp(340px, 34vw, 420px); background: linear-gradient(160deg, #fff, var(--bg-soft)); border: 1px solid var(--line); box-shadow: var(--sh-md); padding: 28px; }
 
 /* === Real product screenshots ===
-   When a .tool-visual contains a real screenshot (not the hand-rolled
-   .mock UI), collapse the parent tool-row to a SINGLE column so the
-   image can span the full container width. The product screenshots
-   are 2.6:1 (wide) — putting them in a 50/50 grid leaves them tiny
-   next to tall text columns. */
-.tool-row:has(.tool-screenshot) {
-  grid-template-columns: minmax(0, 1fr);
-}
-.tool-row:has(.tool-screenshot) .tool-visual { order: 2; }  /* image always BELOW the text */
-.tool-row.flip:has(.tool-screenshot) .tool-visual { order: 2; }
+   When .tool-row has the .tool-row--shot modifier (set in markup),
+   collapse to a SINGLE column with the image BELOW the text so the
+   2.6:1 product screenshots get the full container width and read
+   at ~1280x490 instead of cramped 700x267 inside a half-width cell.
+   Uses an explicit class (not :has()) so it's robust across older
+   browsers + stale caches. */
+.tool-row.tool-row--shot { grid-template-columns: minmax(0, 1fr); }
+.tool-row.tool-row--shot .tool-visual { order: 2; }
+.tool-row.tool-row--shot.flip .tool-visual { order: 2; }
 
-.tool-visual:has(.tool-screenshot) {
+.tool-visual.tool-visual--shot {
   min-height: 0;
   padding: 16px;
   background: var(--dark);
@@ -783,7 +779,7 @@ body:has(.hero) > .stage-orb { display: none; }
   background: var(--dark);
 }
 @media (max-width: 640px){
-  .tool-visual:has(.tool-screenshot) { padding: 10px; }
+  .tool-visual.tool-visual--shot { padding: 10px; }
 }
 .tool-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 13px; }
 .tool-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink-mute); }
