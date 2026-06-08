@@ -86,10 +86,15 @@
                 <stop offset="45%" stop-color="#54e0a6" stop-opacity="0.5"/>
                 <stop offset="100%" stop-color="#2bc6e0" stop-opacity="0.0"/>
               </linearGradient>
+              <!-- Tapered alpha at both ends so the line emerges from
+                   the bottom-left and dissolves into the arrowhead instead
+                   of cutting off with a hard edge. -->
               <linearGradient id="lineGrad" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0%"  stop-color="#2bc6e0"/>
-                <stop offset="55%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#f08bff"/>
+                <stop offset="0%"   stop-color="#2bc6e0" stop-opacity="0"/>
+                <stop offset="8%"   stop-color="#2bc6e0" stop-opacity="1"/>
+                <stop offset="55%"  stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="86%"  stop-color="#f08bff" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#f08bff" stop-opacity="0"/>
               </linearGradient>
               <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%"  stop-color="#7b6ef0" stop-opacity="0.28"/>
@@ -187,10 +192,10 @@
               </div>
               <div class="vc-bot"><span class="vc-d neg" data-tk-d>&minus;0.01%</span><span class="vc-lbl">24h</span></div>
             </div>
-            <div class="vchip" data-ticker data-base="2650.00" data-trend="up" data-pair="XAU/USD">
-              <div class="vc-top"><span class="vc-pair">XAU / USD</span><span class="vc-live"></span></div>
+            <div class="vchip" data-ticker data-base="158.50" data-trend="up" data-pair="USD/JPY">
+              <div class="vc-top"><span class="vc-pair">USD / JPY</span><span class="vc-live"></span></div>
               <div class="vc-mid">
-                <span class="vc-val" data-tk-val>2,392.36</span>
+                <span class="vc-val" data-tk-val>158.50</span>
                 <svg class="vc-spark" viewBox="0 0 64 24" preserveAspectRatio="none"><path data-spark fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <div class="vc-bot"><span class="vc-d pos" data-tk-d>+0.21%</span><span class="vc-lbl">24h</span></div>

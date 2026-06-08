@@ -25,7 +25,8 @@
   const PAIRS = {
     "EUR/USD": "EUR",
     "GBP/USD": "GBP",
-    // "XAU/USD" — not supported; stays simulated
+    "USD/JPY": "JPY",       // freecurrencyapi returns JPY-per-USD,
+                             // which is exactly the USD/JPY price.
   };
 
   function readCache() {
@@ -70,7 +71,8 @@
       if (!code) return;
       const price = chipPriceFromRate(pair, rates[code]);
       if (price == null) return;
-      const dec = pair === "XAU/USD" ? 2 : 5;
+      // JPY pairs land around 150ish so 2 decimals; EUR/GBP around 1.x so 5.
+      const dec = pair.includes("JPY") ? 2 : 5;
       el.dataset.base = price.toFixed(dec);
       const valEl = el.querySelector("[data-tk-val]");
       if (valEl) valEl.textContent = price.toFixed(dec);
