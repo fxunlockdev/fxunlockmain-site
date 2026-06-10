@@ -11,12 +11,20 @@
 
   // Equirectangular projection helpers
   // Canvas 1200×800 (3:2 aspect) — matches .map-inline-stage / .map-stage
-  // CSS. Was 1200×620 (~1.94:1) which read as a letterboxed strip; the
-  // new ratio gives continents and arcs better vertical breathing.
+  // CSS. The projection below maps a TIGHTER latitude band (+75° to
+  // -55°) onto 0..H so populated continents fill the full canvas
+  // height. Mapping the full -90..+90 range used to leave the
+  // bottom ~28% of the SVG empty (no continents south of Tierra del
+  // Fuego / South Africa). Continents now appear ~38% taller than
+  // strict equirectangular, which reads as a stylised "global ops"
+  // canvas, not a geographic atlas.
   const W = 1200, H = 800;
+  const LAT_TOP = 75;
+  const LAT_BOT = -55;
+  const LAT_RANGE = LAT_TOP - LAT_BOT; // 130°
   const proj = (lon, lat) => [
     (lon + 180) / 360 * W,
-    (90 - lat) / 180 * H
+    (LAT_TOP - lat) / LAT_RANGE * H
   ];
 
   // Simplified continent polygons in [lon, lat] vertices.
