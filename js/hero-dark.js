@@ -134,10 +134,14 @@
     const fmt = (v, dec, grp) =>
       grp ? v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }) : v.toFixed(dec);
     function seedHistory(base, n) {
+      // Per-step delta dialled from 0.004 (±0.2%) down to 0.0008
+      // (±0.04%) so the sparkline reads as gentle drift instead of
+      // visible swings. Numbers in the chip should look "alive" but
+      // shouldn't visibly run up and down on screen.
       const h = [];
-      let v = base * (0.992 + Math.random() * 0.004);
+      let v = base * (0.9985 + Math.random() * 0.003);
       for (let i = 0; i < n; i++) {
-        v += (Math.random() - 0.5) * base * 0.004;
+        v += (Math.random() - 0.5) * base * 0.0008;
         h.push(v);
       }
       return h;
@@ -176,25 +180,23 @@
     });
     function step() {
       state.forEach((s) => {
-        s.vel = s.vel * 0.9 + (Math.random() - 0.5) * (s.base * 0.0008);
-        s.v = Math.max(s.base * 0.985, Math.min(s.base * 1.02, s.v + s.vel));
+        // Velocity perturbation 0.0008 → 0.00012 (≈7x calmer) and
+        // clamp tightened from ±1.5%/+2% to ±0.15% so the chip's price
+        // can only drift a few last-decimal digits away from the live
+        // base. The percent badge therefore stays near the real-world
+        // 24h change rather than flipping +/- every few ticks.
+        s.vel = s.vel * 0.9 + (Math.random() - 0.5) * (s.base * 0.00012);
+        s.v = Math.max(s.base * 0.9985, Math.min(s.base * 1.0015, s.v + s.vel));
         s.hist.push(s.v);
         if (s.hist.length > SPARK_N) s.hist.shift();
         const valEl = s.n.querySelector("[data-tk-val]");
-        const dEl = s.n.querySelector("[data-tk-d]");
         if (valEl) valEl.textContent = fmt(s.v, s.dec, s.grp);
-        const pct = ((s.v - s.base) / s.base) * 100;
-        const up = pct >= 0;
-        if (dEl) {
-          dEl.textContent = (up ? "+" : "−") + Math.abs(pct).toFixed(2) + "%";
-          dEl.classList.toggle("pos", up);
-          dEl.classList.toggle("neg", !up);
-        }
+        // The 24h % badge is owned by live-feed.js (real change from
+        // the upstream API). Don't overwrite it with synthetic drift.
         if (s.spark) s.spark.setAttribute("d", sparkPath(s.hist));
-        s.n.setAttribute("data-trend", up ? "up" : "down");
       });
     }
-    setInterval(step, 1500);
+    setInterval(step, 2200);
   })();
 
   /* -- particles -- */

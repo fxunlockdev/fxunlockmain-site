@@ -365,7 +365,11 @@ body:has(.hero) > .stage-orb { display: none; }
    and a hairline divider on TOP and BELOW so the band reads as a
    deliberately framed showcase, not a loose line in the page flow. */
 .ic-partners {
-  padding: 48px 0;
+  /* Strip padding tightened further per client feedback — the band
+     felt like it had "too much grey space around" the logos. Cut
+     48 → 28 (−42%) on desktop. Internal label-to-logo gap also
+     reduced via .ic-partners .wrap below. */
+  padding: 28px 0;
   /* No top border — the hero fades INTO this section via its ::after
      gradient, so a hard 1px line would re-introduce the "wall" we just
      killed. Bottom border keeps the partners strip framed from the
@@ -381,7 +385,9 @@ body:has(.hero) > .stage-orb { display: none; }
     var(--bg);
 }
 .ic-partners .wrap {
-  display: flex; flex-direction: column; align-items: center; gap: 44px;
+  /* Gap between "Proud Partners Of" label and the IC logos cut
+     44 → 24 (−45%) to match the tighter outer padding. */
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
 }
 .ic-partners-lbl {
   font-family: var(--mono);
