@@ -391,14 +391,18 @@ body:has(.hero) > .stage-orb { display: none; }
   color: var(--ink-mute);
 }
 .ic-partners-logos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center; justify-items: center;
-  /* tighter gap on desktop so both wordmarks sit closer together
-     and read as one paired callout */
-  gap: clamp(20px, 3vw, 56px);
+  /* Flex (not grid) so the gap below controls the ACTUAL visual
+     distance between the two logos. Previous grid 1fr/1fr layout split
+     the container into two equal cells and centered each logo inside —
+     so on wide viewports the logos drifted ~400px apart even when the
+     gap variable was small. Flex with justify-content: center keeps
+     them sized to content and only as far apart as the gap dictates. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(40px, 5vw, 96px);
   width: 100%;
-  max-width: 920px;
   opacity: 0.85;
   transition: opacity .25s;
 }
@@ -413,24 +417,29 @@ body:has(.hero) > .stage-orb { display: none; }
 .ic-logo {
   display: block;
   width: auto;
-  height: 180px;
+  /* Bumped from 180 → 220 — slight size up so the partners callout
+     reads as more substantial alongside the bigger left/right gap
+     reduction. */
+  height: 220px;
   max-width: 100%;
   object-fit: contain;
   filter: grayscale(1) brightness(0.55) contrast(1.05);
 }
 @media (max-width: 1080px){
   .ic-partners { padding: 56px 0; }
-  .ic-logo { height: 148px; }
-  .ic-partners-logos { gap: clamp(12px, 2vw, 32px); }
+  .ic-logo { height: 168px; }
+  .ic-partners-logos { gap: clamp(28px, 4vw, 60px); }
   .ic-partners .wrap { gap: 36px; }
 }
 @media (max-width: 640px){
-  /* Stack vertically on phones. */
+  /* Stack vertically on phones — flex-direction: column instead of
+     the obsolete grid-template-columns override. */
   .ic-partners { padding: 42px 0; }
   .ic-partners-logos {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 22px;
     max-width: 360px;
+    margin: 0 auto;
   }
   .ic-logo { height: 120px; }
   .ic-partners-lbl { font-size: 12px; letter-spacing: 0.20em; }
