@@ -28,8 +28,9 @@
   const APISED_KEY = "sk_c2CfFf70b2Be811B898eeBDc40eC6599a215ED29b75aE55B";
 
   const FCA_CACHE = "fxu_live_rates_v1";
-  const GOLD_CACHE = "fxu_gold_v1";
-  const CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+  const GOLD_CACHE = "fxu_gold_v2"; // v2 — invalidate any stale v1 cache
+  const FCA_TTL  = 30 * 60 * 1000;  // 30 min for fiat (low volatility)
+  const GOLD_TTL = 5 * 60 * 1000;   // 5 min for gold (much higher volatility)
 
   // Chip pair -> fiat ISO code understood by freecurrencyapi.
   // (base is USD; we invert below where the chip quote is /USD.)
@@ -39,12 +40,12 @@
   };
 
   // ---------- cache helpers ----------
-  function readCache(key) {
+  function readCache(key, ttl) {
     try {
       const raw = localStorage.getItem(key);
       if (!raw) return null;
       const obj = JSON.parse(raw);
-      if (!obj || Date.now() - obj.t > CACHE_TTL) return null;
+      if (!obj || Date.now() - obj.t > ttl) return null;
       return obj.data;
     } catch (_) { return null; }
   }
@@ -134,7 +135,7 @@
 
   // ---------- refresh ----------
   async function refreshFiat() {
-    let rates = readCache(FCA_CACHE);
+    let rates = readCache(FCA_CACHE, FCA_TTL);
     if (!rates) {
       try {
         rates = await fetchFiat([...new Set(Object.values(FIAT_PAIRS))]);
@@ -150,11 +151,14 @@
   }
 
   async function refreshGold() {
-    let gold = readCache(GOLD_CACHE);
+    let gold = readCache(GOLD_CACHE, GOLD_TTL);
     if (!gold) {
       try {
         gold = await fetchGold();
-        if (gold != null) writeCache(GOLD_CACHE, gold);
+        if (gold != null) {
+          writeCache(GOLD_CACHE, gold);
+          console.log("[live-feed] XAU/USD live:", gold.price, gold.changePct + "%");
+        }
       } catch (e) {
         console.warn("[live-feed] gold fallback:", e.message);
         return;

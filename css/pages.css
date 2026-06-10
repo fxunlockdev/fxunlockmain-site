@@ -358,14 +358,14 @@ body:has(.hero) > .stage-orb { display: none; }
 }
 
 /* ============ BROKER MARQUEE ============ */
-.brokers { padding: 40px 0 8px; }
+.brokers { padding: 24px 0 8px; }
 
 /* ============ IC PARTNERS · framed showcase band ===================
    Big centered "Proud partners of" eyebrow, MASSIVE logos under it,
    and a hairline divider on TOP and BELOW so the band reads as a
    deliberately framed showcase, not a loose line in the page flow. */
 .ic-partners {
-  padding: 72px 0;
+  padding: 48px 0;
   /* No top border — the hero fades INTO this section via its ::after
      gradient, so a hard 1px line would re-introduce the "wall" we just
      killed. Bottom border keeps the partners strip framed from the
@@ -426,7 +426,7 @@ body:has(.hero) > .stage-orb { display: none; }
   filter: grayscale(1) brightness(0.55) contrast(1.05);
 }
 @media (max-width: 1080px){
-  .ic-partners { padding: 56px 0; }
+  .ic-partners { padding: 36px 0; }
   .ic-logo { height: 168px; }
   .ic-partners-logos { gap: clamp(28px, 4vw, 60px); }
   .ic-partners .wrap { gap: 36px; }
@@ -434,7 +434,7 @@ body:has(.hero) > .stage-orb { display: none; }
 @media (max-width: 640px){
   /* Stack vertically on phones — flex-direction: column instead of
      the obsolete grid-template-columns override. */
-  .ic-partners { padding: 42px 0; }
+  .ic-partners { padding: 28px 0; }
   .ic-partners-logos {
     flex-direction: column;
     gap: 22px;
@@ -732,17 +732,21 @@ body:has(.hero) > .stage-orb { display: none; }
               radial-gradient(700px 460px at 100% 120%, rgba(191,28,193,0.36), transparent 60%); }
 .cta-banner > * { position: relative; z-index: 1; }
 .cta-banner h2 { color: #fff; }
-@media (max-width: 700px){ .cta-banner { padding: 54px 28px; } }
+@media (max-width: 700px){ .cta-banner { padding: 36px 28px; } }
 
-/* ============ PAGE HERO (interior pages) ============ */
-.page-hero { position: relative; padding-top: calc(var(--nav-h) + 84px); padding-bottom: 76px; text-align: center; overflow: hidden; }
+/* ============ PAGE HERO (interior pages) ============
+   Bottom padding cut 76px → 40px (−47%). The page-hero used to
+   compound with the next .section.tight (42px) and any in-hero
+   .mt-l (44px) to make a 160px+ vacant strip between the hero CTA
+   and the next eyebrow. */
+.page-hero { position: relative; padding-top: calc(var(--nav-h) + 56px); padding-bottom: 40px; text-align: center; overflow: hidden; }
 .page-hero .wrap { position: relative; z-index: 1; }
-.page-hero .lead { margin: 24px auto 0; max-width: 48rem; }
-.page-hero .eyebrow { justify-content: center; margin-bottom: 22px; }
+.page-hero .lead { margin: 18px auto 0; max-width: 48rem; }
+.page-hero .eyebrow { justify-content: center; margin-bottom: 16px; }
 .page-hero-orb { position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 900px; height: 520px; border-radius: 50%;
   background: radial-gradient(circle, rgba(74,87,216,0.18), rgba(33,187,215,0.06) 45%, transparent 70%); filter: blur(20px); pointer-events: none; }
 @media (max-width: 640px){
-  .page-hero { padding-top: calc(var(--nav-h) + 48px); padding-bottom: 48px; }
+  .page-hero { padding-top: calc(var(--nav-h) + 32px); padding-bottom: 28px; }
 }
 
 /* ============ TABS ============ */

@@ -30,7 +30,6 @@
         </a>
         <div class="nav-links">${links}</div>
         <div class="nav-cta">
-          <a href="contact.html" class="btn btn-ghost hide-mobile">Log in</a>
           <a href="https://wa.me/971585784483?text=${encodeURIComponent("Hi FX Unlocked — I'd like to learn more about your partner deals.")}"
              target="_blank" rel="noopener"
              class="btn btn-wa"

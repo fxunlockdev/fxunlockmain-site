@@ -158,7 +158,12 @@ app.use(express.static(__dirname, {
       res.setHeader("Cache-Control", "public, max-age=2592000, immutable");
     } else if (/\.(css|js)$/i.test(filePath)) {
       // CSS + JS are cache-busted via ?v= query strings in the HTML.
-      res.setHeader("Cache-Control", "public, max-age=2592000, immutable");
+      // Use must-revalidate (not immutable) so a missed ?v= bump still
+      // refreshes within the day — protects against scripts like the
+      // gold-price feed shipping a fix that gets stuck behind a 30-day
+      // immutable cache for anyone whose browser already pulled the
+      // old version.
+      res.setHeader("Cache-Control", "public, max-age=86400, must-revalidate");
     }
   },
 }));
