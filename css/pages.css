@@ -788,13 +788,15 @@ body:has(.hero) > .stage-orb { display: none; }
   box-shadow: none;
   align-self: center;
 }
-/* Shadow now lives on the image so the rounded corners + shadow track
-   the screenshot itself, not an outer card. */
+/* Screenshot renders flat — no border-radius, no shadow.
+   The rounded corners were anti-aliasing into the warm page bg and
+   reading as a thin dark rim, and the drop shadow was reinforcing
+   that "framed" look. The capture itself already has its own UI
+   chrome (rounded sidebar, cards, etc.), so any extra wrapping
+   styling just competes with it. */
 .tool-visual.tool-visual--shot .tool-screenshot {
-  border-radius: var(--r-l);
-  box-shadow:
-    0 30px 80px -28px rgba(20,22,46,0.35),
-    0 60px 140px -60px rgba(191,28,193,0.14);
+  border-radius: 0;
+  box-shadow: none;
 }
 .tool-screenshot {
   display: block;

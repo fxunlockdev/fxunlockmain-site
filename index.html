@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="icon" href="assets/fx-icon.svg" />
 <meta name="ext-resource-dependency" content="assets/fx-icon.svg" data-resource-id="logo" />
-<link rel="stylesheet" href="css/site.css?v=202606101030" />
-<link rel="stylesheet" href="css/pages.css?v=202606101030" />
-<link rel="stylesheet" href="css/hero-dark.css?v=202606101030" />
+<link rel="stylesheet" href="css/site.css?v=202606101120" />
+<link rel="stylesheet" href="css/pages.css?v=202606101120" />
+<link rel="stylesheet" href="css/hero-dark.css?v=202606101120" />
 <template id="__bundler_thumbnail" data-bg-color="#f4f3f9">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -86,14 +86,18 @@
                 <stop offset="45%" stop-color="#54e0a6" stop-opacity="0.5"/>
                 <stop offset="100%" stop-color="#2bc6e0" stop-opacity="0.0"/>
               </linearGradient>
-              <!-- Tapered alpha at both ends so the line emerges from
-                   the bottom-left and dissolves into the arrowhead instead
-                   of cutting off with a hard edge. -->
+              <!-- Tapered alpha at both ends — emerges from bottom-left
+                   and dissolves into the aurora at the top-right. End
+                   fade pulled in to 70% offset (was 100%) so the line
+                   is already invisible well before the previous tip
+                   position; reads like the ribbons fading at the screen
+                   edge, no endpoint marker needed. -->
               <linearGradient id="lineGrad" x1="0" y1="1" x2="1" y2="0">
                 <stop offset="0%"   stop-color="#2bc6e0" stop-opacity="0"/>
                 <stop offset="8%"   stop-color="#2bc6e0" stop-opacity="1"/>
-                <stop offset="55%"  stop-color="#ffffff" stop-opacity="1"/>
-                <stop offset="86%"  stop-color="#f08bff" stop-opacity="0.85"/>
+                <stop offset="50%"  stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="72%"  stop-color="#f08bff" stop-opacity="0.55"/>
+                <stop offset="90%"  stop-color="#f08bff" stop-opacity="0"/>
                 <stop offset="100%" stop-color="#f08bff" stop-opacity="0"/>
               </linearGradient>
               <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
@@ -157,28 +161,13 @@
               <circle cx="540" cy="220" r="3.2"/>
             </g>
 
-            <!-- radar-ping pulse at the tip -->
-            <g>
-              <circle class="lead-ring"   cx="690" cy="96" r="6" fill="none" stroke="#fff" stroke-width="1.4"/>
-              <circle class="lead-ring b" cx="690" cy="96" r="6" fill="none" stroke="#fff" stroke-width="1.4"/>
-            </g>
-
-            <!-- Soft glowing tip — no arrow SHAPE.
-                 Earlier we had a diamond arrowhead at the chart-line
-                 tip; even softened, the shape still read as a hard
-                 endpoint. The ribbons (r1/r2/r3) and the chart line
-                 itself end smoothly via stop-opacity=0 in their
-                 gradients, so we match that behaviour here: kill the
-                 diamond entirely. What's left is a dual-layer radial
-                 halo that the existing line-end fade dissolves into,
-                 plus the .lead-ring pulse + .lead-core glow already
-                 below. Reads as a glowing dissolve, no endpoint. -->
-            <g class="arrow-glyph">
-              <!-- wider outer wash dissolves into the bg -->
-              <circle cx="690" cy="96" r="32" fill="url(#leadGlow)" opacity="0.45"/>
-              <!-- inner brighter glow at the tip -->
-              <circle cx="690" cy="96" r="14" fill="url(#leadGlow)" opacity="0.9"/>
-            </g>
+            <!-- No tip markers — chart line dissolves into the aurora
+                 the same way the ribbons (r1/r2/r3) end at the screen
+                 edge. Previously had a radar-ping pulse + dual halo at
+                 the tip that read as a definitive endpoint dot even
+                 after the line gradient faded. Pulled all markers; the
+                 lineGrad now fades to 0 opacity earlier so the line
+                 disappears BEFORE it would have hit a marker. -->
           </svg>
 
           <!-- floating currency chips -->
