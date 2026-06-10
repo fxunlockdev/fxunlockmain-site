@@ -204,13 +204,18 @@
   }).join("");
 
   // -- Labels (rounded-rect background pill for legibility over busy dots) --
+  // labelConfig MUST have an entry for every city id, otherwise the
+  // .map() at the labels-render call below hits `undefined.side` and
+  // throws — silently hiding ALL labels (not just the missing one).
+  // Sydney removed; Mexico City + São Paulo added to match cities[].
   const labelConfig = {
-    dubai:    { side: "right", dx: 24, dy: -10, tag: true  },
+    dubai:    { side: "right", dx: 24, dy: -10, tag: true },
     london:   { side: "left",  dx: -24, dy: -10 },
-    limassol: { side: "right", dx: 24, dy: 16 },
+    limassol: { side: "right", dx: 24,  dy: 16 },
+    mexico:   { side: "left",  dx: -24, dy: -10 },
+    sao:      { side: "left",  dx: -24, dy: 16 },
     cape:     { side: "left",  dx: -24, dy: 16 },
-    sing:     { side: "right", dx: 24, dy: 18 },
-    syd:      { side: "right", dx: 24, dy: 14 },
+    sing:     { side: "right", dx: 24,  dy: 18 },
   };
 
   const labelsEl = svg.querySelector("#labels");
