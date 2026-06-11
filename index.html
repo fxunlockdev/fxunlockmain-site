@@ -12,9 +12,9 @@
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon-256.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-apple.png" />
 <meta name="ext-resource-dependency" content="assets/fx-icon.svg" data-resource-id="logo" />
-<link rel="stylesheet" href="css/site.css?v=202606110900" />
-<link rel="stylesheet" href="css/pages.css?v=202606110900" />
-<link rel="stylesheet" href="css/hero-dark.css?v=202606110900" />
+<link rel="stylesheet" href="css/site.css?v=202606111015" />
+<link rel="stylesheet" href="css/pages.css?v=202606111015" />
+<link rel="stylesheet" href="css/hero-dark.css?v=202606111015" />
 <template id="__bundler_thumbnail" data-bg-color="#f4f3f9">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -461,18 +461,6 @@
   </div>
 </section>
 
-<!-- ============ PARTNER PLATFORMS ============ -->
-<section class="section tight">
-  <div class="wrap">
-    <div class="sec-head center" data-reveal>
-      <h2 class="h3" style="font-weight:600">Trusted by the world's leading FX brokers</h2>
-    </div>
-  </div>
-  <div class="marquee">
-    <div class="marquee-track" id="platformTrack"></div>
-  </div>
-</section>
-
 <!-- ============ TESTIMONIALS ============ -->
 <section class="section" style="background:var(--bg-warm)">
   <div class="wrap">
@@ -511,12 +499,12 @@
   </div>
 </section>
 
-<script src="js/icons.js?v=202606110900"></script>
-<script src="js/image-slot.js?v=202606110900"></script>
-<script src="js/site.js?v=202606110900"></script>
-<script src="js/worldmap.js?v=202606110900" defer></script>
-<script src="js/live-feed.js?v=202606110900" defer></script>
-<script src="js/hero-dark.js?v=202606110900" defer></script>
+<script src="js/icons.js?v=202606111015"></script>
+<script src="js/image-slot.js?v=202606111015"></script>
+<script src="js/site.js?v=202606111015"></script>
+<script src="js/worldmap.js?v=202606111015" defer></script>
+<script src="js/live-feed.js?v=202606111015" defer></script>
+<script src="js/hero-dark.js?v=202606111015" defer></script>
 <script>
   // hero
   function bootHome() {
@@ -532,16 +520,6 @@
         bars += `<rect x="${x.toFixed(1)}" y="${(baseY - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill-opacity="${op.toFixed(2)}" style="animation-delay:${(0.5 + i * 0.04).toFixed(2)}s"/>`;
       }
       vol.innerHTML = bars;
-    }
-
-    // (broker marquee removed — replaced with static IC Markets / IC Trading section above)
-
-    // platforms marquee on the home "Trusted by" strip
-    const platforms = ["IC Markets", "IC Trading", "Pepperstone", "Vantage", "FP Markets", "Eightcap"];
-    const pt = document.getElementById("platformTrack");
-    if (pt) {
-      const pHTML = platforms.map(b => `<span class="broker-logo"><span class="bdot"></span>${b}</span>`).join("");
-      pt.innerHTML = pHTML + pHTML;
     }
 
     // testimonials

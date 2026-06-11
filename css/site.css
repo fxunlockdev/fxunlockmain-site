@@ -560,33 +560,43 @@ em.accent {
    unreadable. While the nav sits over the hero, invert colors to
    white. As soon as the user scrolls past the hero, .scrolled hits
    and the standard light-bg / dark-text nav takes over. */
-body[data-page="home"] .nav:not(.scrolled) {
+/* Applies on the homepage AND the affiliates page — both open with a
+   dark hero banner that the fixed nav sits over. */
+body[data-page="home"] .nav:not(.scrolled),
+body[data-page="affiliates"] .nav:not(.scrolled) {
   background: linear-gradient(180deg, rgba(8,10,28,0.55), rgba(8,10,28,0.10) 75%, transparent);
   backdrop-filter: blur(8px) saturate(1.2);
   -webkit-backdrop-filter: blur(8px) saturate(1.2);
 }
-body[data-page="home"] .nav:not(.scrolled) .logo img {
+body[data-page="home"] .nav:not(.scrolled) .logo img,
+body[data-page="affiliates"] .nav:not(.scrolled) .logo img {
   /* The wordmark in the logo asset is dark; over the dark hero we
      flatten the whole logo to pure white so both the icon and
      wordmark stay legible. brightness(0) clears all color first,
      then invert(1) lights it up white. */
   filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(255,255,255,0.18));
 }
-body[data-page="home"] .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.72); }
+body[data-page="home"] .nav:not(.scrolled) .nav-links a,
+body[data-page="affiliates"] .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.72); }
 body[data-page="home"] .nav:not(.scrolled) .nav-links a:hover,
-body[data-page="home"] .nav:not(.scrolled) .nav-links a.active { color: #fff; }
-body[data-page="home"] .nav:not(.scrolled) .btn-ghost {
+body[data-page="home"] .nav:not(.scrolled) .nav-links a.active,
+body[data-page="affiliates"] .nav:not(.scrolled) .nav-links a:hover,
+body[data-page="affiliates"] .nav:not(.scrolled) .nav-links a.active { color: #fff; }
+body[data-page="home"] .nav:not(.scrolled) .btn-ghost,
+body[data-page="affiliates"] .nav:not(.scrolled) .btn-ghost {
   background: rgba(255,255,255,0.10);
   color: #fff;
   border-color: rgba(255,255,255,0.22);
   backdrop-filter: blur(12px);
 }
-body[data-page="home"] .nav:not(.scrolled) .btn-ghost:hover {
+body[data-page="home"] .nav:not(.scrolled) .btn-ghost:hover,
+body[data-page="affiliates"] .nav:not(.scrolled) .btn-ghost:hover {
   background: rgba(255,255,255,0.18);
   border-color: rgba(255,255,255,0.38);
   color: #fff;
 }
-body[data-page="home"] .nav:not(.scrolled) .nav-toggle {
+body[data-page="home"] .nav:not(.scrolled) .nav-toggle,
+body[data-page="affiliates"] .nav:not(.scrolled) .nav-toggle {
   color: #fff;
   background: rgba(255,255,255,0.10);
   border-color: rgba(255,255,255,0.18);

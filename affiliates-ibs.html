@@ -11,8 +11,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/fx-icon.svg" />
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon-256.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-apple.png" />
-<link rel="stylesheet" href="css/site.css?v=202606110900" />
-<link rel="stylesheet" href="css/pages.css?v=202606110900" />
+<link rel="stylesheet" href="css/site.css?v=202606111015" />
+<link rel="stylesheet" href="css/pages.css?v=202606111015" />
 </head>
 <body data-page="affiliates">
 
@@ -20,9 +20,28 @@
 <div class="stage-orb" style="width:520px;height:520px;background:#7d8bff;top:-180px;left:-120px;"></div>
 <div class="stage-orb" style="width:460px;height:460px;background:#f06ad6;top:300px;right:-160px;opacity:0.3;"></div>
 
-<!-- PAGE HERO -->
-<header class="page-hero">
-  <div class="page-hero-orb"></div>
+<!-- PAGE HERO — dark aurora banner with flowing ribbons (no chips/tickers) -->
+<header class="page-hero page-hero--aurora">
+  <div class="ph-aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+  <svg class="ph-flow" viewBox="0 0 1480 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="abGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"  stop-color="#2bc6e0" stop-opacity="0"/>
+        <stop offset="20%" stop-color="#2bc6e0" stop-opacity="0.85"/>
+        <stop offset="58%" stop-color="#7b6ef0"/>
+        <stop offset="92%" stop-color="#f08bff" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#f08bff" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="abGrad2" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"  stop-color="#54e0a6" stop-opacity="0"/>
+        <stop offset="45%" stop-color="#54e0a6" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#2bc6e0" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g opacity="0.55"><path id="ab3" fill="none" stroke="url(#abGrad2)" stroke-width="2"   stroke-linecap="round"/></g>
+    <g opacity="0.75"><path id="ab2" fill="none" stroke="url(#abGrad)"  stroke-width="2.5" stroke-linecap="round"/></g>
+    <g opacity="0.9"><path  id="ab1" fill="none" stroke="url(#abGrad)"  stroke-width="3"   stroke-linecap="round"/></g>
+  </svg>
   <div class="wrap">
     <span class="eyebrow" data-reveal><span class="dot"></span> Affiliates &amp; IBs</span>
     <h1 class="h1 text-balance" data-reveal data-reveal-delay="1">Market-leading CPA &amp; rebate deals. <span class="grad-ink">Guaranteed.</span></h1>
@@ -138,8 +157,9 @@
   </div>
 </section>
 
-<script src="js/icons.js?v=202606110900"></script>
-<script src="js/site.js?v=202606110900"></script>
+<script src="js/icons.js?v=202606111015"></script>
+<script src="js/site.js?v=202606111015"></script>
+<script src="js/aurora-banner.js?v=202606111015" defer></script>
 <script>
 window.addEventListener("DOMContentLoaded", () => {
   const diffs = [
