@@ -825,24 +825,27 @@ body:has(.hero) > .stage-orb { display: none; }
 .page-hero--aurora .page-hero-orb { display: none; } /* lavender orb is for light bg */
 
 /* drifting colour blobs (same palette as the homepage hero) */
+/* Aurora presence bumped (opacity .55 → .75, stronger blob alphas)
+   so the banner background reads as a rich glow instead of flat
+   navy — the blobs were getting lost under the blur. */
 .ph-aurora {
   position: absolute; inset: -20%; z-index: 0;
-  filter: blur(60px); opacity: 0.55; pointer-events: none;
+  filter: blur(60px); opacity: 0.75; pointer-events: none;
 }
 .ph-aurora span { position: absolute; border-radius: 50%; mix-blend-mode: screen; }
 .ph-aurora .a1 {
-  width: 700px; height: 700px; top: -10%; right: -2%;
-  background: radial-gradient(circle, rgba(207,63,214,0.5), transparent 65%);
+  width: 760px; height: 760px; top: -10%; right: -2%;
+  background: radial-gradient(circle, rgba(207,63,214,0.62), transparent 66%);
   animation: phDrift1 24s ease-in-out infinite;
 }
 .ph-aurora .a2 {
-  width: 620px; height: 620px; bottom: -16%; left: 4%;
-  background: radial-gradient(circle, rgba(58,92,220,0.5), transparent 65%);
+  width: 680px; height: 680px; bottom: -16%; left: 4%;
+  background: radial-gradient(circle, rgba(58,92,220,0.62), transparent 66%);
   animation: phDrift2 30s ease-in-out infinite;
 }
 .ph-aurora .a3 {
-  width: 540px; height: 540px; top: 22%; left: 38%;
-  background: radial-gradient(circle, rgba(43,198,224,0.35), transparent 65%);
+  width: 600px; height: 600px; top: 22%; left: 38%;
+  background: radial-gradient(circle, rgba(43,198,224,0.45), transparent 66%);
   animation: phDrift1 34s ease-in-out infinite reverse;
 }
 @keyframes phDrift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-50px, 40px) scale(1.1); } }
@@ -861,12 +864,21 @@ body:has(.hero) > .stage-orb { display: none; }
           mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 86%, transparent 100%);
 }
 
+/* Centre scrim — dims the glow + ribbons exactly behind the text
+   column so copy stays readable over the brighter aurora; edges of
+   the banner keep their full colour. Paints above .ph-aurora and
+   .ph-flow (same z-index, later in paint order), below .wrap (z 1). */
+.page-hero--aurora::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(880px 480px at 50% 46%, rgba(7,10,28,0.58), transparent 72%);
+}
+
 /* dark-bg text + control overrides */
 .page-hero--aurora .h1 { color: #fff; }
-.page-hero--aurora .lead { color: #aab0d4; }
-.page-hero--aurora .eyebrow { color: rgba(255,255,255,0.78); }
+.page-hero--aurora .lead { color: #c2c8e6; }
+.page-hero--aurora .eyebrow { color: rgba(255,255,255,0.82); }
 .page-hero--aurora .eyebrow .dot { box-shadow: 0 0 0 4px rgba(255,255,255,0.10); }
-.page-hero--aurora .small { color: #aab0d4; }
+.page-hero--aurora .small { color: #b9bfdd; }
 .page-hero--aurora .tabs { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); }
 .page-hero--aurora .tab { color: #c6cbe8; }
 .page-hero--aurora .tab.active { background: rgba(255,255,255,0.94); color: #14162e; }
