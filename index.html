@@ -12,9 +12,9 @@
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon-256.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-apple.png" />
 <meta name="ext-resource-dependency" content="assets/fx-icon.svg" data-resource-id="logo" />
-<link rel="stylesheet" href="css/site.css?v=202606101730" />
-<link rel="stylesheet" href="css/pages.css?v=202606101730" />
-<link rel="stylesheet" href="css/hero-dark.css?v=202606101730" />
+<link rel="stylesheet" href="css/site.css?v=202606110900" />
+<link rel="stylesheet" href="css/pages.css?v=202606110900" />
+<link rel="stylesheet" href="css/hero-dark.css?v=202606110900" />
 <template id="__bundler_thumbnail" data-bg-color="#f4f3f9">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -476,9 +476,19 @@
 <!-- ============ TESTIMONIALS ============ -->
 <section class="section" style="background:var(--bg-warm)">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow"><span class="dot"></span> What Our Partners Say</span>
-      <h2 class="h2 mt-m">What Our Partners Say</h2>
+    <div class="sec-head t-head" data-reveal>
+      <div>
+        <span class="eyebrow"><span class="dot"></span> What Our Partners Say</span>
+        <h2 class="h2 mt-m">What Our Partners Say</h2>
+      </div>
+      <div class="t-nav" aria-label="Testimonial navigation">
+        <button type="button" class="t-btn t-prev" aria-label="Previous testimonial" data-t-nav="prev">
+          <span class="t-arr" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="t-btn t-next" aria-label="Next testimonial" data-t-nav="next">
+          <span class="t-arr t-arr--right" aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
   </div>
   <div class="wrap">
@@ -501,12 +511,12 @@
   </div>
 </section>
 
-<script src="js/icons.js?v=202606101730"></script>
-<script src="js/image-slot.js?v=202606101730"></script>
-<script src="js/site.js?v=202606101730"></script>
-<script src="js/worldmap.js?v=202606101730" defer></script>
-<script src="js/live-feed.js?v=202606101730" defer></script>
-<script src="js/hero-dark.js?v=202606101730" defer></script>
+<script src="js/icons.js?v=202606110900"></script>
+<script src="js/image-slot.js?v=202606110900"></script>
+<script src="js/site.js?v=202606110900"></script>
+<script src="js/worldmap.js?v=202606110900" defer></script>
+<script src="js/live-feed.js?v=202606110900" defer></script>
+<script src="js/hero-dark.js?v=202606110900" defer></script>
 <script>
   // hero
   function bootHome() {
@@ -541,7 +551,8 @@
       { n: "Jack L", r: "FX Educator", t: "Joining FX Unlocked has been a game-changer. I had a growing audience but struggled to find effective ways to monetize my traffic. The partnerships I've formed through FX Unlocked have not only boosted my revenue but genuinely enhanced the quality of my content." },
       { n: "Jasmine M", r: "FX Educator", t: "FX Unlocked have been amazing to work with. I'd struggled to market myself and generate leads. Within days they helped me build a full strategy, a professional brand, website, and logo. They've literally held my hand through the whole process and I'm still growing every day." },
     ];
-    document.getElementById("testimonials").innerHTML = T.map(x => `
+    const scroller = document.getElementById("testimonials");
+    scroller.innerHTML = T.map(x => `
       <div class="tcard">
         <div class="q-ic">${icon("quote")}</div>
         <p>${x.t}</p>
@@ -550,6 +561,31 @@
           <div><div class="nm">${x.n}</div><div class="rl">${x.r}</div></div>
         </div>
       </div>`).join("");
+
+    /* Prev/Next nav for the testimonial carousel.
+       Scrolls by one card width (incl. the 24px gap) per click and
+       toggles disabled state when at either edge so the buttons
+       always reflect what's possible. */
+    const prevBtn = document.querySelector('[data-t-nav="prev"]');
+    const nextBtn = document.querySelector('[data-t-nav="next"]');
+    if (prevBtn && nextBtn && scroller) {
+      const cardStep = () => {
+        const first = scroller.querySelector(".tcard");
+        if (!first) return scroller.clientWidth;
+        const gap = parseFloat(getComputedStyle(scroller).columnGap || "24") || 24;
+        return first.getBoundingClientRect().width + gap;
+      };
+      const updateNavState = () => {
+        const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+        prevBtn.disabled = scroller.scrollLeft <= 1;
+        nextBtn.disabled = scroller.scrollLeft >= maxScroll - 1;
+      };
+      prevBtn.addEventListener("click", () => scroller.scrollBy({ left: -cardStep(), behavior: "smooth" }));
+      nextBtn.addEventListener("click", () => scroller.scrollBy({ left:  cardStep(), behavior: "smooth" }));
+      scroller.addEventListener("scroll", updateNavState, { passive: true });
+      window.addEventListener("resize", updateNavState);
+      updateNavState();
+    }
   }
   if (document.readyState === "loading") window.addEventListener("DOMContentLoaded", bootHome);
   else bootHome();
