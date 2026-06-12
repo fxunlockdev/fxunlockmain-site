@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FX Unlocked | Off-Market CPA &amp; IB Deals for FX Educators and Affiliates</title>
 <meta name="description" content="FX Unlocked connects FX educators, content creators, and IBs with market-leading broker deals you can't access alone. Guaranteed better CPA and rebates. Free marketing support. Based in Dubai." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="FX Unlocked" />
+<meta property="og:url" content="https://www.fx-unlocked.com/" />
+<meta property="og:title" content="FX Unlocked — Market-leading Rebate and Hybrid deals. Guaranteed." />
+<meta property="og:description" content="FX Unlocked connects FX educators, content creators, and IBs with market-leading broker deals you can't access alone. Guaranteed better CPA and rebates. Free marketing support. Based in Dubai." />
+<meta property="og:image" content="https://www.fx-unlocked.com/assets/og-image.png?v=202606120810" />
+<meta property="og:image:secure_url" content="https://www.fx-unlocked.com/assets/og-image.png?v=202606120810" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="FX Unlocked — Market-leading Rebate and Hybrid deals. Guaranteed." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="FX Unlocked — Market-leading Rebate and Hybrid deals. Guaranteed." />
+<meta name="twitter:description" content="FX Unlocked connects FX educators, content creators, and IBs with market-leading broker deals you can't access alone. Guaranteed better CPA and rebates. Free marketing support. Based in Dubai." />
+<meta name="twitter:image" content="https://www.fx-unlocked.com/assets/og-image.png?v=202606120810" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -12,9 +28,9 @@
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon-256.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-apple.png" />
 <meta name="ext-resource-dependency" content="assets/fx-icon.svg" data-resource-id="logo" />
-<link rel="stylesheet" href="css/site.css?v=202606120601" />
-<link rel="stylesheet" href="css/pages.css?v=202606120601" />
-<link rel="stylesheet" href="css/hero-dark.css?v=202606120601" />
+<link rel="stylesheet" href="css/site.css?v=202606120810" />
+<link rel="stylesheet" href="css/pages.css?v=202606120810" />
+<link rel="stylesheet" href="css/hero-dark.css?v=202606120810" />
 <template id="__bundler_thumbnail" data-bg-color="#f4f3f9">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -56,6 +72,30 @@
   <div class="hero-bg"></div>
   <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
   <div class="grain" aria-hidden="true"></div>
+
+  <!-- Mobile-only flowing ribbons (same engine as the Affiliates banner).
+       On phones the side .hero-visual is hidden, leaving a flat colour
+       block — these bring the motion back. Hidden on desktop where the
+       side visual already animates. Driven by aurora-banner.js (#ab1-3). -->
+  <svg class="ph-flow ph-flow--home" viewBox="0 0 1480 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="abGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"  stop-color="#2bc6e0" stop-opacity="0"/>
+        <stop offset="20%" stop-color="#2bc6e0" stop-opacity="0.85"/>
+        <stop offset="58%" stop-color="#7b6ef0"/>
+        <stop offset="92%" stop-color="#f08bff" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#f08bff" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="abGrad2" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"  stop-color="#54e0a6" stop-opacity="0"/>
+        <stop offset="45%" stop-color="#54e0a6" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#2bc6e0" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g opacity="0.55"><path id="ab3" fill="none" stroke="url(#abGrad2)" stroke-width="2"   stroke-linecap="round"/></g>
+    <g opacity="0.75"><path id="ab2" fill="none" stroke="url(#abGrad)"  stroke-width="2.5" stroke-linecap="round"/></g>
+    <g opacity="0.9"><path  id="ab1" fill="none" stroke="url(#abGrad)"  stroke-width="3"   stroke-linecap="round"/></g>
+  </svg>
 
   <div class="hero-main">
     <div class="wrap">
@@ -499,12 +539,13 @@
   </div>
 </section>
 
-<script src="js/icons.js?v=202606120601"></script>
-<script src="js/image-slot.js?v=202606120601"></script>
-<script src="js/site.js?v=202606120601"></script>
-<script src="js/worldmap.js?v=202606120601" defer></script>
-<script src="js/live-feed.js?v=202606120601" defer></script>
-<script src="js/hero-dark.js?v=202606120601" defer></script>
+<script src="js/icons.js?v=202606120810"></script>
+<script src="js/image-slot.js?v=202606120810"></script>
+<script src="js/site.js?v=202606120810"></script>
+<script src="js/worldmap.js?v=202606120810" defer></script>
+<script src="js/live-feed.js?v=202606120810" defer></script>
+<script src="js/hero-dark.js?v=202606120810" defer></script>
+<script src="js/aurora-banner.js?v=202606120810" defer></script>
 <script>
   // hero
   function bootHome() {

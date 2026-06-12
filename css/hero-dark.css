@@ -140,9 +140,16 @@ body[data-page="home"] .hero .hero-grid {
   padding: clamp(40px, 6vh, 90px) 0 clamp(40px, 6vh, 90px);
   padding-top: calc(var(--nav-h) + 24px);
 }
+/* Homepage flowing ribbons — full-bleed background layer (same engine
+   as the Affiliates banner). Hidden on desktop where the side
+   .hero-visual already carries the animation; shown ≤1024px where that
+   side visual is removed, so mobile gets motion instead of a flat block.
+   z-index 0 keeps it behind the hero copy (hero-main is z-index 2). */
+body[data-page="home"] .hero .ph-flow--home { display: none; z-index: 0; }
 @media (max-width: 1024px) {
   body[data-page="home"] .hero .hero-grid { grid-template-columns: 1fr; gap: 24px; }
   body[data-page="home"] .hero .hero-visual { display: none; }
+  body[data-page="home"] .hero .ph-flow--home { display: block; }
 }
 
 /* === copy === */
