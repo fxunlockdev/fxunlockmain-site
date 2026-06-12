@@ -105,19 +105,22 @@ body[data-page="home"] .hero::before {
   box-shadow: inset 0 80px 160px -120px rgba(0,0,0,0.7);
 }
 
-/* Bottom fade-out zone — the last ~220px of the hero gradually becomes
-   the page background colour (var(--bg) = #f4f3f9 lavender-white) so
-   the dark hero blends into the IC partners strip below instead of
-   ending at a hard horizontal line. Sits between bg layers (z<0) and
-   the hero content (z=2), so chips/chart line stay crisp. */
+/* Bottom fade-out zone — kept SHORT (110px) and concentrated in the
+   last third so the dark purple hero extends much further down before
+   blending into the IC partners strip. The earlier 220px fade crept
+   up over the apply-button area on shorter viewports, making the
+   colour look "shortened" with the CTA stranded at the edge of the
+   fade. Now the button sits firmly on solid dark, and only the final
+   ~40px softens into var(--bg). Sits between bg layers (z<0) and the
+   hero content (z=2), so chips/chart line stay crisp. */
 body[data-page="home"] .hero::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 220px; z-index: 1; pointer-events: none;
+  height: 110px; z-index: 1; pointer-events: none;
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(244, 243, 249, 0.0) 20%,
-    rgba(244, 243, 249, 0.55) 65%,
+    rgba(244, 243, 249, 0.0) 45%,
+    rgba(244, 243, 249, 0.5) 80%,
     var(--bg) 100%
   );
 }
