@@ -365,11 +365,11 @@ body:has(.hero) > .stage-orb { display: none; }
    and a hairline divider on TOP and BELOW so the band reads as a
    deliberately framed showcase, not a loose line in the page flow. */
 .ic-partners {
-  /* Strip padding tightened further per client feedback — the band
-     felt like it had "too much grey space around" the logos. Cut
-     48 → 28 (−42%) on desktop. Internal label-to-logo gap also
-     reduced via .ic-partners .wrap below. */
-  padding: 28px 0;
+  /* Strip padding tightened repeatedly per client feedback — the band
+     kept reading as "too much white space around" the logos. Cut
+     48 → 28 → 14 on desktop. Internal label-to-logo gap + logo box
+     height also reduced (below) so the band hugs the logos. */
+  padding: 14px 0;
   /* No top border — the hero fades INTO this section via its ::after
      gradient, so a hard 1px line would re-introduce the "wall" we just
      killed. Bottom border keeps the partners strip framed from the
@@ -390,13 +390,16 @@ body:has(.hero) > .stage-orb { display: none; }
 .ic-partners .wrap {
   /* Gap between "Proud Partners Of" label and the IC logos cut
      44 → 24 (−45%) to match the tighter outer padding. */
-  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
 }
 /* Carry the partners-strip blush down into the top-left of "Who We Work
    With" so the left margin reads as a deliberate ambient glow rather
    than dead white space. Pure radial-gradient background → sits behind
    all content (cards/text paint on top), no extra DOM, no blur filter. */
 #who {
+  /* Pull the heading up under the partners strip — the inherited 38px
+     section top-padding added to the strip's white space. */
+  padding-top: 22px;
   background:
     radial-gradient(66% 150% at -2% -16%, rgba(201,116,214,0.20), rgba(150,130,236,0.08) 42%, transparent 70%);
 }
@@ -434,19 +437,19 @@ body:has(.hero) > .stage-orb { display: none; }
 .ic-logo {
   display: block;
   width: auto;
-  /* Bumped from 180 → 220 — slight size up so the partners callout
-     reads as more substantial alongside the bigger left/right gap
-     reduction. */
-  height: 220px;
+  /* 180 → 220 → 184. The 220 box carried so much baked-in transparent
+     padding (esp. IC Markets) that the logos floated in white space.
+     184 keeps them prominent while the band hugs them tighter. */
+  height: 184px;
   max-width: 100%;
   object-fit: contain;
   filter: grayscale(1) brightness(0.55) contrast(1.05);
 }
 @media (max-width: 1080px){
-  .ic-partners { padding: 36px 0; }
-  .ic-logo { height: 168px; }
+  .ic-partners { padding: 22px 0; }
+  .ic-logo { height: 150px; }
   .ic-partners-logos { gap: clamp(28px, 4vw, 60px); }
-  .ic-partners .wrap { gap: 36px; }
+  .ic-partners .wrap { gap: 22px; }
 }
 @media (max-width: 640px){
   /* Stack vertically on phones — flex-direction: column instead of
