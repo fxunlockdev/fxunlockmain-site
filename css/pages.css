@@ -378,8 +378,11 @@ body:has(.hero) > .stage-orb { display: none; }
   text-align: center;
   /* Soft top wash picks up the hero's indigo/magenta aurora at very
      low opacity so brand colour leaks ~200px into this section. Reads
-     as one continuous surface with the hero. */
+     as one continuous surface with the hero. The blush ellipse anchored
+     bottom-left warms the dead corner where the eye lands and carries
+     the glow down into the "Who We Work With" section below. */
   background:
+    radial-gradient(680px 460px at -4% 118%, rgba(201,116,214,0.20), rgba(146,128,236,0.07) 46%, transparent 72%),
     radial-gradient(900px 220px at 50% -120px, rgba(120, 60, 180, 0.07), transparent 70%),
     radial-gradient(700px 200px at 30% -80px, rgba(58, 92, 220, 0.05), transparent 70%),
     var(--bg);
@@ -388,6 +391,14 @@ body:has(.hero) > .stage-orb { display: none; }
   /* Gap between "Proud Partners Of" label and the IC logos cut
      44 → 24 (−45%) to match the tighter outer padding. */
   display: flex; flex-direction: column; align-items: center; gap: 24px;
+}
+/* Carry the partners-strip blush down into the top-left of "Who We Work
+   With" so the left margin reads as a deliberate ambient glow rather
+   than dead white space. Pure radial-gradient background → sits behind
+   all content (cards/text paint on top), no extra DOM, no blur filter. */
+#who {
+  background:
+    radial-gradient(760px 540px at -5% -12%, rgba(201,116,214,0.17), rgba(146,128,236,0.06) 44%, transparent 70%);
 }
 .ic-partners-lbl {
   font-family: var(--mono);
@@ -797,7 +808,10 @@ body:has(.hero) > .stage-orb { display: none; }
 .page-hero .lead { margin: 18px auto 0; max-width: 48rem; }
 .page-hero .eyebrow { justify-content: center; margin-bottom: 16px; }
 .page-hero-orb { position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 900px; height: 520px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(74,87,216,0.18), rgba(33,187,215,0.06) 45%, transparent 70%); filter: blur(20px); pointer-events: none; }
+  /* Blush-purple wash (brand magenta → lavender) instead of the old flat
+     indigo — warms the hero so the glow reads as an intentional accent,
+     not a washed-out smudge. */
+  background: radial-gradient(circle, rgba(201,116,214,0.20), rgba(127,139,255,0.08) 46%, transparent 72%); filter: blur(20px); pointer-events: none; }
 @media (max-width: 640px){
   .page-hero { padding-top: calc(var(--nav-h) + 32px); padding-bottom: 28px; }
 }
