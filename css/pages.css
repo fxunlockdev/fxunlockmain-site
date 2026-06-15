@@ -382,7 +382,7 @@ body:has(.hero) > .stage-orb { display: none; }
      bottom-left warms the dead corner where the eye lands and carries
      the glow down into the "Who We Work With" section below. */
   background:
-    radial-gradient(680px 460px at -4% 118%, rgba(201,116,214,0.20), rgba(146,128,236,0.07) 46%, transparent 72%),
+    radial-gradient(62% 150% at -2% 120%, rgba(201,116,214,0.26), rgba(150,130,236,0.10) 42%, transparent 70%),
     radial-gradient(900px 220px at 50% -120px, rgba(120, 60, 180, 0.07), transparent 70%),
     radial-gradient(700px 200px at 30% -80px, rgba(58, 92, 220, 0.05), transparent 70%),
     var(--bg);
@@ -398,7 +398,7 @@ body:has(.hero) > .stage-orb { display: none; }
    all content (cards/text paint on top), no extra DOM, no blur filter. */
 #who {
   background:
-    radial-gradient(760px 540px at -5% -12%, rgba(201,116,214,0.17), rgba(146,128,236,0.06) 44%, transparent 70%);
+    radial-gradient(66% 150% at -2% -16%, rgba(201,116,214,0.20), rgba(150,130,236,0.08) 42%, transparent 70%);
 }
 .ic-partners-lbl {
   font-family: var(--mono);
