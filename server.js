@@ -146,6 +146,111 @@ app.post("/api/leads", leadLimiter, async (req, res) => {
   }
 });
 
+// ---------- Live price proxy ----------
+// Fetches FX (freecurrencyapi) + gold (apised) SERVER-SIDE so the API
+// keys never reach the browser AND the whole site shares ONE cached
+// result. Previously each visitor called the upstreams directly, which
+// burned the free quota and exhausted the gold key (401 "credit limit
+// reached"). One server-side call every few minutes now serves everyone.
+//
+// Keys are read from environment variables only — set FCA_KEY and
+// APISED_KEY in the Railway dashboard. If they are missing the endpoint
+// degrades gracefully and the hero ticker keeps its static fallback.
+const FCA_KEY = process.env.FCA_KEY || "";
+const APISED_KEY = process.env.APISED_KEY || "";
+const PRICE_TTL = 12 * 60 * 60 * 1000; // 12h → at most ~2 upstream refreshes/day (saves API credits)
+let priceCache = { ts: 0, data: null };
+let priceRefreshing = null; // shared in-flight refresh so concurrent misses ping upstream only once
+
+if (!FCA_KEY || !APISED_KEY) {
+  console.warn(
+    "[prices] missing key(s):" +
+      (FCA_KEY ? "" : " FCA_KEY") +
+      (APISED_KEY ? "" : " APISED_KEY") +
+      " — /api/prices will fall back until set in Railway env vars"
+  );
+}
+
+async function fetchFiatRates() {
+  const r = await fetch(
+    "https://api.freecurrencyapi.com/v1/latest?base_currency=USD&currencies=EUR,GBP",
+    { headers: { apikey: FCA_KEY } }
+  );
+  if (!r.ok) throw new Error("freecurrencyapi " + r.status);
+  const j = await r.json();
+  return j.data; // { EUR, GBP } — units per 1 USD
+}
+
+async function fetchGold() {
+  const r = await fetch(
+    "https://gold.g.apised.com/v1/latest?metals=XAU&base_currency=USD&currencies=USD&weight_unit=toz",
+    { headers: { "x-api-key": APISED_KEY } }
+  );
+  if (!r.ok) throw new Error("apised " + r.status);
+  const j = await r.json();
+  const xau = j?.data?.metal_prices?.XAU;
+  if (!xau || typeof xau.price !== "number" || !isFinite(xau.price) || xau.price <= 0) return null;
+  return { price: xau.price, changePct: typeof xau.change_percentage === "number" ? xau.change_percentage : null };
+}
+
+// Build the chip-ready payload. Each upstream is independent — one
+// failing never drops the other (Promise.allSettled).
+async function buildPrices() {
+  const out = { pairs: {}, ts: Date.now() };
+  const [fiat, gold] = await Promise.allSettled([fetchFiatRates(), fetchGold()]);
+  if (fiat.status === "fulfilled" && fiat.value) {
+    const f = fiat.value;
+    if (f.EUR > 0) out.pairs["EUR/USD"] = { price: 1 / f.EUR }; // chip quote is USD → invert
+    if (f.GBP > 0) out.pairs["GBP/USD"] = { price: 1 / f.GBP };
+  }
+  if (gold.status === "fulfilled" && gold.value) {
+    out.pairs["XAU/USD"] = { price: gold.value.price, changePct: gold.value.changePct };
+  }
+  return out;
+}
+
+// Refresh upstream at most once per TTL window (~2x/day). Concurrent
+// requests share one in-flight fetch so a burst of visitors never
+// multiplies the API pings.
+function refreshPrices() {
+  if (!priceRefreshing) {
+    priceRefreshing = buildPrices()
+      .then((data) => {
+        if (data && Object.keys(data.pairs).length) priceCache = { ts: Date.now(), data };
+        return priceCache.data;
+      })
+      .catch(() => priceCache.data)
+      .finally(() => { priceRefreshing = null; });
+  }
+  return priceRefreshing;
+}
+
+app.get("/api/prices", async (req, res) => {
+  const fresh = priceCache.data && Date.now() - priceCache.ts <= PRICE_TTL;
+  if (fresh) {
+    res.set("Cache-Control", "public, max-age=300");
+    return res.json(priceCache.data);
+  }
+  // Stale-but-present: serve immediately, refresh in the background so
+  // the visitor never waits and upstream is still pinged only ~2x/day.
+  if (priceCache.data) {
+    refreshPrices();
+    res.set("Cache-Control", "public, max-age=300");
+    return res.json(priceCache.data);
+  }
+  // Cold cache (first hit / after a restart): fetch once and wait.
+  try {
+    const data = await refreshPrices();
+    if (data && Object.keys(data.pairs || {}).length) {
+      res.set("Cache-Control", "public, max-age=300");
+      return res.json(data);
+    }
+    return res.status(502).json({ ok: false, error: "no upstream price data" });
+  } catch {
+    return res.status(502).json({ ok: false, error: "price fetch failed" });
+  }
+});
+
 // ---------- Clean home URL ----------
 // The homepage should read as the bare root "/", not "/index.html".
 // Redirect any direct hit on /index.html or /index to / so the URL bar
