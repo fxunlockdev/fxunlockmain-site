@@ -574,6 +574,74 @@ body:has(.hero) > .stage-orb { display: none; }
   .map-inline-halo { inset: -40px -60px -60px -50px; filter: blur(70px); }
 }
 
+/* ============ ABOUT — dark navy/purple band ============ */
+/* The world map used to sit as a dark card on a light (grey) section,
+   which read as dated. The whole section is now a navy + brand-aurora
+   band and the map's card dissolves into it, so the map and the section
+   share one continuous background. */
+.about-dark {
+  position: relative;
+  overflow: hidden;
+  color: var(--dark-ink);
+  background:
+    radial-gradient(1100px 640px at 82% 42%, rgba(74,87,216,0.32), transparent 60%),
+    radial-gradient(820px 520px at 98% 82%, rgba(191,28,193,0.22), transparent 62%),
+    radial-gradient(760px 520px at 54% 4%,  rgba(33,187,215,0.13), transparent 60%),
+    linear-gradient(162deg, #0e1234 0%, #0b0e24 56%, #0a0c1f 100%);
+}
+/* light text on the dark band */
+.about-dark .eyebrow { color: var(--dark-mute); }
+.about-dark .h2 { color: var(--dark-ink); }
+.about-dark .body { color: var(--dark-mute); }
+.about-dark .about-bullets .body { color: var(--dark-ink); }
+.about-dark .about-bullets li .ic { color: var(--cyan-2); }
+/* Dissolve the map card into the band: keep a dark backing so the faint
+   dots keep their contrast, drop the border / shadow / radius, then soft-
+   fade the edges so the panel melts into the navy instead of ending in a
+   hard rectangle — reads as one continuous background, not a card. The
+   backing navy matches the section base, so the fade is seamless. */
+.about-dark .map-inline-stage {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-composite: intersect;
+}
+/* The backing lives on its own layer so the map intro can reveal it with
+   the same sonar sweep as the continents (worldmap.js sets --fx-reveal);
+   without JS or under reduced motion the mask is none and it just shows. */
+.about-dark .map-inline-stage::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 50% 30%, rgba(33,187,215,0.08), transparent 60%),
+    linear-gradient(180deg, #0d1130 0%, #0a0c20 100%);
+  -webkit-mask-image: var(--fx-reveal, none);
+  mask-image: var(--fx-reveal, none);
+}
+/* keep the dot-field above the backing layer */
+.about-dark .map-inline-stage > #worldMap { position: relative; }
+/* glow has to ADD light on a dark bg, not multiply it away */
+.about-dark .map-inline-halo { mix-blend-mode: screen; opacity: 0.9; }
+/* give the map more room now it isn't boxed in */
+.about-dark .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); }
+.about-dark .map-inline { min-height: clamp(460px, 40vw, 600px); }
+@media (max-width: 900px){
+  .about-dark .split { grid-template-columns: 1fr; }
+  /* the desktop min-height above outranks the base mobile reset and
+     left dead space around the stacked map */
+  .about-dark .map-inline { min-height: 0; }
+}
+
 /* ============ WORLD MAP SECTION ============ */
 .map-wrap {
   background: var(--dark); border-radius: var(--r-xl);
@@ -720,6 +788,41 @@ body:has(.hero) > .stage-orb { display: none; }
   .hq-ring-spin, .hq-pulse, .traveler, .star.tw { animation: none; }
   .arc { animation: none; stroke-dashoffset: 0; }
 }
+
+/* ---- map motion layer (worldmap.js) ---- */
+/* The network (arcs, pulses, offices, labels, HUD) runs on its own
+   <svg> over the dot field. will-change gives it a compositor layer so
+   pulses and ripples never repaint the ~3,000 continent dots below. */
+.fx-map-fg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  will-change: transform;
+}
+/* JS now drives these — switch off the old CSS loops. The arc's resting
+   state must be "fully drawn": the base .arc rule hides it (dashoffset
+   1200) and relied on the old animation to reveal it. */
+.fx-live .arc { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
+.fx-live .hq-pulse { animation: none; }
+/* offices breathe out of phase (--d is set per office by the JS) */
+.fx-live .city-glow { animation: fxBreathe 5.8s ease-in-out infinite; animation-delay: var(--d, 0s); }
+@keyframes fxBreathe { 0%, 100% { opacity: 0.74; } 50% { opacity: 1; } }
+.fx-wave { fill: url(#fxWaveGrad); }
+.fx-trail,
+.fx-trail-glow { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.fx-trail { stroke-width: 1.7; }
+.fx-trail-glow { stroke-width: 5; opacity: 0.3; }
+.fx-comet-glow { fill: url(#travelPulse); }
+.fx-comet-core { fill: #fff; }
+.fx-ripple { fill: none; stroke: rgba(170, 210, 255, 0.85); stroke-width: 1.2; }
+.fx-live-dot { fill: #54e0a6; animation: fxLive 2.4s ease-in-out infinite; }
+@keyframes fxLive { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+/* offscreen / hidden tab: freeze the CSS loops along with the rAF loop */
+.fx-paused .star.tw,
+.fx-paused .hq-ring-spin,
+.fx-paused .city-glow,
+.fx-paused .fx-live-dot { animation-play-state: paused; }
 
 /* ============ HOW IT WORKS ============ */
 .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; position: relative; }
