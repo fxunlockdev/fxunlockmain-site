@@ -589,6 +589,27 @@ body:has(.hero) > .stage-orb { display: none; }
     radial-gradient(760px 520px at 54% 4%,  rgba(33,187,215,0.13), transparent 60%),
     linear-gradient(162deg, #0e1234 0%, #0b0e24 56%, #0a0c1f 100%);
 }
+/* On the homepage, About and the stat band below it sit inside one
+   .dark-band. Each used to paint its own near-identical navy (the stat
+   band's cyan glow sat right on the join), so they read as two slabs with
+   a seam. The band now paints a single background across both, with the
+   glows re-placed for the taller block: indigo behind the map, cyan and
+   magenta under the stats. */
+.dark-band {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(1100px 640px at 82% 32%, rgba(74,87,216,0.32), transparent 60%),
+    radial-gradient(900px 560px at 97% 94%, rgba(191,28,193,0.24), transparent 62%),
+    radial-gradient(760px 520px at 54% 2%,  rgba(33,187,215,0.13), transparent 60%),
+    radial-gradient(720px 420px at 4% 98%,  rgba(33,187,215,0.12), transparent 65%),
+    linear-gradient(168deg, #0e1234 0%, #0b0e24 55%, #0a0c1f 100%);
+}
+/* Transparent inside the band so the one background runs through; the
+   map halo may bleed down into the stats instead of being cut at the join. */
+.dark-band > .about-dark { background: none; overflow: visible; }
+.dark-band > .stat-band { background: none; }
+.dark-band > .stat-band::before { display: none; }
 /* light text on the dark band */
 .about-dark .eyebrow { color: var(--dark-mute); }
 .about-dark .h2 { color: var(--dark-ink); }
